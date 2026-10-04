@@ -26,3 +26,7 @@ O histórico vivo de conversas, decisões, revisões e contexto operacional est�
 - [MEMORIA_CREATOR_COMMERCE_OS.md](./MEMORIA_CREATOR_COMMERCE_OS.md)
 
 O Documento Mestre continua sendo a fonte normativa; a memória preserva o histórico e o contexto.
+
+## Protótipo navegável do Marco 1
+
+- [prototype/marco1/index.html](./prototype/marco1/index.html) — referência navegável das telas do Marco 1, com dados fictícios claramente marcados como DEMO.
