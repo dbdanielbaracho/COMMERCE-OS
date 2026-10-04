@@ -540,3 +540,23 @@ A partir de agora:
 **Motivo:** o Documento Mestre deve continuar normativo e limpo, enquanto a memória preserva histórico, contexto, decisões, revisões, mudanças de posição e pendências.
 
 **Estado:** ativo a partir desta data.
+
+### 03/10/2026 — Revisão adversarial do layout branco pelo Claude
+**Contexto:** o layout visual em fundo branco foi enviado para revisão adversarial contra o Documento Mestre v1.5.2 FINAL e benchmarks competitivos.
+
+**Conclusão validada:** a imagem não deve ser congelada como design de referência. Ela representa corretamente a direção visual geral, mas ainda funciona apenas como moodboard/protótipo estático e contém desvios materiais do Documento Mestre.
+
+**Principais pontos confirmados:**
+- Marco 1 deve começar por Merchant Opportunity Engine de 1 SKU com margem/indisponível, estoque e comissão, e não por oportunidade global de mercado.
+- Unit Economics, Economic Coverage, Economic Confidence e próxima ação precisam aparecer como elementos centrais, não subordinados a GMV/ROI genéricos.
+- Creators precisam de justificativa/ruleset explicável; não apenas seguidores e variação percentual.
+- Outreach deve representar produto, comissão, mensagem, follow-up, quotas/aprovação e estados reais.
+- Toda métrica precisa de origem/proveniência, confiança e freshness; nenhuma feature pode depender de dado sem direito técnico/contratual.
+- Dados TikTok permanecem tenant-scoped; métricas agregadas cross-tenant não podem ser usadas sem base específica.
+- A navegação não deve introduzir módulos não canônicos como Capital; Market deve permanecer dentro da arquitetura vigente de Intelligence quando aplicável.
+- Connections/Coverage e estados empty/partial/stale/unauthorized/degraded precisam existir.
+- O layout branco, sidebar e KPIs compactos permanecem como elementos visuais aproveitáveis.
+
+**Decisão operacional:** não congelar a imagem atual. O próximo desenho deve priorizar as telas do Marco 1 e obedecer ao contrato funcional da seção 35 antes de expandir para Intelligence global/Market.
+
+**Observação:** dizer que a imagem é “não funcional” significa que uma imagem estática não comprova funcionalidade. A funcionalidade somente poderá ser aceita em protótipo navegável/implementação com contratos de comportamento, dados, estados e testes.
