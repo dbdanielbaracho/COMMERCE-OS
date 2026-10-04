@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Creator Commerce OS — Unit Economics</title>
+<style>
+:root{--blue:#3157ff;--blue2:#6d7cff;--ink:#152033;--muted:#667085;--line:#e6eaf0;--soft:#f7f9fc;--green:#16a34a;--amber:#d97706;--red:#dc2626;--purple:#7c3aed}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f5f7fb;color:var(--ink)}
+button,input,select{font:inherit}.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.sidebar{background:white;border-right:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-weight:800;font-size:20px;margin:2px 8px 18px;display:flex;gap:10px;align-items:center}.brand-badge{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--blue),#73a2ff);display:grid;place-items:center;color:white}.group{margin:18px 0 8px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.05em}.nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;color:#344054;text-decoration:none;font-size:13px;margin:2px 0}.nav a.active{background:#eef2ff;color:#243cff;font-weight:700}.nav .sub{padding-left:24px}.nav .badge{margin-left:auto;background:#f2f4f7;border-radius:999px;padding:2px 7px;font-size:11px}.workspace{min-width:0}.topbar{height:64px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 18px;position:sticky;top:0;z-index:20}.search{flex:1;max-width:580px;position:relative}.search input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px 10px 36px;background:#fbfcfe}.search:before{content:"⌕";position:absolute;left:12px;top:8px;color:#98a2b3;font-size:18px}.topselect,.ghost,.primary,.danger,.success{border:1px solid var(--line);background:white;border-radius:9px;padding:9px 11px;cursor:pointer}.primary{background:var(--blue);color:white;border-color:var(--blue);font-weight:700}.primary:disabled{opacity:.4;cursor:not-allowed}.ghost:hover{background:#f9fafb}.content{padding:18px;max-width:1500px;margin:auto}.demo{display:flex;align-items:center;justify-content:space-between;background:#fff8e7;border:1px solid #ffe4a8;color:#7a4a00;padding:9px 12px;border-radius:10px;margin-bottom:14px;font-size:12px}.crumb{font-size:12px;color:#667085;margin-bottom:10px}.product-head{background:white;border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.product-main{display:flex;gap:14px;align-items:center}.product-img{width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,#fff0f2,#ffd7dd);display:grid;place-items:center;font-size:42px}.title{font-size:22px;font-weight:800}.meta{font-size:12px;color:var(--muted);margin-top:4px}.head-actions{display:flex;gap:8px;justify-content:flex-end;align-items:start;flex-wrap:wrap}.tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-top:14px;background:white;border-radius:12px 12px 0 0;padding:0 14px}.tab{padding:12px 0;color:#667085;font-size:13px;cursor:pointer;border-bottom:2px solid transparent}.tab.active{color:#2240ff;border-bottom-color:#2240ff;font-weight:700}.toolbar{background:white;border:1px solid var(--line);border-top:0;padding:11px 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.toolbar .spacer{flex:1}.chip{border:1px solid var(--line);background:white;border-radius:8px;padding:8px 10px;font-size:12px}.chip.active{border-color:#aab5ff;background:#f2f4ff;color:#263cff}.kpis{display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:10px;margin-top:12px}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:12px}.kpi .label{font-size:11px;color:#667085}.kpi .value{font-size:20px;font-weight:800;margin-top:6px}.kpi .sub{font-size:11px;color:var(--green);margin-top:4px}.prov{display:inline-flex;gap:5px;align-items:center;font-size:10px;color:#667085;margin-top:7px;background:#f8fafc;border:1px solid #eef2f6;border-radius:999px;padding:3px 6px}.grid{display:grid;grid-template-columns:1.6fr 1fr .72fr;gap:12px;margin-top:12px}.chart-wrap{height:320px}.chart{width:100%;height:235px;border-bottom:1px solid var(--line);position:relative;margin-top:10px;background:linear-gradient(#fff,#fbfcff)}canvas{width:100%;height:100%}.legend{display:flex;gap:14px;font-size:11px;color:#667085;margin-top:8px}.dot{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:4px}.section-title{font-weight:800;font-size:14px}.waterfall table,.creator-table{width:100%;border-collapse:collapse;font-size:12px}.waterfall th,.waterfall td,.creator-table th,.creator-table td{padding:8px;border-bottom:1px solid #eef1f5;text-align:left}.waterfall th,.creator-table th{color:#667085;font-size:11px;background:#fbfcfe;position:sticky;top:0}.status{display:inline-flex;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:700}.s-settled{background:#e9f8ef;color:#16813c}.s-prov{background:#fff4df;color:#9a5b00}.s-user{background:#edf2ff;color:#3157ff}.s-unknown{background:#f2f4f7;color:#667085}.state{font-size:11px;font-weight:800}.state.incomplete{color:#b45309}.coverage-bars{display:grid;gap:10px;margin-top:12px}.cov-row{display:grid;grid-template-columns:72px 1fr 38px;align-items:center;gap:8px;font-size:11px}.bar{height:7px;background:#eef2f6;border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#3b82f6,#22c55e)}.decision{display:flex;flex-direction:column;gap:10px}.decision-box{background:#fff8e7;border:1px solid #ffe4a8;border-radius:10px;padding:10px;font-size:12px}.decision-box strong{display:block;margin-bottom:3px}.reason{background:#f8fafc;border:1px solid #eef2f6;border-radius:9px;padding:9px;font-size:11px}.reason code{font-size:10px;color:#3157ff}.below{display:grid;grid-template-columns:1.35fr .65fr;gap:12px;margin-top:12px}.table-card{padding:0;overflow:hidden}.table-tools{display:flex;gap:8px;padding:10px;border-bottom:1px solid var(--line);align-items:center}.table-tools input{border:1px solid var(--line);border-radius:8px;padding:7px 9px}.creator-table th.sortable{cursor:pointer}.creator{display:flex;align-items:center;gap:8px}.avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f5d0fe,#bfdbfe);display:grid;place-items:center;font-size:11px;font-weight:800}.pos{color:var(--green);font-weight:800}.neg{color:var(--red);font-weight:800}.sidepanel{position:fixed;right:-430px;top:0;width:420px;height:100vh;background:white;box-shadow:-15px 0 40px #0002;z-index:50;transition:.25s;padding:20px;overflow:auto}.sidepanel.open{right:0}.overlay{position:fixed;inset:0;background:#0004;z-index:40;display:none}.overlay.show{display:block}.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);width:min(560px,92vw);background:white;border-radius:14px;box-shadow:0 30px 80px #0003;z-index:60;padding:18px;display:none}.modal.show{display:block;transform:translate(-50%,-50%) scale(1)}.modal input{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;margin-top:8px}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:white;padding:10px 14px;border-radius:9px;display:none;z-index:80;font-size:12px}.toast.show{display:block}.empty{display:none;padding:40px;text-align:center;color:#667085}.summary-list{font-size:12px;display:grid;gap:8px}.summary-list div{display:flex;justify-content:space-between;border-bottom:1px solid #eef1f5;padding-bottom:6px}
+@media(max-width:1100px){.app{grid-template-columns:190px 1fr}.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(3,1fr)}.below{grid-template-columns:1fr}}@media(max-width:760px){.app{display:block}.sidebar{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.product-head{grid-template-columns:1fr}.topbar{position:static}.grid,.below{display:block}.card{margin-bottom:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-badge">◇</span>Creator Commerce OS</div>
+    <div class="nav">
+      <a href="#" data-nav="inicio">⌂ Início</a>
+      <div class="group">INTELLIGENCE</div>
+      <a href="#">▦ Product Research</a><a href="#">◎ Creator Research</a><a href="#">⌂ Shop Research</a><a href="#">▶ Video Research</a><a href="#">◉ LIVE Research</a>
+      <div class="group">CREATORS</div>
+      <a href="#">♙ Criadores</a><a href="#">☷ Listas e Segmentos</a>
+      <div class="group">CAMPAIGNS</div>
+      <a class="active" href="#">▣ Campanhas</a><a href="#">✉ Outreach</a><a href="#">▤ Conteúdos</a><a href="#">▧ Samples</a><a href="#">□ Pedidos</a>
+      <div class="group">ANALYTICS</div>
+      <a href="#">⌁ Performance</a><a class="active" href="#">↳ Unit Economics</a><a href="#">▤ Relatórios</a>
+      <div class="group">CONFIGURAÇÃO</div>
+      <a href="#" id="openCoverage">⚙ Conexões / Coverage</a><a href="#">⚙ Configurações</a>
+    </div>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="search"><input id="globalSearch" placeholder="Buscar criadores, pedidos, conteúdos..."></div>
+      <select class="topselect" id="marketSelect"><option>🇧🇷 Brasil · TikTok Shop</option></select>
+      <button class="ghost" id="refreshBtn">↻ Atualizar</button>
+      <button class="ghost" id="exportBtn">⇩ Exportar</button>
+    </header>
+
+    <div class="content">
+      <div class="demo"><span><strong>DEMO</strong> · dados fictícios para validar experiência e comportamento</span><span id="freshness">Atualizado há 2 h</span></div>
+      <div class="crumb">Performance › Unit Economics › <strong>Hidratante Labial com Cor</strong></div>
+
+      <section class="product-head">
+        <div class="product-main">
+          <div class="product-img">💄</div>
+          <div>
+            <div class="title">Hidratante Labial com Cor</div>
+            <div class="meta">SKU-001 · Beleza e Cuidados Pessoais · TikTok Shop</div>
+            <div style="margin-top:8px;font-weight:800">R$ 39,90 <span style="font-size:12px;color:#667085;font-weight:500">· comissão afiliado 10%</span></div>
+          </div>
+        </div>
+        <div class="head-actions">
+          <button class="ghost" id="watchBtn">♡ Watchlist</button>
+          <button class="ghost" id="editCostBtn">Editar custo</button>
+          <button class="ghost" id="coverageBtn">Ver coverage</button>
+        </div>
+      </section>
+
+      <div class="tabs" id="tabs">
+        <div class="tab">Visão Geral</div><div class="tab active">Unit Economics</div><div class="tab">Criadores</div><div class="tab">Conteúdos</div><div class="tab">Pedidos</div><div class="tab">Performance</div>
+      </div>
+
+      <div class="toolbar">
+        <button class="chip period active" data-period="30">30 dias</button>
+        <button class="chip period" data-period="7">7 dias</button>
+        <button class="chip period" data-period="90">90 dias</button>
+        <select class="chip" id="statusFilter"><option value="all">Todos os creators</option><option value="Ativo">Ativos</option><option value="Em teste">Em teste</option></select>
+        <div class="spacer"></div>
+        <button class="ghost" id="columnsBtn">Colunas</button>
+        <button class="ghost" id="detailsBtn">Detalhes</button>
+      </div>
+
+      <section class="kpis" id="kpis"></section>
+
+      <section class="grid">
+        <div class="card chart-wrap">
+          <div class="section-title">Evolução diária — Receita, custos e margem</div>
+          <div class="legend"><span><i class="dot" style="background:#4f7cff"></i>Receita atribuída</span><span><i class="dot" style="background:#fb7185"></i>Custos</span><span><i class="dot" style="background:#22c55e"></i>Margem</span></div>
+          <div class="chart"><canvas id="trendCanvas" width="900" height="300"></canvas></div>
+        </div>
+
+        <div class="card waterfall">
+          <div class="section-title" style="margin-bottom:8px">Waterfall — Unit Economics</div>
+          <table>
+            <thead><tr><th>Item</th><th>Valor</th><th>Status</th></tr></thead>
+            <tbody id="waterfallBody"></tbody>
+          </table>
+        </div>
+
+        <div class="card decision">
+          <div class="section-title">Decisão</div>
+          <div class="decision-box">
+            <strong>Economics ainda incompletos</strong>
+            Parte dos pedidos ainda está na janela de devolução.
+          </div>
+          <div class="reason"><code>REVIEW_ECONOMICS</code><br>Escala bloqueada até melhorar confiança/liquidação.</div>
+          <button class="primary" id="reviewBtn">Revisar custos</button>
+          <button class="ghost" id="waitBtn">Aguardar liquidação</button>
+          <button class="primary" disabled id="scaleBtn">Escalar campanha</button>
+          <div class="coverage-bars">
+            <div class="cov-row"><span>GMV</span><div class="bar"><span style="width:92%"></span></div><strong>92%</strong></div>
+            <div class="cov-row"><span>Pedidos</span><div class="bar"><span style="width:86%"></span></div><strong>86%</strong></div>
+            <div class="cov-row"><span>SKUs</span><div class="bar"><span style="width:100%"></span></div><strong>100%</strong></div>
+          </div>
+          <div style="font-size:11px;color:#667085">Profit State: <span class="state incomplete">PROFIT_INCOMPLETE</span><br>Economic Confidence: MEDIUM</div>
+        </div>
+      </section>
+
+      <section class="below">
+        <div class="card table-card">
+          <div class="table-tools">
+            <strong style="font-size:14px">Margem por creator</strong>
+            <div style="flex:1"></div>
+            <input id="creatorSearch" placeholder="Buscar creator...">
+          </div>
+          <div style="max-height:330px;overflow:auto">
+            <table class="creator-table" id="creatorTable">
+              <thead><tr>
+                <th class="sortable" data-key="name">Creator ↕</th>
+                <th class="sortable" data-key="contents">Conteúdos ↕</th>
+                <th class="sortable" data-key="orders">Pedidos atribuídos ↕</th>
+                <th class="sortable" data-key="revenue">Receita ↕</th>
+                <th class="sortable col-profit" data-key="profit">Margem ↕</th>
+                <th class="sortable" data-key="margin">%</th>
+                <th>Status</th><th>Ação</th>
+              </tr></thead>
+              <tbody id="creatorBody"></tbody>
+            </table>
+            <div class="empty" id="emptyCreators">Nenhum creator encontrado para este filtro.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Resumo de cobertura</div>
+          <div class="summary-list" style="margin-top:12px">
+            <div><span>Fonte de pedidos</span><strong>TikTok Shop</strong></div>
+            <div><span>COGS</span><strong>User provided</strong></div>
+            <div><span>Imposto</span><strong>User provided</strong></div>
+            <div><span>Refunds</span><strong>Measured provisional</strong></div>
+            <div><span>Pedidos ainda provisórios</span><strong>14%</strong></div>
+          </div>
+          <button class="ghost" id="openCoverage2" style="margin-top:12px;width:100%">Abrir Connections / Coverage</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="sidepanel" id="sidepanel">
+  <button class="ghost" id="closePanel" style="float:right">✕</button>
+  <h2>Connections / Coverage</h2>
+  <p style="color:#667085;font-size:12px">Disponibilidade, conexão, provider e freshness.</p>
+  <div class="summary-list">
+    <div><span>TikTok Shop Orders</span><strong style="color:#16813c">Conectado</strong></div>
+    <div><span>Affiliate attribution</span><strong style="color:#16813c">Conectado</strong></div>
+    <div><span>ERP / COGS</span><strong style="color:#3157ff">Manual</strong></div>
+    <div><span>Taxa efetiva</span><strong style="color:#3157ff">User provided</strong></div>
+    <div><span>Market intelligence</span><strong style="color:#b45309">Não necessária aqui</strong></div>
+  </div>
+  <h3 style="margin-top:20px">Coverage</h3>
+  <div class="coverage-bars">
+    <div class="cov-row"><span>GMV</span><div class="bar"><span style="width:92%"></span></div><strong>92%</strong></div>
+    <div class="cov-row"><span>Pedidos</span><div class="bar"><span style="width:86%"></span></div><strong>86%</strong></div>
+    <div class="cov-row"><span>SKUs</span><div class="bar"><span style="width:100%"></span></div><strong>100%</strong></div>
+  </div>
+</div>
+
+<div class="modal" id="costModal">
+  <h2>Editar custo do SKU</h2>
+  <p style="font-size:12px;color:#667085">Dados de demonstração. Atualizar muda os KPIs e o waterfall.</p>
+  <label style="font-size:12px">Custo unitário (R$)</label>
+  <input type="number" id="costInput" value="9.95" step="0.01">
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px">
+    <button class="ghost" id="cancelCost">Cancelar</button>
+    <button class="primary" id="saveCost">Salvar</button>
+  </div>
+</div>
+
+<div class="modal" id="creatorModal">
+  <h2 id="creatorModalTitle">Creator</h2>
+  <div id="creatorModalBody" style="font-size:13px;color:#475467"></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="primary" id="closeCreator">Fechar</button></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const baseCreators=[
+ {name:"Ana Silva",handle:"@anasilvabeauty",contents:5,orders:412,revenue:16438,profit:5043,margin:30.7,status:"Ativo"},
+ {name:"Beatriz Lima",handle:"@beatrizdicas",contents:3,orders:286,revenue:11411,profit:3517,margin:30.8,status:"Ativo"},
+ {name:"Carla Mendes",handle:"@carlamakeup",contents:2,orders:174,revenue:6943,profit:2026,margin:29.2,status:"Ativo"},
+ {name:"Juliana Costa",handle:"@julianabeleza",contents:2,orders:118,revenue:4708,profit:1111,margin:23.6,status:"Em teste"}
+];
+let creators=[...baseCreators],sortKey="revenue",sortDir=-1,unitCost=9.95,period=30,hideProfit=false;
+
+const periodData={
+  7:{gross:15480,refunds:280,platform:1858,affiliate:1520,shipping:620,samples:420,tax:610,orders:388},
+  30:{gross:59120,refunds:1480,platform:7094,affiliate:5912,shipping:2364,samples:1350,tax:2140,orders:1482},
+  90:{gross:168420,refunds:5640,platform:20210,affiliate:16842,shipping:6840,samples:3890,tax:6280,orders:4221}
+};
+const fmt=n=>"R$ "+Math.round(n).toLocaleString("pt-BR");
+function stateClass(s){return s.includes("SETTLED")?"s-settled":s.includes("PROVISIONAL")?"s-prov":s.includes("USER")?"s-user":"s-unknown"}
+function calc(){
+  const d=periodData[period];
+  const cogs=d.orders*unitCost;
+  const totalCosts=d.refunds+d.platform+d.affiliate+cogs+d.shipping+d.samples+d.tax;
+  const profit=d.gross-totalCosts;
+  return {...d,cogs,totalCosts,profit,margin:profit/d.gross*100};
+}
+function renderKPIs(){
+ const d=calc();
+ const items=[
+  ["Receita atribuída",fmt(d.gross),"+28%","MEASURED · TikTok · 2h"],
+  ["Pedidos atribuídos",d.orders.toLocaleString("pt-BR"),"+32%","MEASURED · TikTok · 2h"],
+  ["Custo produto",fmt(d.cogs),"COGS","USER PROVIDED"],
+  ["Comissão afiliado",fmt(d.affiliate),"10%","MEASURED PROV."],
+  ["Taxa plataforma",fmt(d.platform),"12%","MEASURED PROV."],
+  ["Margem",fmt(d.profit),d.margin.toFixed(1)+"%","INCOMPLETE"],
+  ["Economic Coverage","86%","GMV 92%","MIXED SOURCES"]
+ ];
+ document.getElementById("kpis").innerHTML=items.map(x=>`<div class="card kpi"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div><div class="prov">${x[3]}</div></div>`).join("");
+}
+function renderWaterfall(){
+ const d=calc();
+ const rows=[
+  ["Receita atribuída",d.gross,"MEASURED_PROVISIONAL"],
+  ["(-) Reembolsos",-d.refunds,"MEASURED_PROVISIONAL"],
+  ["(-) Taxa TikTok",-d.platform,"MEASURED_PROVISIONAL"],
+  ["(-) Comissão afiliado",-d.affiliate,"MEASURED_PROVISIONAL"],
+  ["(-) Custo produto",-d.cogs,"USER_PROVIDED"],
+  ["(-) Frete / fulfillment",-d.shipping,"USER_PROVIDED"],
+  ["(-) Amostras",-d.samples,"USER_PROVIDED"],
+  ["(-) Imposto efetivo",-d.tax,"USER_PROVIDED"],
+  ["Margem contribuição",d.profit,"PROFIT_INCOMPLETE"]
+ ];
+ document.getElementById("waterfallBody").innerHTML=rows.map((r,i)=>`<tr style="${i===rows.length-1?'font-weight:800;background:#f0fdf4':''}"><td>${r[0]}</td><td>${fmt(r[1])}</td><td><span class="status ${stateClass(r[2])}">${r[2]}</span></td></tr>`).join("");
+}
+function renderCreators(){
+ const q=document.getElementById("creatorSearch").value.toLowerCase();
+ const sf=document.getElementById("statusFilter").value;
+ const filtered=creators.filter(c=>(sf==="all"||c.status===sf)&&(c.name.toLowerCase().includes(q)||c.handle.toLowerCase().includes(q)));
+ filtered.sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];if(typeof av==="string")return av.localeCompare(bv)*sortDir;return (av-bv)*sortDir});
+ const body=document.getElementById("creatorBody");
+ body.innerHTML=filtered.map((c,i)=>`<tr>
+  <td><div class="creator"><span class="avatar">${c.name.split(" ").map(x=>x[0]).join("")}</span><span><strong>${c.name}</strong><br><span style="color:#98a2b3;font-size:10px">${c.handle}</span></span></div></td>
+  <td>${c.contents}</td><td>${c.orders}</td><td>${fmt(c.revenue)}</td>
+  <td class="col-profit" style="${hideProfit?'display:none':''}">${fmt(c.profit)}</td><td class="${c.margin>=28?'pos':'neg'}">${c.margin.toFixed(1)}%</td>
+  <td><span class="status ${c.status==='Ativo'?'s-settled':'s-prov'}">${c.status}</span></td>
+  <td><button class="ghost creator-detail" data-i="${baseCreators.findIndex(x=>x.name===c.name)}">Ver</button></td></tr>`).join("");
+ document.getElementById("emptyCreators").style.display=filtered.length?"none":"block";
+ document.querySelectorAll(".creator-detail").forEach(b=>b.onclick=()=>openCreator(baseCreators[+b.dataset.i]));
+}
+function drawChart(){
+ const canvas=document.getElementById("trendCanvas"),ctx=canvas.getContext("2d"),w=canvas.width,h=canvas.height;
+ ctx.clearRect(0,0,w,h);
+ ctx.strokeStyle="#e6eaf0";ctx.lineWidth=1;
+ for(let y=40;y<h-25;y+=50){ctx.beginPath();ctx.moveTo(45,y);ctx.lineTo(w-15,y);ctx.stroke()}
+ const pts=period===7?7:period===30?30:45, d=calc();
+ const rev=[],cost=[],profit=[];
+ for(let i=0;i<pts;i++){let f=.72+.28*(i/(pts-1));let noise=.86+((i*37)%17)/100;rev.push(d.gross/pts*f*noise);cost.push(d.totalCosts/pts*(.95+((i*19)%9)/100));profit.push(Math.max(0,rev[i]-cost[i]))}
+ const max=Math.max(...rev)*1.15, sx=(w-70)/(pts-1), sy=(h-55)/max;
+ function line(arr,color){ctx.strokeStyle=color;ctx.lineWidth=3;ctx.beginPath();arr.forEach((v,i)=>{const x=45+i*sx,y=h-30-v*sy;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke()}
+ line(rev,"#4f7cff");line(cost,"#fb7185");line(profit,"#22c55e");
+}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function openPanel(){document.getElementById("sidepanel").classList.add("open");document.getElementById("overlay").classList.add("show")}
+function closePanel(){document.getElementById("sidepanel").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+function openCost(){document.getElementById("costModal").classList.add("show");document.getElementById("overlay").classList.add("show");document.getElementById("costInput").value=unitCost}
+function closeCost(){document.getElementById("costModal").classList.remove("show");document.getElementById("overlay").classList.remove("show")}
+function openCreator(c){document.getElementById("creatorModalTitle").textContent=c.name;document.getElementById("creatorModalBody").innerHTML=`<p><strong>${c.handle}</strong></p><p>${c.orders} pedidos atribuídos · ${fmt(c.revenue)} de receita · margem ${c.margin.toFixed(1)}%</p><p>Próxima ação demo: revisar performance recente antes de ampliar ativação.</p>`;document.getElementById("creatorModal").classList.add("show");document.getElementById("overlay").classList.add("show")}
+function closeCreator(){document.getElementById("creatorModal").classList.remove("show");document.getElementById("overlay").classList.remove("show")}
+function exportCSV(){
+ const d=calc();let csv="item,valor,status\n";
+ [["Receita atribuída",d.gross,"MEASURED_PROVISIONAL"],["Reembolsos",-d.refunds,"MEASURED_PROVISIONAL"],["Taxa TikTok",-d.platform,"MEASURED_PROVISIONAL"],["Comissão afiliado",-d.affiliate,"MEASURED_PROVISIONAL"],["COGS",-d.cogs,"USER_PROVIDED"],["Margem",d.profit,"PROFIT_INCOMPLETE"]].forEach(r=>csv+=r.join(",")+"\n");
+ const blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="unit_economics_demo.csv";a.click();URL.revokeObjectURL(url);toast("CSV exportado");
+}
+function rerender(){renderKPIs();renderWaterfall();renderCreators();drawChart()}
+document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.remove("active"));b.classList.add("active");period=+b.dataset.period;rerender();toast("Período atualizado")});
+document.getElementById("statusFilter").onchange=renderCreators;
+document.getElementById("creatorSearch").oninput=renderCreators;
+document.querySelectorAll("th.sortable").forEach(th=>th.onclick=()=>{const k=th.dataset.key;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1}renderCreators()});
+document.getElementById("columnsBtn").onclick=()=>{hideProfit=!hideProfit;document.querySelectorAll(".col-profit").forEach(x=>x.style.display=hideProfit?"none":"");toast(hideProfit?"Coluna Margem oculta":"Coluna Margem exibida")};
+document.getElementById("watchBtn").onclick=e=>{e.target.textContent=e.target.textContent.includes("♡")?"♥ Na watchlist":"♡ Watchlist";toast("Watchlist atualizada")};
+document.getElementById("exportBtn").onclick=exportCSV;
+document.getElementById("refreshBtn").onclick=()=>{document.getElementById("freshness").textContent="Atualizado agora";toast("Dados demo atualizados")};
+["openCoverage","coverageBtn","openCoverage2"].forEach(id=>document.getElementById(id).onclick=openPanel);
+document.getElementById("closePanel").onclick=closePanel;
+document.getElementById("overlay").onclick=()=>{closePanel();closeCost();closeCreator()};
+document.getElementById("editCostBtn").onclick=openCost;
+document.getElementById("cancelCost").onclick=closeCost;
+document.getElementById("saveCost").onclick=()=>{unitCost=Math.max(0,+document.getElementById("costInput").value||0);closeCost();rerender();toast("Custo atualizado")};
+document.getElementById("reviewBtn").onclick=openCost;
+document.getElementById("waitBtn").onclick=()=>toast("Acompanhamento agendado para próxima liquidação");
+document.getElementById("detailsBtn").onclick=openPanel;
+document.getElementById("closeCreator").onclick=closeCreator;
+document.getElementById("globalSearch").oninput=e=>{document.getElementById("creatorSearch").value=e.target.value;renderCreators()};
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");toast(`Aba ${t.textContent} selecionada (demo)`)});
+rerender();
+</script>
+</body></html>
