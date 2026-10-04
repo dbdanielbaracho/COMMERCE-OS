@@ -801,3 +801,16 @@ O Product Owner autorizou incorporar ao Documento Mestre tudo que se tornou norm
 - sugestões do Claude passam a ser classificadas contra o Master antes de entrar.
 
 **Artefatos:** MASTER_PRODUCT_SPEC.md atualizado para v1.5.3 e Word final gerado como Creator_Commerce_OS_Documento_Mestre_v1.5.3_FINAL.docx. O DOCX foi renderizado em 72 páginas e revisado visualmente.
+
+### 04/10/2026 — Revisão v1.5.3 aplicada e Master v1.5.4
+A revisão externa confirmou a coerência Word/Markdown/GitHub da v1.5.3, mas encontrou que a SKU Opportunity continuava quebrada por uma chave ausente em `bind()` e que o repositório ainda não tinha o gate automático descrito na 35.4.
+
+**Aplicado:**
+- corrigida a chave de `bind()` na SKU Opportunity;
+- criado gate Playwright em `tests/ui-smoke.spec.js`;
+- criado workflow `.github/workflows/ui-gates.yml` para navegador real;
+- gate cobre erro JavaScript, linhas renderizadas, busca, ordenação, drawer, editor de custo e overflow em 1536 px;
+- captura da página funcional é anexada ao resultado do teste;
+- Documento Mestre atualizado para v1.5.4 com regra simétrica: toda entrega, de qualquer autor, passa pela 35.4; toda sugestão, de qualquer revisor, é classificada pela 35.7;
+- 9.7 corrigida para separar versão histórica/atual dos termos, retirar S30 como prova da restrição de competir/replicar sem trecho verificável e adicionar S32 (Developer Terms globais atuais) para a restrição de profiling/database;
+- título do índice simplificado para “Sumário”.
