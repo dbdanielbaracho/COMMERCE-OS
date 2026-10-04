@@ -634,3 +634,18 @@ A partir de agora:
 - Connections/Coverage com matrix por provider/region/permission/freshness.
 
 **Estado:** protótipo v2 substitui a versão anterior como referência de trabalho, mas ainda não está congelado; precisa nova validação comparativa.
+
+### 04/10/2026 — Rejeição do protótipo v2 por baixa qualidade competitiva
+**Feedback do Product Owner:** o layout continua muito abaixo dos concorrentes e não deve ser usado como referência visual.
+
+**Diagnóstico:** o problema não é o Documento Mestre, e sim a execução do design. As versões anteriores priorizaram conformidade funcional e cobertura de requisitos antes de reproduzir com precisão a densidade, hierarquia, acabamento e padrões de interação dos benchmarks. O uso de mockups gerados e HTML genérico levou a aparência de dashboard SaaS comum.
+
+**Decisão de processo:** interromper geração ampla de telas. A próxima iteração deve ser benchmark-first e screen-by-screen:
+1. decompor FastMoss, Kalodata, Cruva e Euka por superfície;
+2. medir estrutura visual, grid, densidade, filtros, tabelas, hierarquia, typography, spacing e interaction patterns;
+3. escolher explicitamente o melhor benchmark por tela;
+4. criar um design system próprio do Creator Commerce OS;
+5. redesenhar uma única tela de referência até atingir paridade/superioridade percebida;
+6. somente depois propagar o sistema para as demais telas.
+
+**Estado:** protótipo v2 rejeitado como design de referência. Pode permanecer apenas como artefato funcional exploratório.
