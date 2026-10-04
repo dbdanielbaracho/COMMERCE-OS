@@ -581,3 +581,32 @@ A partir de agora:
 **Correção à revisão do Claude:** não existe requisito canônico de níveis fixos L1–L6. A versão final do Documento Mestre usa nível do creator somente quando fornecido pela plataforma, no formato genérico L1–Ln, como sinal categórico e não verdade isolada.
 
 **Decisão operacional:** a próxima versão deve ser um protótipo navegável ou especificação funcional editável, não outra imagem gerada. O foco passa a ser verdade econômica, rastreabilidade e comportamento testável antes de refinamento visual.
+
+### 04/10/2026 — Protótipo navegável Marco 1 criado
+**Decisão:** após as duas revisões adversariais do layout estático, foi criado um protótipo navegável em `prototype/marco1/index.html`.
+
+**Telas incluídas:**
+1. SKU Opportunity;
+2. Creator Shortlist;
+3. Outreach;
+4. Campaign;
+5. Unit Economics;
+6. Próxima ação & Learning;
+7. Connections/Coverage.
+
+**Correções incorporadas:**
+- fundo branco e linguagem visual clara;
+- SKU do merchant como ponto de partida do Marco 1;
+- comissão afiliado separada de taxa de plataforma;
+- shortlist com razão, origem e confiança;
+- pagamento fixo marcado como indisponível no Marco 1;
+- Unit Economics com waterfall completo, custo do produto, refunds, shipping, comissão, imposto e statuses por linha;
+- Economic Coverage quantitativa;
+- Profit State e Economic Confidence separados;
+- próxima ação bloqueia escala quando economics ainda são provisórios/incompletos;
+- aprendizado tratado como observação quando a amostra é pequena;
+- histórico recommendation → decision → action → outcome;
+- Connections/Coverage com estados conectado, pendente, indisponível e partial coverage;
+- dados explicitamente marcados como DEMO.
+
+**Estado:** protótipo de referência navegável, ainda não produção. Deve ser testado contra o Documento Mestre e benchmarks antes de congelamento visual.
