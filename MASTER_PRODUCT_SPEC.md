@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.3  
+Versão: 1.5.4  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -68,7 +68,7 @@ precisa cumprir seu próprio gate de profundidade antes de avançar.</th>
 </tbody>
 </table>
 
-# Sumário executivo do documento
+# Sumário
 
 1\. Resumo executivo e definição do produto
 
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.3 e pendências vigentes
+36\. Changelog v1.5.4 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -1454,14 +1454,17 @@ Toda métrica/feature derivada que entra em score deve carregar:
 Mapa de rastreabilidade das versões de termos revisadas nas rodadas;
 qual versão se aplica ao Brasil continua EXTERNAL ACTION REQUIRED — P0.
 Fontes externas de rastreabilidade/corroboração:
-\[S19\]\[S29\]\[S30\]\[S31\]. A versão contratual exata aplicável ao
-app/actor no Brasil permanece EXTERNAL ACTION REQUIRED — P0.
+\[S19\]\[S29\]\[S30\]\[S31\]\[S32\]. A versão contratual exata aplicável ao
+app/actor no Brasil permanece EXTERNAL ACTION REQUIRED — P0. A numeração de
+cláusulas varia entre versões; quando uma restrição vier de versão histórica,
+o documento deve registrar isso explicitamente em vez de atribuí-la a uma
+versão atual sem evidência.
 
 | Cláusula revisada                        | Regra vigente do produto                                                                                                                                                | Aplicação                                                                        |
 |------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | 2.7                                      | Uso como prestador de serviço do End User; retenção mínima necessária; compartilhamento só com permissão; não agregar/usar dados do usuário para fins próprios. \[S29\] | Tenant boundary, purpose binding, retention/deletion e bloqueio de cross-tenant. |
-| 3.5(j)                                   | Não construir/complementar perfis ou bancos de dados sobre indivíduos a partir de dados restritos. \[S29\]                                                              | Sem base global de creators formada por cache de buscas entre clientes.          |
-| 3.5(r)/(s), versão UE revisada           | Não competir/replicar/recriar funcionalidade central. \[S29\]\[S30\]                                                                                                    | Teste de substituição da 24.3 e revisão específica da 7.22.                      |
+| 3.5(j), versão histórica revisada / restrição análoga vigente | Não construir/complementar perfis ou bancos de dados sobre indivíduos, dispositivos, conteúdo ou browsers a partir de dados restritos. A numeração histórica 3.5(j) não deve ser tratada como numeração vigente sem confirmação. \[S32\] | Sem base global de creators formada por cache de buscas entre clientes. |
+| 3.5(r)/(s), versão UE revisada           | Restrição de competir/replicar/recriar funcionalidade central observada na versão UE revisada. \[S29\] A aplicabilidade ao Brasil/actor concreto permanece P0; \[S30\] não é usado como prova desta restrição. | Teste de substituição da 24.3 e revisão específica da 7.22. |
 | Partner Center Terms Brasil, cláusula 10 | Referência registrada nas rodadas; texto/versão aplicável ao uso concreto ainda deve ser confirmado. \[S31\]                                                            | Pendência P0 antes de produção.                                                  |
 
 ## 9.8 ADR-000 — fonte de market data
@@ -2447,8 +2450,9 @@ Todo score crítico deve retornar, além do valor:
 | \[S27\] Momentum Works — TikTok Shop in Brazil H1 2026                                   | https://momentum.asia/insights/detail/tiktok-shop-in-brazil-h1-2026                                        | Estimativas de terceiro sobre escala/canal/live no Brasil; sempre rotular como estimativa de terceiro.                                                                                 |
 | \[S28\] TikTok for Developers — Affiliate APIs launch                                    | https://developers.tiktok.com/blog/2024-tiktok-shop-affiliate-apis-launch-developer-opportunity            | Fonte pública sobre Affiliate APIs e busca de produtos/open collaboration; uso continua subordinado a tenant, approval e termos aplicáveis.                                            |
 | \[S29\] TikTok Shop Developer Terms — EU/EEA (versão pública atual revisada nas rodadas) | https://seller-hu.tiktok.com/university/essay?knowledge_id=8802234122356497                                | Corrobora restrições de End User data, retenção, compartilhamento, profiling/database e competir/replicar/recriar; aplicabilidade exata ao Brasil continua P0.                         |
-| \[S30\] TikTok Shop Seller Terms — Brasil (2026)                                         | https://seller-br.tiktok.com/university/essay?default_language=en&identity=1&knowledge_id=3268441302615809 | Termos públicos do Brasil com restrições sobre competir, replicar/recriar ou substituir funções; não presumir que Seller Terms sejam o contrato correto para app Partner multi-tenant. |
+| \[S30\] TikTok Shop Seller Terms — Brasil (2026)                                         | https://seller-br.tiktok.com/university/essay?default_language=en&identity=1&knowledge_id=3268441302615809 | Termos públicos do Brasil para Sellers; úteis para contexto de actor/mercado, mas não usados como evidência da restrição de competir/replicar/recriar sem trecho verificável correspondente. |
 | \[S31\] TikTok Shop Global Partner Center Terms                                          | https://seller-br.tiktok.com/university/essay?knowledge_id=3037474364589840&lang=pt-BR                     | Define Partner/prestador terceirizado e termos complementares; usado para mapear actor/app type sem resolver sozinho qual contrato rege cada capability.                               |
+| \[S32\] TikTok Developer Terms of Service — Global                                       | https://www.tiktok.com/legal/page/global/tik-tok-developer-terms-of-service/en                            | Termos globais atuais corroboram a proibição de coletar dados pessoais para finalidade não autorizada e de construir/complementar perfis, bancos de dados ou registros semelhantes; a numeração difere de versões históricas. |
 
 ## 22.6 Critério de sucesso do produto
 
@@ -3869,7 +3873,12 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   devem ser marcadas como **PROPOSTA NOVA / DECISION REQUIRED** e não
   podem ser incorporadas silenciosamente.
 
-- Revisões adversariais do Claude são insumo, não autoridade. Cada
+- Toda entrega, de qualquer autor ou agente, passa pelos gates da seção
+  35.4 antes de ser registrada como pronta. Nenhum autor pode validar a
+  própria entrega apenas por declaração; evidência automatizada e/ou revisão
+  independente deve confirmar o gate aplicável.
+
+- Toda sugestão, de qualquer revisor, é insumo e não autoridade. Cada
   sugestão é classificada como: **correção obrigatória**, **melhoria
   competitiva dentro do Master** ou **nova proposta fora do escopo**. O
   Product Owner aprova mudanças materiais.
@@ -3885,13 +3894,33 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.3 e pendências vigentes
+# 36. Changelog v1.5.4 e pendências vigentes
 
-A v1.5.3 consolida aprendizados normativos das revisões de Product
-Research, Unit Economics e SKU Opportunity sem ampliar o escopo do
-produto. O foco é eliminar a diferença entre desenho aprovado e
-implementação funcional, tornar a revisão competitiva obrigatória e
-explicitar o contrato do Merchant Opportunity Engine v0.
+A v1.5.4 preserva integralmente a baseline funcional da v1.5.3 e corrige
+governança de verificação e rastreabilidade jurídica. O foco é garantir
+que a regra de qualidade seja aplicada simetricamente a qualquer autor,
+que nenhuma entrega seja registrada como pronta sem evidência dos gates
+da 35.4 e que fontes de termos sejam atribuídas apenas ao texto/versão
+que realmente sustentam.
+
+
+- v1.5.4: toda entrega, independentemente de autor, passa pelos gates da
+  35.4 antes de ser registrada como pronta; sugestões de qualquer revisor
+  seguem a classificação da 35.7.
+
+- v1.5.4: o gate mínimo de UI deve existir também como teste executável no
+  repositório para superfícies prioritárias, cobrindo erro JavaScript,
+  conteúdo esperado renderizado e controles críticos; captura da página
+  funcional deve ser preservada como evidência da execução.
+
+- v1.5.4: a seção 9.7 passa a separar versões históricas e atuais dos
+  termos. S30 deixa de ser usada como evidência da restrição de
+  competir/replicar/recriar sem trecho verificável; S32 registra os
+  TikTok Developer Terms globais atuais como corroboração para a
+  restrição de profiling/database.
+
+- v1.5.4: o título do índice foi simplificado de “Sumário executivo do
+  documento” para “Sumário”.
 
 - v1.5.3: SKU Opportunity fica formalmente definida como superfície
   decision-first dos produtos do próprio merchant, com motivo da
