@@ -742,3 +742,11 @@ A partir de agora:
 
 ### 04/10/2026 — SKU Opportunity funcional
 Foi criada a primeira versão funcional da SKU Opportunity no visual aprovado. O protótipo implementa filtros por categoria/preço/estoque/status/canal, busca, ordenação, abas rápidas, atalhos “O que fazer hoje”, motivo da oportunidade, comissão por SKU vs. faixa observada, canal principal, ações condicionadas ao estoque, entrada de custo, ações em massa, exportação CSV, sincronização demo, Economic Coverage e detalhe lateral com Comparáveis, Economics e Histórico. Itens fora do fluxo atual aparecem desabilitados com motivo. A versão funcional deve continuar sendo comparada visualmente ao desenho aprovado e testada contra FastMoss, Kalodata, Cruva, Euka e Seller Center antes de congelamento.
+
+### 04/10/2026 — SKU Opportunity funcional v3
+- Protótipo funcional atualizado após a revisão do Claude.
+- Atalhos de “O que fazer hoje” agora aplicam recortes reais e exatos: alta oportunidade sem campanha, estoque zerado com creators ativos, custo ausente e comissão acima da faixa.
+- Ações em massa continuam excluindo SKUs sem estoque da ativação de creators.
+- Dados demo ajustados apenas para permitir testar todos os estados da interface.
+- Arquivo local para revisão visual/funcional: sku_opportunity_functional_v3.html.
+- Próximo gate: revisão adversarial de design, funcionalidade e comparação competitiva antes de avançar para Creator Shortlist.
