@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Creator Commerce OS — Marco 1 Prototype</title>
+<style>
+:root{--bg:#f6f8fc;--panel:#fff;--text:#14213d;--muted:#6b7280;--line:#e5e7eb;--pri:#4f46e5;--pri2:#eef2ff;--ok:#0f9d58;--warn:#c77c02;--bad:#c2410c;--shadow:0 8px 24px rgba(15,23,42,.06)}
+*{box-sizing:border-box} body{margin:0;font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:var(--bg)}
+header{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:18px;padding:0 22px;position:sticky;top:0;z-index:5}
+.logo{font-weight:800;font-size:20px}.logo b{color:var(--pri)} .demo{font-size:12px;padding:5px 9px;border-radius:999px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}.search{flex:1;max-width:560px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:#64748b;background:#fafafa}.topmeta{margin-left:auto;display:flex;gap:10px;align-items:center;color:#475569}
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 64px)} aside{background:#fff;border-right:1px solid var(--line);padding:16px 12px;position:sticky;top:64px;height:calc(100vh - 64px)}
+.navbtn{width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;border-radius:9px;margin:2px 0;color:#334155;cursor:pointer}.navbtn.active{background:var(--pri2);color:var(--pri);font-weight:700}.navgroup{font-size:11px;color:#94a3b8;text-transform:uppercase;margin:14px 12px 6px}
+main{padding:22px;max-width:1500px;width:100%;margin:0 auto}.screen{display:none}.screen.active{display:block}.titlebar{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:16px}.titlebar h1{font-size:24px;margin:0 0 4px}.titlebar p{margin:0;color:var(--muted)}
+.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}.kpi .v{font-size:24px;font-weight:800}.kpi .l{color:var(--muted);font-size:12px}.kpi .s{color:var(--ok);font-weight:700;font-size:12px;margin-top:3px}
+.btn{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:#fff;cursor:pointer;font-weight:600}.btn.primary{background:var(--pri);color:#fff;border-color:var(--pri)}.btn.ghost{background:#f8fafc}.btn.warn{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid var(--line);background:#f8fafc}.badge.ok{background:#ecfdf5;color:#047857;border-color:#a7f3d0}.badge.warn{background:#fff7ed;color:#9a3412;border-color:#fed7aa}.badge.info{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}.badge.muted{background:#f1f5f9;color:#64748b}
+.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}.table th{font-size:11px;text-transform:uppercase;color:#64748b;background:#fafafa}.table tr:last-child td{border-bottom:0}.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c7d2fe,#fde68a);display:inline-grid;place-items:center;font-weight:800;margin-right:8px;vertical-align:middle}
+.section-title{font-size:16px;font-weight:800;margin:0 0 10px}.muted{color:var(--muted)}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.product{display:flex;gap:16px;align-items:center}.product-visual{width:92px;height:92px;border-radius:16px;background:linear-gradient(135deg,#fee2e2,#fef3c7);display:grid;place-items:center;font-size:38px}.hr{height:1px;background:var(--line);margin:14px 0}.list{display:grid;gap:8px}.row{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.right{text-align:right}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.waterfall .row{font-variant-numeric:tabular-nums}.neg{color:#b91c1c}.pos{color:#047857}.progress{height:8px;border-radius:999px;background:#e2e8f0;overflow:hidden}.progress i{display:block;height:100%;background:var(--pri)}.notice{border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:12px;padding:12px}.notice.warn{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.notice.good{background:#ecfdf5;border-color:#a7f3d0;color:#065f46}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px}.tab{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px;cursor:pointer}.tab.active{background:var(--pri2);color:var(--pri);border-color:#c7d2fe;font-weight:700}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.filters select,.filters input{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 10px}.stepper{display:flex;gap:8px;align-items:center;margin:10px 0 16px}.step{flex:1;text-align:center;padding:8px;border-bottom:3px solid #e2e8f0;color:#64748b}.step.active{border-color:var(--pri);color:var(--pri);font-weight:800}
+.detail{font-size:12px;color:#64748b}.explain{display:grid;gap:4px;font-size:12px}.explain b{color:#334155}.conf{display:flex;gap:6px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+footer{margin:28px 0 6px;color:#94a3b8;font-size:12px;text-align:center}
+@media(max-width:1100px){.shell{grid-template-columns:1fr} aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);display:flex;gap:4px;overflow:auto}.navgroup{display:none}.navbtn{min-width:max-content}.g4,.g3,.g2,.split{grid-template-columns:1fr}.topmeta{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Creator Commerce <b>OS</b></div><span class="demo">DEMO / PROTÓTIPO — dados fictícios</span>
+  <div class="search">Buscar SKU, creator, campanha ou pedido…</div>
+  <div class="topmeta"><span>Brasil · TikTok Shop</span><span>Loja Exemplo</span></div>
+</header>
+<div class="shell">
+<aside>
+  <div class="navgroup">Marco 1</div>
+  <button class="navbtn active" data-screen="sku">1. SKU Opportunity</button>
+  <button class="navbtn" data-screen="shortlist">2. Creator Shortlist</button>
+  <button class="navbtn" data-screen="outreach">3. Outreach</button>
+  <button class="navbtn" data-screen="campaign">4. Campaign</button>
+  <button class="navbtn" data-screen="economics">5. Unit Economics</button>
+  <button class="navbtn" data-screen="next">6. Próxima ação</button>
+  <button class="navbtn" data-screen="coverage">7. Connections/Coverage</button>
+  <div class="navgroup">Canônico</div>
+  <button class="navbtn" disabled>Opportunities</button>
+  <button class="navbtn" disabled>Intelligence</button>
+  <button class="navbtn" disabled>Creators</button>
+  <button class="navbtn" disabled>Campaigns</button>
+  <button class="navbtn" disabled>Performance</button>
+</aside>
+<main>
+<section id="sku" class="screen active">
+<div class="titlebar"><div><h1>SKU Opportunity</h1><p>Decisão do SKU do merchant — margem, estoque e comissão antes de ativar.</p></div><div class="actions"><button class="btn ghost" onclick="go('coverage')">Ver cobertura</button><button class="btn primary" onclick="go('shortlist')">Ver creators recomendados →</button></div></div>
+<div class="split">
+<div class="card">
+<div class="product"><div class="product-visual">💄</div><div><div class="section-title">Hidratante Labial com Cor</div><div class="muted">SKU-001 · Beleza · TikTok Shop</div><div style="margin-top:8px"><span class="badge info">Merchant SKU</span> <span class="badge ok">Estoque disponível</span></div></div></div>
+<div class="hr"></div>
+<div class="grid g4"><div class="kpi"><div class="l">Preço médio</div><div class="v">R$ 39,90</div></div><div class="kpi"><div class="l">Custo do produto</div><div class="v">R$ 18,50</div><div class="s">USER_PROVIDED</div></div><div class="kpi"><div class="l">Estoque</div><div class="v">2.430</div><div class="s">MEASURED</div></div><div class="kpi"><div class="l">Comissão afiliado</div><div class="v">10%</div><div class="s">faixa observada: 8–14%</div></div></div>
+<div class="hr"></div>
+<div class="notice good"><b>Oportunidade para ativação</b><br/>Reason codes: <span class="mono">MARGIN_AVAILABLE · STOCK_HEALTHY · COMMISSION_IN_RANGE</span><br/><span class="detail">Economic confidence: MEDIUM · Freshness: 12 min</span></div>
+</div>
+<div class="card"><div class="section-title">Por que este SKU agora?</div><div class="list"><div class="row"><span>Margem bruta pré-afiliado</span><b>53,6%</b></div><div class="row"><span>Estoque estimado em dias</span><b>49 dias</b></div><div class="row"><span>Comissão vs comparáveis encontrados</span><b class="pos">Dentro da faixa</b></div><div class="row"><span>Histórico próprio</span><b>Insuficiente</b></div></div><div class="hr"></div><div class="notice warn"><b>Limitação</b><br/>Não há inteligência global licenciada nesta etapa. A oportunidade usa dados do próprio merchant + sinais oficialmente disponíveis.</div></div>
+</div>
+</section>
+
+<section id="shortlist" class="screen">
+<div class="titlebar"><div><h1>Creator Shortlist</h1><p>Ruleset v0.1 explicável. Cada creator mostra motivo, origem e confiança.</p></div><button class="btn primary" onclick="go('outreach')">Adicionar selecionados ao Outreach →</button></div>
+<div class="card">
+<div class="filters"><select><option>Afinidade competitiva: alta</option></select><select><option>Comissão: compatível</option></select><select><option>Reliability: ≥ média</option></select><button class="btn">Salvar filtro</button></div>
+<table class="table"><thead><tr><th>Creator</th><th>Motivo</th><th>Nível provider</th><th>Comissão</th><th>Reliability</th><th>Confiança</th><th>Ação</th></tr></thead><tbody>
+<tr><td><span class="avatar">AS</span><b>Ana Silva</b><div class="detail">@anasilva.beauty</div></td><td><div class="explain"><b>Afinidade competitiva alta</b><span>Já promoveu produtos comparáveis</span><span>Fonte: provider autorizado · freshness 2h</span></div></td><td>L3 <span class="detail">(provider)</span></td><td>10% <span class="badge ok">fit</span></td><td>Alta</td><td><span class="badge ok">HIGH</span></td><td><button class="btn">Selecionar</button></td></tr>
+<tr><td><span class="avatar">BL</span><b>Beatriz Lima</b><div class="detail">@beatrizdicas</div></td><td><div class="explain"><b>Boa similaridade de conteúdo</b><span>Sem histórico próprio do merchant</span><span>Fonte: provider autorizado · freshness 4h</span></div></td><td>L2</td><td>12% <span class="badge ok">fit</span></td><td>Média</td><td><span class="badge info">MEDIUM</span></td><td><button class="btn">Selecionar</button></td></tr>
+<tr><td><span class="avatar">CM</span><b>Carla Mendes</b><div class="detail">@carlamakeup</div></td><td><div class="explain"><b>Conversão anterior com o merchant</b><span>1 campanha anterior lucrativa</span><span>Fonte: first-party</span></div></td><td>—</td><td>10%</td><td>Alta</td><td><span class="badge ok">HIGH</span></td><td><button class="btn">Selecionar</button></td></tr>
+</tbody></table>
+</div>
+</section>
+
+<section id="outreach" class="screen">
+<div class="titlebar"><div><h1>Outreach</h1><p>Produto, comissão, mensagem, follow-up e controles reais.</p></div><button class="btn primary" onclick="go('campaign')">Criar campanha draft →</button></div>
+<div class="stepper"><div class="step active">1 Audience</div><div class="step">2 Produto</div><div class="step">3 Comissão</div><div class="step">4 Mensagem</div><div class="step">5 Revisão</div></div>
+<div class="grid g2"><div class="card"><div class="section-title">Configuração</div><div class="list"><div class="row"><span>SKU</span><b>Hidratante Labial com Cor</b></div><div class="row"><span>Creators</span><b>3 selecionados</b></div><div class="row"><span>Comissão afiliado</span><b>10%</b></div><div class="row"><span>Follow-up</span><b>D+3 e D+7</b></div><div class="row"><span>Quota</span><b>25 convites/dia</b></div><div class="row"><span>Suppressions</span><b>Opt-out + já contatados</b></div></div><div class="hr"></div><div class="notice"><b>Pagamento fixo</b>: indisponível no Marco 1. <span class="detail">Motivo: capability de onda posterior / maior risco operacional.</span></div></div>
+<div class="card"><div class="section-title">Prévia da mensagem</div><p>Olá, Ana. Selecionamos seu perfil porque você já publicou conteúdos de produtos comparáveis. Gostaríamos de convidar você para uma colaboração afiliada com comissão de 10%.</p><div class="notice warn"><b>Dry-run</b><br/>Nenhuma mensagem será enviada neste protótipo. Em produção, exibir audiência, quota, permissões, rate limit e confirmação.</div></div></div>
+</section>
+
+<section id="campaign" class="screen">
+<div class="titlebar"><div><h1>Campaign</h1><p>Amostra → entrega → conteúdo devido → publicado → resultado, com próxima ação por creator.</p></div><button class="btn primary" onclick="go('economics')">Ver Unit Economics →</button></div>
+<div class="grid g4"><div class="card kpi"><div class="l">Creators</div><div class="v">4</div></div><div class="card kpi"><div class="l">Amostras enviadas</div><div class="v">3</div></div><div class="card kpi"><div class="l">Conteúdos publicados</div><div class="v">4</div></div><div class="card kpi"><div class="l">Pedidos atribuídos</div><div class="v">312</div><div class="s">MEASURED_PROVISIONAL</div></div></div>
+<div class="card" style="margin-top:14px"><table class="table"><thead><tr><th>Creator</th><th>Amostra</th><th>Conteúdo</th><th>Pedidos</th><th>Próxima ação</th></tr></thead><tbody><tr><td>Ana Silva</td><td><span class="badge ok">Entregue</span></td><td>2 publicados</td><td>148</td><td><button class="btn">Ver resultado</button></td></tr><tr><td>Beatriz Lima</td><td><span class="badge warn">Enviada</span></td><td>0</td><td>0</td><td><button class="btn warn">FOLLOW_UP_SAMPLE</button></td></tr><tr><td>Carla Mendes</td><td><span class="badge ok">Entregue</span></td><td>1 publicado</td><td>96</td><td><button class="btn">WAIT_FOR_SETTLEMENT</button></td></tr><tr><td>Juliana Costa</td><td><span class="badge ok">Entregue</span></td><td>1 publicado</td><td>68</td><td><button class="btn">Ver resultado</button></td></tr></tbody></table></div>
+</section>
+
+<section id="economics" class="screen">
+<div class="titlebar"><div><h1>Unit Economics</h1><p>Verdade econômica antes de escala. Demo com contas fechando.</p></div><button class="btn primary" onclick="go('next')">Ver próxima ação →</button></div>
+<div class="grid g4"><div class="card kpi"><div class="l">Gross sales</div><div class="v">R$ 24.600</div><div class="s">MEASURED_PROVISIONAL</div></div><div class="card kpi"><div class="l">Margem de contribuição</div><div class="v">R$ 3.812</div><div class="s">15,5%</div></div><div class="card kpi"><div class="l">Profit state</div><div class="v" style="font-size:18px">PROFIT_INCOMPLETE</div><div class="s">Economic confidence: MEDIUM</div></div><div class="card kpi"><div class="l">Economic Coverage</div><div class="v">92%</div><div class="s">GMV · 88% pedidos · 100% SKUs</div></div></div>
+<div class="grid g2" style="margin-top:14px"><div class="card waterfall"><div class="section-title">Contribution Waterfall</div><div class="row"><span>Gross sales <span class="badge info">MEASURED_PROVISIONAL</span></span><b>R$ 24.600</b></div><div class="row"><span>Refunds <span class="badge warn">ESTIMATED</span></span><b class="neg">− R$ 600</b></div><div class="row"><span>Platform fees <span class="badge info">MEASURED_PROVISIONAL</span></span><b class="neg">− R$ 1.968</b></div><div class="row"><span>Affiliate commission <span class="badge info">MEASURED_PROVISIONAL</span></span><b class="neg">− R$ 2.460</b></div><div class="row"><span>Shipping/Fulfillment <span class="badge muted">USER_PROVIDED</span></span><b class="neg">− R$ 1.100</b></div><div class="row"><span>Product cost <span class="badge muted">USER_PROVIDED</span></span><b class="neg">− R$ 11.396</b></div><div class="row"><span>Sample cost <span class="badge muted">USER_PROVIDED</span></span><b class="neg">− R$ 664</b></div><div class="row"><span>Creator fixed fee</span><b>R$ 0</b></div><div class="row"><span>Ad spend</span><b>R$ 0</b></div><div class="row"><span>Merchant tax estimate <span class="badge warn">ESTIMATED</span></span><b class="neg">− R$ 2.600</b></div><div class="row"><span><b>Contribution Margin</b></span><b class="pos">R$ 3.812</b></div></div>
+<div class="card"><div class="section-title">Cobertura e confiança</div><div class="list"><div><b>GMV com base suficiente</b><div class="progress"><i style="width:92%"></i></div><div class="detail">92%</div></div><div><b>Pedidos com base suficiente</b><div class="progress"><i style="width:88%"></i></div><div class="detail">88%</div></div><div><b>SKUs com custo conhecido</b><div class="progress"><i style="width:100%"></i></div><div class="detail">100%</div></div></div><div class="hr"></div><div class="notice warn"><b>Atenção:</b> refunds e imposto ainda são estimados; valores do TikTok ainda não estão liquidados. Escala agressiva bloqueada até confiança suficiente.</div></div></div>
+</section>
+
+<section id="next" class="screen">
+<div class="titlebar"><div><h1>Próxima ação & Learning</h1><p>Recomendação explicável, com histórico e resultado.</p></div><button class="btn" onclick="go('coverage')">Ver Connections/Coverage →</button></div>
+<div class="grid g2"><div class="card"><div class="section-title">O que fazer agora?</div><div class="notice warn"><b>REVIEW_ECONOMICS</b><br/>Aguardar liquidação e confirmar refunds/imposto antes de escalar.<br/><span class="detail">Reason codes: PROVISIONAL_SETTLEMENT · REFUNDS_ESTIMATED · TAX_ESTIMATED</span></div><div class="hr"></div><div class="actions"><button class="btn primary" onclick="go('economics')">Revisar Economics</button><button class="btn">Aguardar liquidação</button></div></div>
+<div class="card"><div class="section-title">O que observamos</div><ul><li>4 creators, 4 conteúdos publicados, 312 pedidos atribuídos provisórios.</li><li>Creators com afinidade competitiva alta tiveram melhor resultado nesta amostra.</li><li><b>Não tratamos isso como causalidade.</b> Amostra pequena e sem desenho incremental.</li></ul><div class="notice"><b>Observação, não aprendizado causal.</b> Reutilização futura deve considerar tamanho de amostra e confiança.</div></div></div>
+<div class="card" style="margin-top:14px"><div class="section-title">Histórico recommendation → decision → action → outcome</div><table class="table"><thead><tr><th>Data</th><th>Recommendation</th><th>Decisão</th><th>Ação</th><th>Outcome</th></tr></thead><tbody><tr><td>01/10</td><td>FOLLOW_UP_SAMPLE</td><td>Aceita</td><td>Lembrete enviado</td><td>Conteúdo publicado em D+2</td></tr><tr><td>02/10</td><td>WAIT_FOR_CONTENT</td><td>Aceita</td><td>Nenhuma</td><td>Conteúdo publicado</td></tr><tr><td>04/10</td><td>REVIEW_ECONOMICS</td><td>Pendente</td><td>—</td><td>—</td></tr></tbody></table></div>
+</section>
+
+<section id="coverage" class="screen">
+<div class="titlebar"><div><h1>Connections / Coverage</h1><p>Disponibilidade real por provider, região, plano, permissão e freshness.</p></div><button class="btn primary" onclick="go('sku')">Voltar ao SKU →</button></div>
+<div class="grid g3"><div class="card"><div class="section-title">TikTok Shop Seller</div><span class="badge ok">Conectado</span><div class="hr"></div><div class="list"><div class="row"><span>Orders</span><b class="pos">Disponível</b></div><div class="row"><span>Finance</span><b class="pos">Disponível</b></div><div class="row"><span>Products</span><b class="pos">Disponível</b></div><div class="row"><span>Freshness</span><b>12 min</b></div></div></div><div class="card"><div class="section-title">TikTok Affiliate APIs</div><span class="badge warn">Aprovação externa pendente</span><div class="hr"></div><div class="list"><div class="row"><span>Creator search</span><b>Fixture only</b></div><div class="row"><span>Invites</span><b>Fixture only</b></div><div class="row"><span>Samples</span><b>Fixture only</b></div><div class="row"><span>Produção</span><b class="neg">Bloqueada</b></div></div></div><div class="card"><div class="section-title">Market Data Provider</div><span class="badge muted">Não contratado</span><div class="hr"></div><div class="list"><div class="row"><span>Global Intelligence</span><b class="neg">Indisponível</b></div><div class="row"><span>Direitos de exibição</span><b>UNKNOWN</b></div><div class="row"><span>Retenção/cache</span><b>ADR-000 pendente</b></div></div></div></div>
+<div class="card" style="margin-top:14px"><div class="section-title">Exemplo de estado parcial</div><div class="notice warn"><b>PARTIAL COVERAGE</b><br/>Unit Economics disponível para 92% do GMV e 88% dos pedidos. Affiliate operations em produção ainda bloqueadas por aprovação externa. O produto deve degradar explicitamente e nunca simular capacidade.</div></div>
+</section>
+<footer>Creator Commerce OS · Protótipo navegável do Marco 1 · dados fictícios identificados como DEMO</footer>
+</main>
+</div>
+<script>
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.navbtn[data-screen]').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.navbtn[data-screen]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.screen)));
+</script>
+</body></html>
