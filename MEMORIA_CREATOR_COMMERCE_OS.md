@@ -750,3 +750,13 @@ Foi criada a primeira versão funcional da SKU Opportunity no visual aprovado. O
 - Dados demo ajustados apenas para permitir testar todos os estados da interface.
 - Arquivo local para revisão visual/funcional: sku_opportunity_functional_v3.html.
 - Próximo gate: revisão adversarial de design, funcionalidade e comparação competitiva antes de avançar para Creator Shortlist.
+
+### 04/10/2026 — Revisão Claude da SKU Opportunity funcional v3
+**Validação:** a revisão externa detectou bloqueador real no protótipo: a busca concatenava campos vazios com espaços, fazendo a tabela abrir sem produtos. Correção aplicada no repositório com `.trim()` antes de `.toLowerCase()`.
+
+**Regra reforçada:** toda tela deve ser comparada com FastMoss, Kalodata, Cruva, Euka e TikTok Seller/Affiliate Center quando aplicável; sugestões do Claude devem ser verificadas criticamente contra Documento Mestre e arquitetura; melhorias só entram se estiverem no escopo já previsto ou forem marcadas como nova decisão.
+
+**Classificação das sugestões desta rodada:**
+- Correção obrigatória: `.trim()` na busca; teste visual/regressão antes de aceitar; corrigir inconsistências do desenho.
+- Paridade competitiva válida dentro do Master: fotos reais de produto/creator quando disponíveis, minigráficos por SKU, ordenação por cabeçalho, paginação, integração com Unit Economics, contagem de comparáveis na faixa.
+- Regra visual: versão funcional não pode ser aceita se estiver visualmente abaixo do desenho aprovado.
