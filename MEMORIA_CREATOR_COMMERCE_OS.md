@@ -760,3 +760,8 @@ Foi criada a primeira versão funcional da SKU Opportunity no visual aprovado. O
 - Correção obrigatória: `.trim()` na busca; teste visual/regressão antes de aceitar; corrigir inconsistências do desenho.
 - Paridade competitiva válida dentro do Master: fotos reais de produto/creator quando disponíveis, minigráficos por SKU, ordenação por cabeçalho, paginação, integração com Unit Economics, contagem de comparáveis na faixa.
 - Regra visual: versão funcional não pode ser aceita se estiver visualmente abaixo do desenho aprovado.
+
+### 04/10/2026 — SKU Opportunity: recuperação de paridade visual
+Aplicadas melhorias na versão funcional para aproximá-la do desenho aprovado e dos benchmarks FastMoss/Kalodata/Cruva/Euka: thumbnails diferenciados, avatars de creators, KPIs com ícones, período e usuário na barra superior, coluna de tendência 30d com sparkline, paginação, navegação para Unit Economics e faixa baseada em 38 comparáveis demo. Também foi reaplicada a correção crítica `.trim()` na busca após a rodada de refinamento visual.
+
+**Gate:** funcionalidade sozinha não basta; a tela só pode ser aceita quando o browser renderizado mantiver o nível visual do desenho aprovado e não regredir frente aos concorrentes.
