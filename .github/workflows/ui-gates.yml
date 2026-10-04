@@ -1,0 +1,28 @@
+name: UI Gates
+
+on:
+  push:
+    paths:
+      - 'prototype/**'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/ui-gates.yml'
+  pull_request:
+    paths:
+      - 'prototype/**'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/ui-gates.yml'
+
+jobs:
+  playwright:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
