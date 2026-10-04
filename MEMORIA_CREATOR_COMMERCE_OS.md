@@ -677,3 +677,28 @@ A partir de agora:
 - Connections/Coverage deve expor cobertura/licença/provider.
 
 **Direção operacional:** congelar o design system desta tela e aplicar a mesma linguagem primeiro às telas do Marco 1, começando por Unit Economics e SKU Opportunity. A superfície global de Product Research fica condicionada ao ADR-000/licença de dados.
+
+### 04/10/2026 — Revisão do layout Unit Economics
+**Conclusão:** este foi o primeiro layout que atingiu superioridade competitiva clara na área de Unit Economics, mas ainda não pode ser congelado integralmente por erros de lógica econômica e estados.
+
+**Pontos fortes aprovados:**
+- visual no mesmo padrão do Product Research;
+- waterfall completo;
+- margem por creator;
+- Profit State, Economic Confidence e Economic Coverage visíveis;
+- estrutura visual apta a virar referência do Marco 1.
+
+**Correções obrigatórias antes do congelamento:**
+- corrigir waterfall e divergência de R$ 240;
+- alinhar comissão afiliado entre cabeçalho e waterfall;
+- não usar PROVISIONAL como Profit State; usar PROFIT_INCOMPLETE quando aplicável;
+- separar MEASURED_PROVISIONAL de MEASURED_SETTLED por linha;
+- imposto deve ser USER_PROVIDED ou UNKNOWN no Marco 1;
+- remover custos inventados/estimados sem fonte;
+- Economic Coverage deve detalhar %GMV, %pedidos e SKUs com base suficiente;
+- separar desempenho atribuído do contexto total do SKU;
+- bloquear ação de escalar enquanto economics não estiverem confiáveis/liquidados;
+- remover elementos fora do Marco 1, como Aprendizado (AI), aumento de mídia e pricing/créditos;
+- tratar observações com amostra pequena como observação, não aprendizado causal.
+
+**Decisão:** estrutura visual, composição e margem por creator podem ser preservadas; lógica de recomendação, status e contas precisam ser corrigidos antes de congelar a tela.
