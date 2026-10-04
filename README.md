@@ -8,7 +8,7 @@ A especificação oficial do produto está em:
 
 - [MASTER_PRODUCT_SPEC.md](./MASTER_PRODUCT_SPEC.md)
 
-**Baseline vigente:** v1.5.2  
+**Baseline vigente:** v1.5.4  
 **Status:** Product Spec Baseline aprovada, com errata editorial pós-auditoria aplicada.
 
 Neste momento, este repositório é somente documental. Nenhum código de produto deve ser criado aqui sem decisão explícita do Product Owner.
@@ -34,3 +34,11 @@ O Documento Mestre continua sendo a fonte normativa; a memória preserva o hist�
 ## Referência funcional — Unit Economics
 
 - [prototype/unit-economics/index.html](./prototype/unit-economics/index.html) — tela funcional em dados DEMO no design system branco aprovado.
+
+## UI quality gates
+
+- `npm install`
+- `npx playwright install chromium`
+- `npm run test:ui`
+
+O gate automatizado abre a SKU Opportunity em navegador real, falha em erro JavaScript não tratado, exige conteúdo renderizado, testa controles críticos, verifica overflow horizontal em 1536 px e preserva captura da página funcional nos resultados de CI.
