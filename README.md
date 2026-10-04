@@ -18,3 +18,11 @@ Neste momento, este repositório é somente documental. Nenhum código de produt
 - `MASTER_PRODUCT_SPEC.md` é a única fonte editável canônica.
 - DOCX/PDF são artefatos derivados.
 - Mudanças materiais exigem decisão explícita, changelog e atualização da especificação.
+
+## Memória do projeto
+
+O histórico vivo de conversas, decisões, revisões e contexto operacional está em:
+
+- [MEMORIA_PROJETO.md](./MEMORIA_PROJETO.md)
+
+O Documento Mestre continua sendo a fonte normativa; a memória preserva o histórico e o contexto.
