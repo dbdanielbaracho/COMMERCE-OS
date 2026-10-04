@@ -23,6 +23,6 @@ Neste momento, este repositório é somente documental. Nenhum código de produt
 
 O histórico vivo de conversas, decisões, revisões e contexto operacional está em:
 
-- [MEMORIA_PROJETO.md](./MEMORIA_PROJETO.md)
+- [MEMORIA_CREATOR_COMMERCE_OS.md](./MEMORIA_CREATOR_COMMERCE_OS.md)
 
 O Documento Mestre continua sendo a fonte normativa; a memória preserva o histórico e o contexto.
