@@ -739,3 +739,6 @@ A partir de agora:
 7. manter a tela conectada ao fluxo do Marco 1 e à próxima ação do usuário.
 
 **Aplicação imediata:** a SKU Opportunity v2 tem estrutura aprovada. As sugestões do Claude devem ser classificadas em: correção necessária, melhoria competitiva dentro do Master, ou proposta fora do escopo. A versão funcional deve preservar o acabamento visual do desenho aprovado antes de avançar para Creator Shortlist.
+
+### 04/10/2026 — SKU Opportunity funcional
+Foi criada a primeira versão funcional da SKU Opportunity no visual aprovado. O protótipo implementa filtros por categoria/preço/estoque/status/canal, busca, ordenação, abas rápidas, atalhos “O que fazer hoje”, motivo da oportunidade, comissão por SKU vs. faixa observada, canal principal, ações condicionadas ao estoque, entrada de custo, ações em massa, exportação CSV, sincronização demo, Economic Coverage e detalhe lateral com Comparáveis, Economics e Histórico. Itens fora do fluxo atual aparecem desabilitados com motivo. A versão funcional deve continuar sendo comparada visualmente ao desenho aprovado e testada contra FastMoss, Kalodata, Cruva, Euka e Seller Center antes de congelamento.
