@@ -30,3 +30,7 @@ O Documento Mestre continua sendo a fonte normativa; a memória preserva o hist�
 ## Protótipo navegável do Marco 1
 
 - [prototype/marco1/index.html](./prototype/marco1/index.html) — referência navegável das telas do Marco 1, com dados fictícios claramente marcados como DEMO.
+
+## Referência funcional — Unit Economics
+
+- [prototype/unit-economics/index.html](./prototype/unit-economics/index.html) — tela funcional em dados DEMO no design system branco aprovado.
