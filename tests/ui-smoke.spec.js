@@ -42,11 +42,17 @@ test('SKU Opportunity layout gate at 1536px', async ({ page }, testInfo) => {
   await page.goto(pageUrl);
   await expect(page.locator('#body tr').first()).toBeVisible();
 
-  const overflow = await page.evaluate(() => ({
-    scrollWidth: document.documentElement.scrollWidth,
-    clientWidth: document.documentElement.clientWidth
-  }));
-  expect(overflow.scrollWidth, 'Page must not overflow horizontally at 1536px').toBeLessThanOrEqual(overflow.clientWidth);
+  const overflow = await page.evaluate(() => {
+    const box = document.querySelector('.tablebox');
+    return {
+      pageScrollWidth: document.documentElement.scrollWidth,
+      pageClientWidth: document.documentElement.clientWidth,
+      tableScrollWidth: box.scrollWidth,
+      tableClientWidth: box.clientWidth
+    };
+  });
+  expect(overflow.pageScrollWidth, 'Page must not overflow horizontally at 1536px').toBeLessThanOrEqual(overflow.pageClientWidth);
+  expect(overflow.tableScrollWidth, 'SKU table must fit without hidden/cut right-side actions at 1536px').toBeLessThanOrEqual(overflow.tableClientWidth);
 
   const screenshotPath = testInfo.outputPath('sku-opportunity-functional.png');
   await page.screenshot({ path: screenshotPath, fullPage: true });
