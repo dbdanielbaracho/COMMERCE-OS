@@ -34,9 +34,23 @@ test('SKU Opportunity renders and critical controls work', async ({ page }) => {
   expect(pageErrors, 'Unhandled JavaScript errors').toEqual([]);
 });
 
-test('SKU Opportunity functional screenshot', async ({ page }) => {
+test('SKU Opportunity layout gate at 1536px', async ({ page }, testInfo) => {
+  const pageErrors = [];
+  page.on('pageerror', error => pageErrors.push(String(error)));
+
   await page.setViewportSize({ width: 1536, height: 960 });
   await page.goto(pageUrl);
   await expect(page.locator('#body tr').first()).toBeVisible();
-  await expect(page).toHaveScreenshot('sku-opportunity-functional.png', { fullPage: true });
+
+  const overflow = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth
+  }));
+  expect(overflow.scrollWidth, 'Page must not overflow horizontally at 1536px').toBeLessThanOrEqual(overflow.clientWidth);
+
+  const screenshotPath = testInfo.outputPath('sku-opportunity-functional.png');
+  await page.screenshot({ path: screenshotPath, fullPage: true });
+  await testInfo.attach('functional-render', { path: screenshotPath, contentType: 'image/png' });
+
+  expect(pageErrors, 'Unhandled JavaScript errors').toEqual([]);
 });
