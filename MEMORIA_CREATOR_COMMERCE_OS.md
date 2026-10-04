@@ -765,3 +765,21 @@ Foi criada a primeira versão funcional da SKU Opportunity no visual aprovado. O
 Aplicadas melhorias na versão funcional para aproximá-la do desenho aprovado e dos benchmarks FastMoss/Kalodata/Cruva/Euka: thumbnails diferenciados, avatars de creators, KPIs com ícones, período e usuário na barra superior, coluna de tendência 30d com sparkline, paginação, navegação para Unit Economics e faixa baseada em 38 comparáveis demo. Também foi reaplicada a correção crítica `.trim()` na busca após a rodada de refinamento visual.
 
 **Gate:** funcionalidade sozinha não basta; a tela só pode ser aceita quando o browser renderizado mantiver o nível visual do desenho aprovado e não regredir frente aos concorrentes.
+
+### 04/10/2026 — Claude review v4: SKU Opportunity funcional
+Claude testou a renderização real e encontrou um novo bloqueador de regressão: paginação usava `page`/`pageSize` sem declaração. Também apontou densidade abaixo de FastMoss/Kalodata, sparkline repetida, ordenação parcial, prompt nativo para custo e diferença entre HTML e desenho.
+
+**Correções aplicadas na reconstrução v5 a partir do baseline limpo:**
+- `page=1,pageSize=8` declarado e busca com `.trim()` preservada;
+- tabela compactada com `white-space: nowrap` e botão de motivo reduzido para ícone;
+- links dos cards separados visualmente do texto;
+- 8 séries de tendência distintas por SKU;
+- identities demo de creators diferenciadas;
+- ordenação por Preço, Custo, Margem, Comissão, Estoque e Tendência;
+- faixa de comissão passa a mostrar explicitamente “38 comparáveis” no HTML;
+- prompt do navegador removido e substituído por formulário in-app para custo;
+- sidebar mantida em altura total.
+
+**Sanity gate no GitHub:** um único bloco de dados/script, um único `rows()`, sem `prompt()`, paginação declarada, busca trimada, 8 séries de sparkline e sort headers presentes. Commit funcional: `7ba0dae6d7a038367c4e925e300fcd76c178e446`.
+
+**Regra reforçada:** Claude é revisor adversarial; cada sugestão deve ser validada contra Documento Mestre e concorrentes. Melhorias só entram quando já previstas no escopo ou quando explicitamente marcadas como nova decisão. Nenhuma tela funcional é aceita se ficar visualmente abaixo do desenho aprovado ou dos benchmarks aplicáveis.
