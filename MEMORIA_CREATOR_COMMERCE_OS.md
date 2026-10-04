@@ -702,3 +702,28 @@ A partir de agora:
 - tratar observações com amostra pequena como observação, não aprendizado causal.
 
 **Decisão:** estrutura visual, composição e margem por creator podem ser preservadas; lógica de recomendação, status e contas precisam ser corrigidos antes de congelar a tela.
+
+### 04/10/2026 — Unit Economics funcional no visual aprovado
+**Pedido do Product Owner:** parar de tratar os números demo como foco da avaliação e concentrar a análise em layout, paridade/superioridade visual e funcionalidade real dos controles.
+
+**Decisão:** manter números apenas como DEMO coerente e usar o visual branco aprovado de Product Research/Unit Economics como design system.
+
+**Implementação criada:** `prototype/unit-economics/index.html`.
+
+**Comportamentos funcionais no protótipo:**
+- troca de período 7/30/90 dias com recálculo dos KPIs/waterfall e redraw do gráfico;
+- filtro por status de creator;
+- busca global e busca na tabela;
+- ordenação de tabela por colunas;
+- ocultar/exibir coluna de margem;
+- watchlist;
+- exportação CSV;
+- atualização de freshness;
+- edição de custo do SKU com recálculo imediato;
+- painel de Connections/Coverage;
+- detalhes de creator;
+- ações de revisão de custos/aguardar liquidação;
+- abas com feedback de navegação demo;
+- estados e provenance visíveis.
+
+**Estado:** referência funcional de design para a tela Unit Economics. Dados continuam fictícios e marcados como DEMO; integração com dados reais pertence à construção do produto.
