@@ -610,3 +610,27 @@ A partir de agora:
 - dados explicitamente marcados como DEMO.
 
 **Estado:** protótipo de referência navegável, ainda não produção. Deve ser testado contra o Documento Mestre e benchmarks antes de congelamento visual.
+
+### 04/10/2026 — Redesign competitivo do protótipo Marco 1
+**Motivo:** o Product Owner rejeitou a versão anterior por estar visual e funcionalmente muito abaixo de FastMoss, Kalodata, Cruva e Euka.
+
+**Ação:** o protótipo navegável foi redesenhado para um workspace profissional de commerce intelligence/creator operations, mantendo fundo branco e aumentando densidade, profundidade operacional e clareza de decisão.
+
+**Referências usadas:**
+- FastMoss/Kalodata para densidade de research, filtros, rankings, tabelas e navegação por entidades;
+- Cruva para CRM, samples, pipeline e principalmente workflow de outreach com trigger, actions, wait, conditions e activity;
+- Euka para social intelligence e operação integrada.
+
+**Melhorias principais:**
+- navegação canônica das cinco áreas principais + operações secundárias;
+- Opportunity com decision evidence, state, confidence e limits;
+- Intelligence com toolbar densa, views salvas, colunas, export e tabela specialist;
+- Creator Shortlist com why-this-creator, reliability, commission fit, history e confidence;
+- Outreach redesenhado como workflow canvas com branches, waits, conditions, quotas, suppressions e activity;
+- Campaigns com pipeline operacional por estágio;
+- Samples como módulo operacional completo;
+- Unit Economics como primeira classe com waterfall, source/status por linha, coverage e scale gate;
+- Next Actions/Learning com reason codes e histórico recommendation→decision→action→outcome;
+- Connections/Coverage com matrix por provider/region/permission/freshness.
+
+**Estado:** protótipo v2 substitui a versão anterior como referência de trabalho, mas ainda não está congelado; precisa nova validação comparativa.
