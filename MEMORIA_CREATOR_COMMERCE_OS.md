@@ -783,3 +783,21 @@ Claude testou a renderização real e encontrou um novo bloqueador de regressão
 **Sanity gate no GitHub:** um único bloco de dados/script, um único `rows()`, sem `prompt()`, paginação declarada, busca trimada, 8 séries de sparkline e sort headers presentes. Commit funcional: `7ba0dae6d7a038367c4e925e300fcd76c178e446`.
 
 **Regra reforçada:** Claude é revisor adversarial; cada sugestão deve ser validada contra Documento Mestre e concorrentes. Melhorias só entram quando já previstas no escopo ou quando explicitamente marcadas como nova decisão. Nenhuma tela funcional é aceita se ficar visualmente abaixo do desenho aprovado ou dos benchmarks aplicáveis.
+
+### 04/10/2026 — Documento Mestre v1.5.3
+O Product Owner autorizou incorporar ao Documento Mestre tudo que se tornou normativo nas rodadas de Product Research, Unit Economics e SKU Opportunity.
+
+**Entrou no Master:**
+- contrato explícito da SKU Opportunity/Merchant Opportunity Engine v0;
+- motivo obrigatório da oportunidade;
+- comissão comparada à faixa observada com tamanho da base quando disponível;
+- estoque e custo governando ações;
+- canal principal, sincronização de catálogo, detalhe do SKU e continuidade para Creator Shortlist;
+- cards de prioridade com filtros reais e bulk actions com revalidação de elegibilidade;
+- regra de que versão funcional não pode regredir visualmente frente ao desenho aprovado;
+- browser smoke test + captura da página funcional + visual regression antes de declarar tela pronta;
+- regra de fixtures: valores demo podem ser fictícios, mas fórmulas/estados/relações precisam ser coerentes;
+- protocolo obrigatório de revisão competitiva contra FastMoss, Kalodata, Cruva, Euka e TikTok nativo quando aplicável;
+- sugestões do Claude passam a ser classificadas contra o Master antes de entrar.
+
+**Artefatos:** MASTER_PRODUCT_SPEC.md atualizado para v1.5.3 e Word final gerado como Creator_Commerce_OS_Documento_Mestre_v1.5.3_FINAL.docx. O DOCX foi renderizado em 72 páginas e revisado visualmente.
