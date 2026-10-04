@@ -560,3 +560,24 @@ A partir de agora:
 **Decisão operacional:** não congelar a imagem atual. O próximo desenho deve priorizar as telas do Marco 1 e obedecer ao contrato funcional da seção 35 antes de expandir para Intelligence global/Market.
 
 **Observação:** dizer que a imagem é “não funcional” significa que uma imagem estática não comprova funcionalidade. A funcionalidade somente poderá ser aceita em protótipo navegável/implementação com contratos de comportamento, dados, estados e testes.
+
+### 04/10/2026 — Segunda revisão adversarial do layout Marco 1
+**Contexto:** a segunda versão do layout foi reorganizada em torno do Marco 1: SKU → shortlist → outreach → campanha → Unit Economics → próxima ação.
+
+**Conclusão validada:** houve avanço estrutural significativo, mas o layout ainda não pode ser congelado.
+
+**Erros materiais confirmados:**
+- Unit Economics não fechava matematicamente e omitia custo do produto; também faltavam frete, imposto e reembolsos.
+- Economic Coverage foi tratada como veredito qualitativo em vez de cobertura de GMV/pedidos/SKUs com base econômica suficiente.
+- Próxima ação recomendava escalar apesar de economics incompletos; a ação correta em dados incompletos deve ser REVIEW_ECONOMICS/aguardar liquidação conforme o caso.
+- A tela de SKU misturava taxa de plataforma e comissão de afiliado; a comissão de afiliado precisa ser comparada com a faixa observada de comparáveis.
+- Shortlist precisa explicar por que cada creator foi recomendado e expor origem/confiança dos sinais.
+- Pagamento fixo não deve parecer disponível no Marco 1 quando pertence a onda posterior.
+- Learning deve registrar recomendação → decisão → ação → resultado e diferenciar observação de aprendizado/causalidade.
+- Connections/Coverage continua faltando como tela explícita.
+- Navegação deve seguir as cinco áreas canônicas; Market não deve aparecer como área primária separada de Intelligence.
+- Estados demo/partial/stale/freshness ainda precisam aparecer explicitamente.
+
+**Correção à revisão do Claude:** não existe requisito canônico de níveis fixos L1–L6. A versão final do Documento Mestre usa nível do creator somente quando fornecido pela plataforma, no formato genérico L1–Ln, como sinal categórico e não verdade isolada.
+
+**Decisão operacional:** a próxima versão deve ser um protótipo navegável ou especificação funcional editável, não outra imagem gerada. O foco passa a ser verdade econômica, rastreabilidade e comportamento testável antes de refinamento visual.
