@@ -649,3 +649,31 @@ A partir de agora:
 6. somente depois propagar o sistema para as demais telas.
 
 **Estado:** protótipo v2 rejeitado como design de referência. Pode permanecer apenas como artefato funcional exploratório.
+
+### 04/10/2026 — Avaliação do layout Product Research como design system
+**Contexto:** foi analisado o novo layout Product Research, visualmente no nível de FastMoss/Kalodata, junto com a revisão adversarial externa.
+
+**Conclusão validada:** aprovar o layout como referência visual/design system para as superfícies de Intelligence/Research, mas não como próxima capability a construir.
+
+**Pontos aprovados do design system:**
+- fundo branco;
+- alta densidade útil;
+- filtros + chips persistentes;
+- KPIs compactos;
+- gráfico temporal;
+- rankings laterais;
+- abas por entidade;
+- tabela specialist com ordenação, comparação, colunas, watchlist, monitoramento, export e salvar view.
+
+**Desvios que impedem congelamento funcional da tela:**
+- market GMV/vendas/produtos em alta dependem de provider licenciado/ADR-000;
+- KPIs/colunas precisam de provenance, classificação e freshness;
+- filtros, KPIs, rankings e tabela precisam compartilhar o mesmo recorte temporal/região/moeda;
+- métricas demo precisam fechar matematicamente;
+- a tela precisa explicitar dados demo/partial/stale;
+- não fixar pricing/credits enquanto pricing continuar TBD;
+- diferenciar-se dos benchmarks ligando a pesquisa ao contexto do merchant e ao fluxo SKU→creator→economics→next action;
+- canal de venda video/live/showcase deve existir quando a fonte permitir;
+- Connections/Coverage deve expor cobertura/licença/provider.
+
+**Direção operacional:** congelar o design system desta tela e aplicar a mesma linguagem primeiro às telas do Marco 1, começando por Unit Economics e SKU Opportunity. A superfície global de Product Research fica condicionada ao ADR-000/licença de dados.
