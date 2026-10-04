@@ -727,3 +727,15 @@ A partir de agora:
 - estados e provenance visíveis.
 
 **Estado:** referência funcional de design para a tela Unit Economics. Dados continuam fictícios e marcados como DEMO; integração com dados reais pertence à construção do produto.
+
+### 04/10/2026 — Regra de revisão competitiva obrigatória
+**Decisão do Product Owner:** toda nova tela ou revisão de tela deve, obrigatoriamente:
+1. comparar o design e a funcionalidade com FastMoss, Kalodata, Cruva, Euka e TikTok Seller/Affiliate Center quando aplicável;
+2. verificar as sugestões do Claude de forma crítica, validando-as contra o Documento Mestre e a arquitetura do produto;
+3. sugerir melhorias apenas quando estiverem dentro do escopo e das funcionalidades já previstas no Documento Mestre, ou então marcar explicitamente como proposta nova que exige decisão;
+4. diferenciar paridade competitiva de superioridade real;
+5. não aceitar uma tela funcional se ela estiver visualmente abaixo do desenho aprovado;
+6. não aceitar controles decorativos: todo filtro, botão, aba, menu e ação deve funcionar ou aparecer desabilitado com motivo;
+7. manter a tela conectada ao fluxo do Marco 1 e à próxima ação do usuário.
+
+**Aplicação imediata:** a SKU Opportunity v2 tem estrutura aprovada. As sugestões do Claude devem ser classificadas em: correção necessária, melhoria competitiva dentro do Master, ou proposta fora do escopo. A versão funcional deve preservar o acabamento visual do desenho aprovado antes de avançar para Creator Shortlist.
