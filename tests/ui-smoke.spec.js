@@ -28,7 +28,7 @@ test('SKU Opportunity renders and critical controls work', async ({ page }) => {
 
   await page.locator('.detail').first().click();
   await expect(page.locator('#drawer')).toHaveClass(/open/);
-  await expect(page.locator('#p-overview')).toContainText('GMV total da loja');
+  await expect(page.locator('#p-overview')).toContainText('GMV total do SKU');
   await expect(page.locator('#p-overview img')).toHaveCount(1);
   await page.locator('#close').click();
   await expect(page.locator('#drawer')).not.toHaveClass(/open/);
