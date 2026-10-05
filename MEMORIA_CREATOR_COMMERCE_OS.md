@@ -834,3 +834,10 @@ A revisão externa confirmou a primeira entrega funcional comprovada da SKU Oppo
 A revisão adversarial aprovou a estrutura visual da Creator Shortlist, mas tornou obrigatórios antes da versão funcional: substituir “Sincronizar criadores” por busca on-demand no TikTok; mostrar provenance por métrica; e adicionar relação tenant-scoped com o lojista. Também entram Prioridade explicável no lugar de score preditivo, comissão somente com fonte, motivos para controles desabilitados, performance de candidatos como “Vendas em produtos similares”, aba Conteúdos com vídeos/LIVE quando permitido e continuidade stock-aware para Outreach.
 
 Documento Mestre atualizado para v1.5.7 com contrato explícito da Creator Shortlist. Benchmark de aceitação: comparação lado a lado com TikTok Affiliate Center para o mesmo produto; em até 10 segundos o merchant deve entender por que nossa lista é melhor.
+
+### 05/10/2026 — Creator Shortlist v2: relação com lojista passa a governar ação
+A revisão adversarial aprovou os 8 pedidos do desenho anterior e identificou o gap principal: a coluna “Relação com o lojista” existia, mas não alterava Prioridade nem ação. O Master foi atualizado para v1.5.8.
+
+**Regras incorporadas:** Novo → Convidar; Já trabalhou → Convidar de novo com resultado anterior; Ativo em campanha → Ver campanha/Adicionar à campanha; Recusou recentemente → Aguardar/Ver recusa, sem convite; recusa não recente pode voltar a permitir convite com histórico visível. Bulk invite revalida e pula creators ativos/recusados recentes. Estoque zero continua hard block.
+
+**Ajustes visuais incorporados ao contrato:** Prioridade deve expor “Heurística v0.1 — não é previsão calibrada” quando aplicável; motivos vindos do relacionamento usam provenance “Seu histórico”; conteúdo diferencia Vídeo/LIVE; bloco econômico do painel usa “Contexto do SKU”; filtro “Parecidos com quem já vendeu” só pode usar seeds/dados permitidos do workspace corrente.
