@@ -841,3 +841,8 @@ A revisão adversarial aprovou os 8 pedidos do desenho anterior e identificou o 
 **Regras incorporadas:** Novo → Convidar; Já trabalhou → Convidar de novo com resultado anterior; Ativo em campanha → Ver campanha/Adicionar à campanha; Recusou recentemente → Aguardar/Ver recusa, sem convite; recusa não recente pode voltar a permitir convite com histórico visível. Bulk invite revalida e pula creators ativos/recusados recentes. Estoque zero continua hard block.
 
 **Ajustes visuais incorporados ao contrato:** Prioridade deve expor “Heurística v0.1 — não é previsão calibrada” quando aplicável; motivos vindos do relacionamento usam provenance “Seu histórico”; conteúdo diferencia Vídeo/LIVE; bloco econômico do painel usa “Contexto do SKU”; filtro “Parecidos com quem já vendeu” só pode usar seeds/dados permitidos do workspace corrente.
+
+### 05/10/2026 — Creator Shortlist v3 aprovada para funcional
+A revisão aprovou o desenho v3 no nível da SKU Opportunity e dos benchmarks, com cinco ajustes finais. O Master passou para v1.5.9: coerência entre relação e motivo; ordenação padrão por Prioridade com creators bloqueados no fim; “Conta ativa” separado de “Ativo em campanha”; semântica explícita entre Lookalike e “Parecidos com quem já vendeu”; exportação ampla de creators marcada DECISION REQUIRED/P0.
+
+**Versão funcional iniciada:** `prototype/creator-shortlist/index.html`, com relação→ação, Prioridade heurística, provenance, LIVE, Contexto do SKU, busca TikTok on-demand, export amplo desabilitado, bulk invite stock/relationship-aware e visual reference separada. Testes dedicados em `tests/creator-shortlist.spec.js` cobrem recusa, ativo em campanha, já trabalhou, ordenação, bulk exclusions, estoque zero, provenance, heurística, LIVE e regressão visual.
