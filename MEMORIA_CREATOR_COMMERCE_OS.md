@@ -827,3 +827,5 @@ A revisão externa confirmou a primeira entrega funcional comprovada da SKU Oppo
 - Documento Mestre atualizado para v1.5.5.
 
 **Regra:** a referência visual congelada só pode ser atualizada quando a mudança de design for intencional e aprovada; o teste não deve ser “ensinado” a aceitar regressão apenas para ficar verde.
+
+**Gate final da rodada:** workflow UI Gates passou com 4/4 testes, incluindo regras 13.1.1, imagens renderizadas, largura 1536 px, comparação visual da tela principal e comparação visual do drawer de detalhe após animação. Último commit de teste: `a85edf328b7697d76fd0d150edf641cb07227644`.
