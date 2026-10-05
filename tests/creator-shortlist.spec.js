@@ -42,12 +42,17 @@ test('Creator Shortlist ordering and bulk eligibility', async ({ page }) => {
   await page.locator('#all').check();
   await expect(page.locator('#selectedCount')).toContainText('7 selecionados');
   await expect(page.locator('#bulkInvite')).toBeEnabled();
+  await expect(page.locator('#campaignBtn')).toBeEnabled();
   await page.locator('#bulkInvite').click();
   await expect(page.locator('#toast')).toContainText('7 elegíveis; 3 pulados');
 
   // Active/declined are disabled in selection and therefore never enter bulk invite.
   await expect(page.locator('#body tr').filter({hasText:'Camila Rocha'}).locator('.pick')).toBeDisabled();
   await expect(page.locator('#body tr').filter({hasText:'Rafael Costa'}).locator('.pick')).toBeDisabled();
+
+  await page.locator('[data-sort="priority"]').click();
+  const ascNames = await page.locator('#body tr td:nth-child(3) b').allTextContents();
+  expect(ascNames[0]).toBe('Pedro Martins');
 });
 
 test('Creator Shortlist stock zero blocks invitations', async ({ page }) => {
@@ -65,6 +70,8 @@ test('Creator Shortlist provenance, heuristic and LIVE are visible', async ({ pa
 
   await page.locator('.creator').first().click();
   await expect(page.locator('#drawer')).toHaveClass(/open/);
+  await expect(page.locator('#dHeader')).toContainText('LIVE');
+  await expect(page.locator('#dHeader')).toContainText('TikTok');
   await expect(page.locator('#pane')).toContainText('Heurística v0.1 — não é previsão calibrada');
 
   await page.locator('[data-pane="content"]').click();
