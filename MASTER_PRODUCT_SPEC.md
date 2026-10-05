@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.7  
+Versão: 1.5.8  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.7 e pendências vigentes
+36\. Changelog v1.5.8 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -1929,6 +1929,45 @@ comissão atual e estado de estoque.
   TikTok Affiliate Center. Em até 10 segundos o merchant deve perceber por que
   nossa lista é mais útil: motivo ligado ao SKU, comissão contextual,
   economics, relação com o merchant e próxima ação.
+
+### Relação com o lojista → ação permitida
+
+A relação tenant-scoped com o merchant é parte do ruleset e deve governar
+Prioridade e ação, não apenas aparecer como informação visual.
+
+| Relação | Efeito mínimo na Prioridade | Ação permitida |
+|---|---|---|
+| **Novo** | Sem bônus/penalidade de histórico; manter heurística explícita quando não houver outcomes próprios. | **Convidar**. |
+| **Já trabalhou** | Incorporar outcome anterior do próprio merchant quando disponível. | **Convidar de novo**; mostrar resultado anterior relevante. |
+| **Ativo em campanha** | Não duplicar outreach; tratar como relação já em execução. | **Ver campanha** ou **Adicionar a esta campanha** quando semanticamente válido. Nunca “Convidar” para a mesma ativação. |
+| **Recusou recentemente** | Penalidade explícita e versionada no ruleset v0.1. | Sem “Convidar/Negociar”. Mostrar **Aguardar** ou **Ver recusa**, com data a partir da qual pode ser reconsiderado segundo a regra vigente. |
+| **Recusa não recente** | Penalidade expirada conforme regra/versionamento; o histórico continua visível. | **Convidar** pode voltar a ser permitido, indicando que a recusa deixou de ser recente. |
+
+- Seleção em massa para convite deve revalidar relação e excluir
+  automaticamente creators **Ativo em campanha** e **Recusou recentemente**,
+  explicando quantos foram pulados e por quê.
+
+- Estoque zero do SKU continua sendo hard block para convite/ativação,
+  independentemente da relação do creator.
+
+- A UI deve distinguir origem dos motivos: sinais de plataforma/provedor
+  usam provenance correspondente; “já trabalhou”, “ativo”, “recusou”,
+  response rate e outcomes próprios usam **Seu histórico**.
+
+- Quando não houver histórico suficiente, o tooltip/explicação de
+  **Prioridade** deve declarar **Heurística v0.1 — não é previsão calibrada**.
+
+- O detalhe do creator deve distinguir **Vídeo** e **LIVE** quando a fonte
+  permitir, com filtro ou selo visível, preservando a paridade com
+  FastMoss/Kalodata no contexto brasileiro.
+
+- O bloco econômico do painel do creator deve ser rotulado como
+  **Contexto do SKU** quando exibir métricas agregadas do produto, para não
+  sugerir que pertencem ao creator candidato.
+
+- A capacidade “Parecidos com quem já vendeu” pode existir como filtro/atalho
+  de shortlist apenas quando usa seeds e dados permitidos dentro do workspace
+  corrente; não autoriza construir base global própria de creators.
 
 ## 13.3 Model lifecycle
 
@@ -3946,7 +3985,7 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.7 e pendências vigentes
+# 36. Changelog v1.5.8 e pendências vigentes
 
 A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
 rastreabilidade da restrição de competir/replicar nos termos atuais do
@@ -3955,6 +3994,13 @@ regras de estoque, ações em massa, atalhos decision-first e visual
 regression contra referência congelada.
 
 
+
+- v1.5.8: Creator Shortlist passa a governar Prioridade e ações pela relação
+  tenant-scoped com o lojista. Novo → Convidar; Já trabalhou → Convidar de
+  novo com resultado anterior; Ativo em campanha → Ver campanha; Recusou
+  recentemente → Aguardar/Ver recusa. Bulk invite revalida e exclui estados
+  inelegíveis. A UI também explicita Heurística v0.1, provenance correta dos
+  motivos, Vídeo/LIVE no detalhe e Contexto do SKU no painel.
 
 - v1.5.7: Creator Shortlist ganha contrato explícito de UI/dados: busca
   autorizada por merchant sem base global própria, provenance por métrica,
