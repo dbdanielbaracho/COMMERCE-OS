@@ -16,6 +16,8 @@ test('SKU Opportunity renders and critical controls work', async ({ page }) => {
   await page.goto(pageUrl);
   await expect(page.locator('#body tr')).toHaveCount(8);
   await expect(page.locator('#body tr').first()).toBeVisible();
+  const loadedImages = await page.locator('#body img').evaluateAll(imgs => imgs.every(img => img.complete && img.naturalWidth > 0));
+  expect(loadedImages, 'Product/creator illustration images must render').toBeTruthy();
 
   await page.locator('#search').fill('Sérum');
   await expect(page.locator('#body tr')).toHaveCount(1);
