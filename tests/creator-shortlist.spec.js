@@ -109,18 +109,48 @@ test('Creator Shortlist filters and drawer actions are functional', async ({ pag
   await expect(page.locator('#exportBtn')).toHaveAttribute('title',/jurídico P0/);
 });
 
-test('Creator Shortlist visual regression', async ({ browser }) => {
+test('Creator Shortlist visual regression', async ({ browser }, testInfo) => {
   const viewport={width:1536,height:960};
   const live=await browser.newPage({viewport});
   const ref=await browser.newPage({viewport});
   await live.goto(pageUrl); await ref.goto(refUrl);
   await expect(live.locator('#body tr').first()).toBeVisible();
   await expect(ref.locator('#body tr').first()).toBeVisible();
+
+  const overflow=await live.evaluate(()=>{
+    const box=document.querySelector('.tablebox');
+    return {
+      pageScrollWidth:document.documentElement.scrollWidth,
+      pageClientWidth:document.documentElement.clientWidth,
+      tableScrollWidth:box.scrollWidth,
+      tableClientWidth:box.clientWidth
+    };
+  });
+  expect(overflow.pageScrollWidth,'Page must fit at 1536px').toBeLessThanOrEqual(overflow.pageClientWidth);
+  expect(overflow.tableScrollWidth,'Creator table actions must be visible without horizontal clipping at 1536px').toBeLessThanOrEqual(overflow.tableClientWidth);
+
+  const shot=testInfo.outputPath('creator-shortlist-functional.png');
+  await live.screenshot({path:shot,fullPage:true});
+  await testInfo.attach('creator-shortlist-functional-render',{path:shot,contentType:'image/png'});
+
   const a=PNG.sync.read(await live.screenshot({fullPage:true}));
   const b=PNG.sync.read(await ref.screenshot({fullPage:true}));
   expect(a.width).toBe(b.width); expect(a.height).toBe(b.height);
   const diff=new PNG({width:a.width,height:a.height});
   const mismatched=pixelmatch(a.data,b.data,diff.data,a.width,a.height,{threshold:.12,includeAA:false});
   expect(mismatched/(a.width*a.height)).toBeLessThanOrEqual(.002);
+
+  await live.locator('.creator').first().click();
+  await ref.locator('.creator').first().click();
+  await expect(live.locator('#drawer')).toHaveClass(/open/);
+  await expect(ref.locator('#drawer')).toHaveClass(/open/);
+  await live.waitForTimeout(300); await ref.waitForTimeout(300);
+  const da=PNG.sync.read(await live.screenshot({fullPage:true}));
+  const db=PNG.sync.read(await ref.screenshot({fullPage:true}));
+  expect(da.width).toBe(db.width); expect(da.height).toBe(db.height);
+  const ddiff=new PNG({width:da.width,height:da.height});
+  const dm=pixelmatch(da.data,db.data,ddiff.data,da.width,da.height,{threshold:.12,includeAA:false});
+  expect(dm/(da.width*da.height),'Drawer visual regression against functional reference').toBeLessThanOrEqual(.002);
+
   await live.close(); await ref.close();
 });
