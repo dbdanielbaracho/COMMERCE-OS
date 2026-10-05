@@ -6,6 +6,8 @@
     "test:ui:update": "playwright test tests/ui-smoke.spec.js --update-snapshots"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.0"
+    "@playwright/test": "^1.56.0",
+    "pixelmatch": "^5.3.0",
+    "pngjs": "^7.0.0"
   }
 }
