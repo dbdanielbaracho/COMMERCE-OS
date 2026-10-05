@@ -128,6 +128,8 @@ test('SKU Opportunity visual regression compares to frozen approved reference', 
   await refPage.locator('.detail').first().click();
   await expect(livePage.locator('#drawer')).toHaveClass(/open/);
   await expect(refPage.locator('#drawer')).toHaveClass(/open/);
+  await livePage.waitForTimeout(350);
+  await refPage.waitForTimeout(350);
   const liveDrawerBuffer = await livePage.screenshot({ fullPage: true });
   const refDrawerBuffer = await refPage.screenshot({ fullPage: true });
   const liveDrawer = PNG.sync.read(liveDrawerBuffer);
