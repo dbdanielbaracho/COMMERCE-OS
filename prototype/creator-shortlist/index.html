@@ -94,7 +94,7 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelect
 ['relation','contentType'].forEach(id=>$(id).onchange=rows);
 $('heuristic').title='Heurística v0.1 — não é previsão calibrada';
 $('all').onchange=e=>{if(e.checked)C.filter(x=>eligible(x)&&match(x)).forEach(x=>sel.add(x.id));else sel.clear();rows();bulk()};
-$('bulkInvite').onclick=()=>{const ids=[...sel],bad=C.filter(x=>ids.includes(x.id)&&!eligible(x));const good=C.filter(x=>ids.includes(x.id)&&eligible(x));toast(good.length+' elegíveis; '+bad.length+' pulados por relação/estoque')};
+$('bulkInvite').onclick=()=>{const ids=[...sel];const good=C.filter(x=>ids.includes(x.id)&&eligible(x));const excluded=C.filter(x=>match(x)&&!eligible(x));toast(good.length+' elegíveis; '+excluded.length+' pulados por relação/estoque')};
 $('searchTikTok').onclick=()=>toast('Consulta TikTok em tempo real para este lojista');
 $('exportBtn').onclick=()=>toast('Exportação ampla aguarda decisão jurídica');
 $('sampleBtn').onclick=()=>toast('Disponível após o convite aceito');
