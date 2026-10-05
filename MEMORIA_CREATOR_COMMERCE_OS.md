@@ -814,3 +814,16 @@ A revisão externa confirmou a coerência Word/Markdown/GitHub da v1.5.3, mas en
 - Documento Mestre atualizado para v1.5.4 com regra simétrica: toda entrega, de qualquer autor, passa pela 35.4; toda sugestão, de qualquer revisor, é classificada pela 35.7;
 - 9.7 corrigida para separar versão histórica/atual dos termos, retirar S30 como prova da restrição de competir/replicar sem trecho verificável e adicionar S32 (Developer Terms globais atuais) para a restrição de profiling/database;
 - título do índice simplificado para “Sumário”.
+
+### 05/10/2026 — Revisão v1.5.4 aplicada: SKU Opportunity fechando gaps
+A revisão externa confirmou a primeira entrega funcional comprovada da SKU Opportunity e apontou cinco ajustes dentro do escopo.
+
+**Aplicado:**
+- S32 passa a sustentar também a restrição de competir/replicar dos TikTok Developer Terms globais atuais (III.3.p), mantendo P0 para aplicabilidade específica ao TikTok Shop/Partner Center Brasil;
+- gate de contrato 13.1.1 agora testa estoque zerado → “Repor estoque”, bulk action excluindo SKUs sem estoque e atalhos “O que fazer hoje” abrindo recortes reais;
+- regressão visual passou de “guardar screenshot” para comparação pixel a pixel contra `reference-approved.html` congelado;
+- painel do produto ganhou imagem, desempenho 30d na Visão Geral e separação explícita entre receita atribuída e GMV total da loja/contexto;
+- emojis/letras foram substituídos por ilustrações SVG inline diferentes por produto e creator;
+- Documento Mestre atualizado para v1.5.5.
+
+**Regra:** a referência visual congelada só pode ser atualizada quando a mudança de design for intencional e aprovada; o teste não deve ser “ensinado” a aceitar regressão apenas para ficar verde.
