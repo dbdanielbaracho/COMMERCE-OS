@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.4  
+Versão: 1.5.5  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.4 e pendências vigentes
+36\. Changelog v1.5.5 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -1464,7 +1464,7 @@ versão atual sem evidência.
 |------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | 2.7                                      | Uso como prestador de serviço do End User; retenção mínima necessária; compartilhamento só com permissão; não agregar/usar dados do usuário para fins próprios. \[S29\] | Tenant boundary, purpose binding, retention/deletion e bloqueio de cross-tenant. |
 | 3.5(j), versão histórica revisada / restrição análoga vigente | Não construir/complementar perfis ou bancos de dados sobre indivíduos, dispositivos, conteúdo ou browsers a partir de dados restritos. A numeração histórica 3.5(j) não deve ser tratada como numeração vigente sem confirmação. \[S32\] | Sem base global de creators formada por cache de buscas entre clientes. |
-| 3.5(r)/(s), versão UE revisada           | Restrição de competir/replicar/recriar funcionalidade central observada na versão UE revisada. \[S29\] A aplicabilidade ao Brasil/actor concreto permanece P0; \[S30\] não é usado como prova desta restrição. | Teste de substituição da 24.3 e revisão específica da 7.22. |
+| 3.5(r)/(s), versão UE revisada / III.3.p Developer Terms globais atuais | Restrição de competir/replicar/recriar funcionalidade central aparece na versão UE revisada \[S29\] e também nos TikTok Developer Terms globais atuais, III.3.p \[S32\]. A aplicabilidade específica aos apps do TikTok Shop/Partner Center no Brasil permanece P0; \[S30\] não é usado como prova desta restrição. | Teste de substituição da 24.3, revisão específica da 7.22 e gate jurídico P0 antes de depender desta capability em produção. |
 | Partner Center Terms Brasil, cláusula 10 | Referência registrada nas rodadas; texto/versão aplicável ao uso concreto ainda deve ser confirmado. \[S31\]                                                            | Pendência P0 antes de produção.                                                  |
 
 ## 9.8 ADR-000 — fonte de market data
@@ -2452,7 +2452,7 @@ Todo score crítico deve retornar, além do valor:
 | \[S29\] TikTok Shop Developer Terms — EU/EEA (versão pública atual revisada nas rodadas) | https://seller-hu.tiktok.com/university/essay?knowledge_id=8802234122356497                                | Corrobora restrições de End User data, retenção, compartilhamento, profiling/database e competir/replicar/recriar; aplicabilidade exata ao Brasil continua P0.                         |
 | \[S30\] TikTok Shop Seller Terms — Brasil (2026)                                         | https://seller-br.tiktok.com/university/essay?default_language=en&identity=1&knowledge_id=3268441302615809 | Termos públicos do Brasil para Sellers; úteis para contexto de actor/mercado, mas não usados como evidência da restrição de competir/replicar/recriar sem trecho verificável correspondente. |
 | \[S31\] TikTok Shop Global Partner Center Terms                                          | https://seller-br.tiktok.com/university/essay?knowledge_id=3037474364589840&lang=pt-BR                     | Define Partner/prestador terceirizado e termos complementares; usado para mapear actor/app type sem resolver sozinho qual contrato rege cada capability.                               |
-| \[S32\] TikTok Developer Terms of Service — Global                                       | https://www.tiktok.com/legal/page/global/tik-tok-developer-terms-of-service/en                            | Termos globais atuais corroboram a proibição de coletar dados pessoais para finalidade não autorizada e de construir/complementar perfis, bancos de dados ou registros semelhantes; a numeração difere de versões históricas. |
+| \[S32\] TikTok Developer Terms of Service — Global                                       | https://www.tiktok.com/legal/page/global/tik-tok-developer-terms-of-service/en                            | Termos globais atuais: III.3.h proíbe construir/complementar perfis, bancos de dados ou registros semelhantes a partir de uso não autorizado; III.3.p proíbe usar TikTok Developer Services/TikTok Information para competir com ou replicar TikTok Services. Aplicabilidade ao actor/app específico do TikTok Shop no Brasil permanece P0. |
 
 ## 22.6 Critério de sucesso do produto
 
@@ -3894,15 +3894,25 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.4 e pendências vigentes
+# 36. Changelog v1.5.5 e pendências vigentes
 
-A v1.5.4 preserva integralmente a baseline funcional da v1.5.3 e corrige
-governança de verificação e rastreabilidade jurídica. O foco é garantir
-que a regra de qualidade seja aplicada simetricamente a qualquer autor,
-que nenhuma entrega seja registrada como pronta sem evidência dos gates
-da 35.4 e que fontes de termos sejam atribuídas apenas ao texto/versão
-que realmente sustentam.
+A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
+rastreabilidade da restrição de competir/replicar nos termos atuais do
+TikTok. Também registra o fechamento dos gaps de teste da SKU Opportunity:
+regras de estoque, ações em massa, atalhos decision-first e visual
+regression contra referência congelada.
 
+
+
+- v1.5.5: S32 passa a sustentar também a restrição de competir/replicar
+  dos TikTok Developer Terms globais atuais (III.3.p), além da restrição
+  de profiling/database (III.3.h). A aplicabilidade ao app/actor concreto
+  do TikTok Shop no Brasil permanece EXTERNAL ACTION REQUIRED — P0.
+
+- v1.5.5: o gate automatizado da SKU Opportunity cobre estoque zerado,
+  exclusão de SKUs inelegíveis em bulk actions, atalhos “O que fazer hoje”
+  e comparação visual da página funcional contra uma referência congelada
+  do design aprovado.
 
 - v1.5.4: toda entrega, independentemente de autor, passa pelos gates da
   35.4 antes de ser registrada como pronta; sugestões de qualquer revisor
