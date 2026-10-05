@@ -123,6 +123,25 @@ test('SKU Opportunity visual regression compares to frozen approved reference', 
   const ratio = mismatched / (live.width * live.height);
   expect(ratio, 'Visual regression against frozen approved reference').toBeLessThanOrEqual(0.002);
 
+  // Protect the product-detail drawer visual state as well.
+  await livePage.locator('.detail').first().click();
+  await refPage.locator('.detail').first().click();
+  await expect(livePage.locator('#drawer')).toHaveClass(/open/);
+  await expect(refPage.locator('#drawer')).toHaveClass(/open/);
+  const liveDrawerBuffer = await livePage.screenshot({ fullPage: true });
+  const refDrawerBuffer = await refPage.screenshot({ fullPage: true });
+  const liveDrawer = PNG.sync.read(liveDrawerBuffer);
+  const refDrawer = PNG.sync.read(refDrawerBuffer);
+  expect(liveDrawer.width).toBe(refDrawer.width);
+  expect(liveDrawer.height).toBe(refDrawer.height);
+  const drawerDiff = new PNG({ width: liveDrawer.width, height: liveDrawer.height });
+  const drawerMismatch = pixelmatch(liveDrawer.data, refDrawer.data, drawerDiff.data, liveDrawer.width, liveDrawer.height, {
+    threshold: 0.12,
+    includeAA: false
+  });
+  const drawerRatio = drawerMismatch / (liveDrawer.width * liveDrawer.height);
+  expect(drawerRatio, 'Product drawer visual regression against frozen approved reference').toBeLessThanOrEqual(0.002);
+
   await livePage.close();
   await refPage.close();
 });
