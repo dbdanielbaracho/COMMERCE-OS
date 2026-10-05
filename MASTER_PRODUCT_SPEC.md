@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.6  
+Versão: 1.5.7  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.6 e pendências vigentes
+36\. Changelog v1.5.7 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -1877,6 +1877,58 @@ previsão calibrada no cold start. \[S24\]
 
 - Recusa recente gera penalidade; conversão anterior com o merchant gera
   impulso quando houver histórico.
+
+## 13.2.1 Creator Shortlist — contrato de UI e dados v0.1
+
+A Creator Shortlist é a continuação direta da SKU Opportunity e deve
+preservar o SKU, os motivos da oportunidade, margem/economics disponíveis,
+comissão atual e estado de estoque.
+
+- A lista de candidatos é produzida por consulta autorizada no momento da
+  busca, para o merchant/workspace corrente. Não criar, completar ou operar
+  uma base global própria de creators a partir de resultados TikTok ou do
+  cache de múltiplos clientes.
+
+- Cada métrica de creator deve expor a origem quando material para a decisão:
+  **TikTok**, **seu histórico** ou **provedor licenciado**. Histórico de
+  relacionamento, recusas, resposta, conversão anterior e estado de campanha
+  só pode usar o histórico do próprio merchant/workspace.
+
+- No cold start, a UI usa o rótulo **Prioridade**, não “score preditivo”.
+  A Prioridade deriva do ruleset v0.1 versionado e explicável. O usuário deve
+  poder abrir os fatores principais: afinidade competitiva, nível do creator
+  quando fornecido, comissão versus faixa observada, recusa recente e
+  conversão anterior com o merchant. Sem histórico suficiente, mostrar
+  explicitamente **heurística**, não previsão.
+
+- “Comissão esperada” só aparece quando existir fonte e semântica claras
+  (por exemplo, faixa observada do creator em comparáveis autorizados); caso
+  contrário a coluna é omitida. Nunca inventar expectativa.
+
+- A coluna **Relação com o lojista** deve distinguir pelo menos: novo,
+  já trabalhou, ativo em campanha e recusou recentemente, sempre tenant-scoped.
+
+- Creator candidato que nunca vendeu o SKU não pode exibir “vendas atribuídas
+  a este SKU”. Quando aplicável, usar **Vendas em produtos similares (30d)**,
+  com provenance. Performance atribuída ao SKU só aparece quando houver
+  relação medida real.
+
+- O detalhe do creator deve oferecer perfil comercial suficiente para paridade
+  com benchmarks: categorias, produtos similares, principais vídeos e LIVE
+  que venderam quando a fonte permitir, sempre com provenance e estados de
+  indisponibilidade/degradação.
+
+- Ações desabilitadas precisam explicar o motivo. Exemplos: “Selecione
+  creators” ou “Disponível após o convite aceito”.
+
+- Estoque zero bloqueia convite/ativação do SKU e mantém a próxima ação como
+  reposição de estoque. Seleção válida deve continuar para Outreach/Campaign
+  com SKU e creators preservados.
+
+- Benchmark de UX: comparar a shortlist para o mesmo produto com a busca do
+  TikTok Affiliate Center. Em até 10 segundos o merchant deve perceber por que
+  nossa lista é mais útil: motivo ligado ao SKU, comissão contextual,
+  economics, relação com o merchant e próxima ação.
 
 ## 13.3 Model lifecycle
 
@@ -3894,7 +3946,7 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.6 e pendências vigentes
+# 36. Changelog v1.5.7 e pendências vigentes
 
 A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
 rastreabilidade da restrição de competir/replicar nos termos atuais do
@@ -3903,6 +3955,13 @@ regras de estoque, ações em massa, atalhos decision-first e visual
 regression contra referência congelada.
 
 
+
+- v1.5.7: Creator Shortlist ganha contrato explícito de UI/dados: busca
+  autorizada por merchant sem base global própria, provenance por métrica,
+  relação tenant-scoped com o lojista, Prioridade heurística explicável,
+  comissão somente com fonte, candidate performance sem falsa atribuição,
+  detalhe com vídeos/LIVE quando permitido e continuidade stock-aware para
+  Outreach.
 
 - v1.5.6: corrige o rótulo de GMV do painel de SKU para “GMV total do SKU (todos os canais)”; esclarece que a referência visual congelada é da versão funcional aprovada e só pode ser substituída com aprovação do Product Owner; reforça que III.3.h contém proibição independente de construir/complementar perfis ou bancos de dados.
 
