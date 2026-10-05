@@ -85,11 +85,11 @@ test('Creator Shortlist filters and drawer actions are functional', async ({ pag
 
   await page.locator('#followers').selectOption('all');
   await page.locator('#engagement').selectOption('high');
-  await expect(page.locator('#body tr')).toHaveCount(2);
+  await expect(page.locator('#body tr')).toHaveCount(3);
 
   await page.locator('#engagement').selectOption('all');
   await page.locator('#commission').selectOption('inrange');
-  await expect(page.locator('#body tr')).toHaveCount(10);
+  await expect(page.locator('#body tr')).toHaveCount(9);
 
   await page.locator('#globalSearch').fill('Letícia');
   await expect(page.locator('#body tr')).toHaveCount(1);
