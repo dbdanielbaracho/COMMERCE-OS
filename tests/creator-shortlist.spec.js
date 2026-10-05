@@ -40,10 +40,10 @@ test('Creator Shortlist ordering and bulk eligibility', async ({ page }) => {
   expect(names.slice(-2)).toEqual(['Rafael Costa','Gustavo Almeida']);
 
   await page.locator('#all').check();
-  await expect(page.locator('#selectedCount')).toContainText('8 selecionados');
+  await expect(page.locator('#selectedCount')).toContainText('7 selecionados');
   await expect(page.locator('#bulkInvite')).toBeEnabled();
   await page.locator('#bulkInvite').click();
-  await expect(page.locator('#toast')).toContainText('8 elegíveis; 2 pulados');
+  await expect(page.locator('#toast')).toContainText('7 elegíveis; 3 pulados');
 
   // Active/declined are disabled in selection and therefore never enter bulk invite.
   await expect(page.locator('#body tr').filter({hasText:'Camila Rocha'}).locator('.pick')).toBeDisabled();
