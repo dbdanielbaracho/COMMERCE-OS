@@ -116,6 +116,79 @@ test('Creator Shortlist filters and drawer actions are functional', async ({ pag
   await expect(page.locator('#exportBtn')).toHaveAttribute('title',/jurídico P0/);
 });
 
+
+test('Creator Shortlist coherence rules and Economics block', async ({ page }) => {
+  await page.goto(pageUrl);
+
+  // Thiago has 8% commission: must never be described as inside the 10–20% range.
+  await page.locator('#relation').selectOption('worked');
+  const thiago = page.locator('#body tr').filter({hasText:'Thiago Lima'});
+  await expect(thiago).toBeVisible();
+  await thiago.locator('.creator').click();
+  await expect(page.locator('#pane')).toContainText('Comissão abaixo da faixa');
+  await expect(page.locator('#pane')).not.toContainText('Comissão dentro da faixa observada');
+  await expect(page.locator('#economicsBlock')).toContainText('Preço');
+  await expect(page.locator('#economicsBlock')).toContainText('Custo');
+  await expect(page.locator('#economicsBlock')).toContainText('Margem de contribuição');
+  await expect(page.locator('#economicsBlock')).toContainText('38 comparáveis');
+
+  // Lucas reason is an engagement/platform signal even though he has merchant history.
+  await page.locator('#close').click();
+  const lucas = page.locator('#body tr').filter({hasText:'Lucas Ferreira'});
+  await lucas.locator('.creator').click();
+  await expect(page.locator('#pane .reason').first()).toContainText('TikTok');
+
+  // Rafael's cooldown/recusal reason comes from tenant-scoped merchant history.
+  await page.locator('#close').click();
+  await page.locator('#relation').selectOption('declined');
+  const rafael = page.locator('#body tr').filter({hasText:'Rafael Costa'});
+  await rafael.locator('.creator').click();
+  await expect(page.locator('#pane .reason').first()).toContainText('Seu histórico');
+});
+
+test('Creator Shortlist contents are creator-specific', async ({ page }) => {
+  await page.goto(pageUrl);
+
+  // Lucas is not LIVE: his content pane must not fabricate a LIVE.
+  await page.locator('#relation').selectOption('worked');
+  const lucas = page.locator('#body tr').filter({hasText:'Lucas Ferreira'});
+  await lucas.locator('.creator').click();
+  await page.locator('[data-pane="content"]').click();
+  await expect(page.locator('#pane')).not.toContainText('LIVE');
+  await expect(page.locator('#pane')).toContainText('Vídeo');
+
+  // Mariana is LIVE-enabled: LIVE should be present.
+  await page.locator('#close').click();
+  await page.locator('#relation').selectOption('new');
+  const mariana = page.locator('#body tr').filter({hasText:'Mariana Silva'});
+  await mariana.locator('.creator').click();
+  await page.locator('[data-pane="content"]').click();
+  await expect(page.locator('#pane')).toContainText('LIVE');
+});
+
+test('Creator Shortlist existing navigation and sort controls work', async ({ page }) => {
+  await page.goto(pageUrl);
+
+  await page.locator('[data-sort="sales"]').click();
+  const salesNames = await page.locator('#body tr td:nth-child(3) b').allTextContents();
+  expect(salesNames[0]).toBe('Mariana Silva');
+
+  await page.locator('[data-sort="followers"]').click();
+  const followerNames = await page.locator('#body tr td:nth-child(3) b').allTextContents();
+  expect(followerNames[0]).toBe('Mariana Silva');
+
+  await page.locator('[data-sort="engagement"]').click();
+  const engagementNames = await page.locator('#body tr td:nth-child(3) b').allTextContents();
+  expect(engagementNames[0]).toBe('Letícia Santos');
+
+  await expect(page.locator('#navSku')).toBeEnabled();
+  await expect(page.locator('#navEconomics')).toBeEnabled();
+
+  await page.locator('[data-tab="lookalike"]').click();
+  await page.locator('#seedCreator').selectOption('2');
+  await expect(page.locator('#body tr')).toHaveCount(4);
+});
+
 test('Creator Shortlist visual regression', async ({ browser }, testInfo) => {
   const viewport={width:1536,height:960};
   const live=await browser.newPage({viewport});
