@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.5  
+Versão: 1.5.6  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.5 e pendências vigentes
+36\. Changelog v1.5.6 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -2452,7 +2452,7 @@ Todo score crítico deve retornar, além do valor:
 | \[S29\] TikTok Shop Developer Terms — EU/EEA (versão pública atual revisada nas rodadas) | https://seller-hu.tiktok.com/university/essay?knowledge_id=8802234122356497                                | Corrobora restrições de End User data, retenção, compartilhamento, profiling/database e competir/replicar/recriar; aplicabilidade exata ao Brasil continua P0.                         |
 | \[S30\] TikTok Shop Seller Terms — Brasil (2026)                                         | https://seller-br.tiktok.com/university/essay?default_language=en&identity=1&knowledge_id=3268441302615809 | Termos públicos do Brasil para Sellers; úteis para contexto de actor/mercado, mas não usados como evidência da restrição de competir/replicar/recriar sem trecho verificável correspondente. |
 | \[S31\] TikTok Shop Global Partner Center Terms                                          | https://seller-br.tiktok.com/university/essay?knowledge_id=3037474364589840&lang=pt-BR                     | Define Partner/prestador terceirizado e termos complementares; usado para mapear actor/app type sem resolver sozinho qual contrato rege cada capability.                               |
-| \[S32\] TikTok Developer Terms of Service — Global                                       | https://www.tiktok.com/legal/page/global/tik-tok-developer-terms-of-service/en                            | Termos globais atuais: III.3.h proíbe construir/complementar perfis, bancos de dados ou registros semelhantes a partir de uso não autorizado; III.3.p proíbe usar TikTok Developer Services/TikTok Information para competir com ou replicar TikTok Services. Aplicabilidade ao actor/app específico do TikTok Shop no Brasil permanece P0. |
+| \[S32\] TikTok Developer Terms of Service — Global                                       | https://www.tiktok.com/legal/page/global/tik-tok-developer-terms-of-service/en                            | Termos globais atuais: III.3.h contém duas proibições distintas — (a) coletar/tentar coletar dados pessoais de usuários TikTok para finalidade não autorizada ou ilícita e (b) construir, ajudar a construir ou complementar perfis, bancos de dados ou registros semelhantes sobre qualquer indivíduo, dispositivo, conteúdo ou navegador; a segunda não deve ser reduzida a uma condição de coleta não autorizada. III.3.p proíbe usar TikTok Developer Services/TikTok Information para competir com ou replicar TikTok Services. Aplicabilidade ao actor/app específico do TikTok Shop no Brasil permanece P0. |
 
 ## 22.6 Critério de sucesso do produto
 
@@ -3894,7 +3894,7 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.5 e pendências vigentes
+# 36. Changelog v1.5.6 e pendências vigentes
 
 A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
 rastreabilidade da restrição de competir/replicar nos termos atuais do
@@ -3903,6 +3903,8 @@ regras de estoque, ações em massa, atalhos decision-first e visual
 regression contra referência congelada.
 
 
+
+- v1.5.6: corrige o rótulo de GMV do painel de SKU para “GMV total do SKU (todos os canais)”; esclarece que a referência visual congelada é da versão funcional aprovada e só pode ser substituída com aprovação do Product Owner; reforça que III.3.h contém proibição independente de construir/complementar perfis ou bancos de dados.
 
 - v1.5.5: S32 passa a sustentar também a restrição de competir/replicar
   dos TikTok Developer Terms globais atuais (III.3.p), além da restrição
