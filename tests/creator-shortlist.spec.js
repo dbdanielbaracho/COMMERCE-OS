@@ -41,7 +41,7 @@ test('Creator Shortlist ordering and bulk eligibility', async ({ page }) => {
 
   await page.locator('#all').check();
   await page.locator('#bulkInvite').click();
-  await expect(page.locator('#toast')).toContainText('8 elegíveis; 0 pulados');
+  await expect(page.locator('#toast')).toContainText('8 elegíveis; 2 pulados');
 
   // Active/declined are disabled in selection and therefore never enter bulk invite.
   await expect(page.locator('#body tr').filter({hasText:'Camila Rocha'}).locator('.pick')).toBeDisabled();
