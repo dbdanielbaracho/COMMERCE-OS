@@ -72,6 +72,43 @@ test('Creator Shortlist provenance, heuristic and LIVE are visible', async ({ pa
   await expect(page.locator('#pane')).toContainText('Vídeo');
 });
 
+
+test('Creator Shortlist filters and drawer actions are functional', async ({ page }) => {
+  await page.goto(pageUrl);
+
+  await page.locator('#segment').selectOption('live');
+  await expect(page.locator('#body tr')).toHaveCount(3);
+
+  await page.locator('#segment').selectOption('all');
+  await page.locator('#followers').selectOption('mega');
+  await expect(page.locator('#body tr')).toHaveCount(3);
+
+  await page.locator('#followers').selectOption('all');
+  await page.locator('#engagement').selectOption('high');
+  await expect(page.locator('#body tr')).toHaveCount(2);
+
+  await page.locator('#engagement').selectOption('all');
+  await page.locator('#commission').selectOption('inrange');
+  await expect(page.locator('#body tr')).toHaveCount(10);
+
+  await page.locator('#globalSearch').fill('Letícia');
+  await expect(page.locator('#body tr')).toHaveCount(1);
+  await page.locator('#globalSearch').fill('');
+
+  await page.locator('#relation').selectOption('active');
+  await page.locator('.creator').first().click();
+  await expect(page.locator('#dHeader')).toContainText('Ver campanha');
+  await expect(page.locator('#dHeader button')).toBeEnabled();
+
+  await page.locator('#close').click();
+  await page.locator('#relation').selectOption('worked');
+  await page.locator('.creator').first().click();
+  await expect(page.locator('#dHeader')).toContainText('Convidar de novo');
+
+  await expect(page.locator('#exportBtn')).toBeDisabled();
+  await expect(page.locator('#exportBtn')).toHaveAttribute('title',/jurídico P0/);
+});
+
 test('Creator Shortlist visual regression', async ({ browser }) => {
   const viewport={width:1536,height:960};
   const live=await browser.newPage({viewport});
