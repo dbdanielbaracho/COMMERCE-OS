@@ -93,7 +93,7 @@ function toast(s){$('toast').textContent=s;$('toast').style.display='block';setT
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');tab=b.dataset.tab;rows()});
 ['relation','contentType'].forEach(id=>$(id).onchange=rows);
 $('heuristic').title='Heurística v0.1 — não é previsão calibrada';
-$('all').onchange=e=>{if(e.checked)C.filter(x=>eligible(x)&&match(x)).forEach(x=>sel.add(x.id));else sel.clear();rows();bulk()};
+function applySelectAll(checked){if(checked)C.filter(x=>eligible(x)&&match(x)).forEach(x=>sel.add(x.id));else sel.clear();rows();bulk()} $('all').onclick=e=>applySelectAll(e.currentTarget.checked);
 $('bulkInvite').onclick=()=>{const ids=[...sel];const good=C.filter(x=>ids.includes(x.id)&&eligible(x));const excluded=C.filter(x=>match(x)&&!eligible(x));toast(good.length+' elegíveis; '+excluded.length+' pulados por relação/estoque')};
 $('searchTikTok').onclick=()=>toast('Consulta TikTok em tempo real para este lojista');
 $('exportBtn').onclick=()=>toast('Exportação ampla aguarda decisão jurídica');
