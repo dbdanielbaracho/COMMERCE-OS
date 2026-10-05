@@ -11,7 +11,7 @@ const P=[
 {id:7,n:'Esfoliante Labial',sku:'SKU-007',cat:'Beleza',p:34.9,c:null,m:null,cm:12,rg:[10,20],st:0,ch:'Vídeo',op:'Baixa',gr:12,cr:0,ca:false,rev:8200,gmv:19700,sp:[4,4,3,2,2,1,0,0]},
 {id:8,n:'Tônico Facial Niacinamida',sku:'SKU-008',cat:'Skincare',p:42.9,c:24,m:21.3,cm:16,rg:[10,20],st:16,ch:'LIVE',op:'Média',gr:14,cr:0,ca:false,rev:7800,gmv:16800,sp:[3,4,3,5,4,6,5,7]}];
 let tab='all',sort='opportunity',quick='none',sel=new Set(),page=1,pageSize=8,costEditing=null;const $=id=>document.getElementById(id),money=n=>n==null?'—':'R$ '+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
-function svgData(svg){return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
+function svgData(svg){return 'data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(svg)))}
 function productImg(id){
   const palettes=[['#fce7f3','#be185d'],['#dbeafe','#2563eb'],['#ede9fe','#7c3aed'],['#fef3c7','#d97706'],['#dcfce7','#16a34a'],['#fee2e2','#dc2626'],['#e0e7ff','#4f46e5'],['#cffafe','#0891b2']];
   const [bg,fg]=palettes[(id-1)%palettes.length],kind=(id-1)%4;
