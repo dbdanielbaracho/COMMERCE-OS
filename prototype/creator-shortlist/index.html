@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creator Shortlist — Creator Commerce OS</title>
+<style>
+:root{--b:#1769e0;--bg:#f6f8fc;--i:#172033;--m:#667085;--l:#e6eaf0;--g:#13a46b;--r:#e5484d;--a:#e69b22}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--i);font-size:12px}
+.app{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:100vh}.side{background:#fff;border-right:1px solid var(--l);padding:14px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{font-size:18px;font-weight:800;margin-bottom:18px}.nav{display:grid;gap:4px}.nav button{border:0;background:transparent;text-align:left;padding:9px;border-radius:8px;color:#334155}.nav .on{background:#eaf2ff;color:var(--b);font-weight:700}
+main{min-width:0}.top{height:58px;background:#fff;border-bottom:1px solid var(--l);display:flex;gap:8px;align-items:center;padding:0 12px;position:sticky;top:0;z-index:10}.top input{flex:1;min-width:180px;max-width:500px}
+.ctl,.btn,input,select{border:1px solid var(--l);background:#fff;border-radius:9px;padding:8px;color:var(--i)}.btn{cursor:pointer}.primary{background:var(--b);color:#fff;border-color:var(--b)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.content{padding:16px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.card{background:#fff;border:1px solid var(--l);border-radius:12px}.skuHead{padding:14px;display:grid;grid-template-columns:80px 1fr auto;gap:14px;align-items:center}.skuImg{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,#ffdbe6,#ff7b9b);display:grid;place-items:center;font-size:34px}
+.kpis{display:flex;gap:24px;flex-wrap:wrap}.kpis b{font-size:18px}.sub{color:var(--m);font-size:10px}.badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 7px;font-size:10px}.green{background:#e8f8f0;color:#087a4d}.red{background:#ffe9ea;color:#b4232a}.amber{background:#fff4dd;color:#9a6500}.blue{background:#eaf2ff;color:#1d5fb8}
+.filters{padding:10px;display:grid;grid-template-columns:repeat(6,minmax(110px,1fr));gap:8px;margin-top:10px}
+.tabs{display:flex;gap:12px;align-items:center;padding:10px 0;overflow-x:auto}.tab{border:0;background:transparent;padding:8px 2px;cursor:pointer;white-space:nowrap}.tab.on{color:var(--b);border-bottom:2px solid var(--b);font-weight:700}
+.tablebox{overflow-x:auto}.tablebox table{width:100%;border-collapse:collapse;font-size:10.5px}.tablebox th,.tablebox td{padding:7px 6px;border-bottom:1px solid #eef1f5;text-align:left;vertical-align:middle;white-space:nowrap}.creator{display:flex;align-items:center;gap:8px;min-width:170px}
+.av{width:34px;height:34px;border-radius:50%;display:block}.spark{width:58px;height:18px}.priority{font-weight:800}.act{min-width:105px}.wait{background:#fff0f0;color:#b4232a;border-color:#ffc6c9}.campaign{background:#eef5ff;color:#1957a6}
+.bulk{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--l);padding:10px;display:flex;gap:8px;align-items:center;z-index:5}
+.drawer{position:fixed;right:-390px;top:0;width:390px;height:100vh;background:#fff;border-left:1px solid var(--l);z-index:30;transition:right .2s;overflow:auto}.drawer.open{right:0}.drawer .pad{padding:16px}.drawerTabs{display:flex;gap:12px;border-bottom:1px solid var(--l);padding:0 16px}.drawerTabs button{border:0;background:transparent;padding:10px 0;cursor:pointer}.drawerTabs .on{color:var(--b);border-bottom:2px solid var(--b)}.metricGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:10px;border:1px solid var(--l);border-radius:10px}.reason{padding:8px 0;border-bottom:1px solid #f0f2f5}.source{font-size:9px;color:#476582;background:#edf4ff;padding:2px 5px;border-radius:4px}.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#111827;color:white;padding:9px 12px;border-radius:8px;display:none;z-index:90}
+@media(max-width:1200px){.app{grid-template-columns:180px minmax(0,1fr)}.filters{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side"><div class="brand">Creator Commerce OS</div><div class="nav">
+<button>⌂ Início</button><b class="sub">INTELLIGENCE</b><button>Product Research</button><button>SKU Opportunity</button><button class="on">Creator Shortlist</button><button>Creator Research</button><button>Shop Research</button><button>Video Research</button><button>LIVE Research</button><b class="sub">CREATORS</b><button>Criadores</button><button>Listas e Segmentos</button><b class="sub">CAMPAIGNS</b><button>Campanhas</button><button>Outreach</button><button>Conteúdos</button><button>Pedidos</button><button>Performance</button><b class="sub">ANALYTICS</b><button>Unit Economics</button><button>Relatórios</button></div></aside>
+<main>
+<div class="top"><input id="globalSearch" placeholder="Buscar produtos, criadores, campanhas..."><select id="market"><option>🇧🇷 Brasil · TikTok Shop</option></select><button class="btn">Últimos 30 dias</button><button class="btn">DS · Daniel Santos</button></div>
+<div class="content">
+<div class="row"><div><div class="sub">Intelligence › Creator Shortlist</div><h1 style="margin:3px 0">Creators recomendados para este produto</h1><div class="sub">Compare e ative creators explicados para este SKU.</div></div><div><button class="btn primary" id="searchTikTok">⌕ Buscar no TikTok</button><button class="btn" id="exportBtn" disabled title="DECISION REQUIRED / jurídico P0">Exportar</button></div></div>
+
+<section class="card skuHead">
+<div class="skuImg">💄</div>
+<div><b style="font-size:14px">Hidratante Labial com Cor</b><div class="sub">SKU-001 · Beleza e Cuidados Pessoais</div><div style="margin-top:8px" class="kpis">
+<div><span class="sub">Preço</span><br><b>R$ 39,90</b></div><div><span class="sub">Margem</span><br><b>30,1%</b></div><div><span class="sub">Comissão atual</span><br><b>12%</b> <span class="badge green">Na faixa</span></div><div><span class="sub">Estoque</span><br><b id="stockKpi">248</b></div><div><span class="sub">Oportunidade</span><br><span class="badge green">Alta</span></div></div></div>
+<button class="btn" id="backSku">Ver na SKU Opportunity →</button>
+</section>
+
+<section class="card filters">
+<select id="segment"><option value="all">Segmento: Todos</option><option value="live">LIVE</option></select>
+<select id="followers"><option value="all">Seguidores: Todos</option></select>
+<select id="engagement"><option value="all">Engajamento: Todos</option></select>
+<select id="commission"><option value="all">Comissão: Todos</option></select>
+<select id="relation"><option value="all">Relação: Todos</option><option value="new">Novo</option><option value="worked">Já trabalhou</option><option value="active">Ativo em campanha</option><option value="declined">Recusou recentemente</option></select>
+<select id="contentType"><option value="all">Conteúdo: Todos</option><option value="video">Vídeo</option><option value="live">LIVE</option></select>
+</section>
+
+<div class="tabs">
+<button class="tab on" data-tab="all">Todos (10)</button><button class="tab" data-tab="similar">Já promoveu similares</button><button class="tab" data-tab="high">Alta conversão</button><button class="tab" data-tab="new">Novos para o lojista</button><button class="tab" data-tab="lookalike" title="Similar ao creator seed escolhido">Lookalike</button><button class="tab" data-tab="merchantbest" title="Parecidos com creators deste lojista que já venderam">Parecidos com quem já vendeu</button>
+<span style="margin-left:auto" class="sub" id="heuristic">Prioridade ⓘ</span>
+</div>
+
+<section class="card tablebox"><table>
+<thead><tr><th><input type="checkbox" id="all"></th><th>#</th><th>Creator</th><th>Seguidores</th><th>Engaj.</th><th>Vendas similares (30d)</th><th>Prod. similares</th><th>Comissão</th><th>Relação com o lojista</th><th>Afinidade</th><th>Motivo principal</th><th data-sort="priority" style="cursor:pointer">Prioridade ↕</th><th>Ação</th></tr></thead>
+<tbody id="body"></tbody></table></section>
+<div class="bulk"><span id="selectedCount">0 selecionados</span><button class="btn primary" id="bulkInvite" disabled>Convidar selecionados</button><button class="btn" id="sampleBtn" disabled title="Disponível após o convite aceito">Enviar amostras</button><button class="btn" id="campaignBtn">Adicionar à campanha</button><span class="sub" id="bulkHint">Creators ativos ou com recusa recente serão pulados automaticamente.</span></div>
+</div>
+</main>
+</div>
+
+<aside class="drawer" id="drawer"><div class="pad"><div class="row"><div><h2 id="dName" style="margin:0"></h2><div id="dHandle" class="sub"></div></div><button class="btn" id="close">×</button></div><div id="dHeader" style="margin-top:12px"></div></div>
+<div class="drawerTabs"><button class="on" data-pane="overview">Visão Geral</button><button data-pane="content">Conteúdos</button><button data-pane="performance">Desempenho</button><button data-pane="history">Histórico</button></div>
+<div class="pad" id="pane"></div></aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const C=[
+{id:1,n:'Mariana Silva',h:'@marisilva',f:'2,1M',e:'4,8%',v:128400,sim:14,cm:12,rel:'new',relLabel:'Novo',aff:'Muito alta',reason:'Já promoveu 8 produtos similares',p:92,live:true,source:'TikTok',content:'live'},
+{id:2,n:'Lucas Ferreira',h:'@lucasferr',f:'1,8M',e:'3,9%',v:96200,sim:12,cm:10,rel:'worked',relLabel:'Já trabalhou · 15/08/26',aff:'Alta',reason:'Alto engajamento em beleza',p:88,live:false,source:'TikTok',content:'video'},
+{id:3,n:'Camila Rocha',h:'@camilarocha',f:'1,2M',e:'6,1%',v:78500,sim:11,cm:15,rel:'active',relLabel:'Ativo em campanha',aff:'Alta',reason:'Já promoveu 5 produtos similares',p:85,live:true,source:'TikTok',content:'live'},
+{id:4,n:'Juliana Mendes',h:'@julianamendes',f:'680K',e:'5,2%',v:54800,sim:7,cm:18,rel:'new',relLabel:'Novo',aff:'Média',reason:'Conteúdo de maquiagem com boa afinidade',p:78,live:false,source:'TikTok',content:'video'},
+{id:5,n:'Thiago Lima',h:'@thiagolima',f:'420K',e:'4,1%',v:41200,sim:6,cm:8,rel:'worked',relLabel:'Já trabalhou · 12/07/26',aff:'Média',reason:'Já promoveu 3 produtos similares',p:74,live:false,source:'TikTok',content:'video'},
+{id:6,n:'Letícia Santos',h:'@letisantos',f:'310K',e:'5,8%',v:38600,sim:5,cm:12,rel:'new',relLabel:'Novo',aff:'Média',reason:'Engajamento alto e crescimento recente',p:71,live:true,source:'TikTok',content:'live'},
+{id:7,n:'Bianca Oliveira',h:'@biancaoliveira',f:'180K',e:'4,9%',v:28100,sim:3,cm:12,rel:'new',relLabel:'Novo',aff:'Baixa',reason:'Boa afinidade, baixo volume',p:64,live:false,source:'TikTok',content:'video'},
+{id:8,n:'Pedro Martins',h:'@pedromartins',f:'150K',e:'3,1%',v:21700,sim:2,cm:10,rel:'new',relLabel:'Novo',aff:'Baixa',reason:'Novo para o lojista, conteúdo promissor',p:61,live:false,source:'TikTok',content:'video'},
+{id:9,n:'Rafael Costa',h:'@rafaelcosta',f:'950K',e:'3,4%',v:62100,sim:9,cm:10,rel:'declined',relLabel:'Recusou · 21/09/26',aff:'Alta',reason:'Conversão forte, mas recusa recente',p:32,live:false,source:'TikTok',content:'video',retry:'21/12/26'},
+{id:10,n:'Gustavo Almeida',h:'@gustavoalmeida',f:'290K',e:'3,4%',v:32400,sim:4,cm:10,rel:'declined',relLabel:'Recusou · 10/08/26',aff:'Média',reason:'Crescimento recente; aguardando cooldown',p:28,live:false,source:'TikTok',content:'video',retry:'10/11/26'}
+];
+let tab='all',sort='priority',sel=new Set(),stock=248;
+const $=id=>document.getElementById(id),money=n=>'R$ '+(n/1000).toFixed(1).replace('.',',')+'K';
+function avatar(id){const cs=['#f9d5c4','#cde1ff','#f8d1da','#e2d4ff','#d4f1df'];const bg=cs[id%cs.length];return "data:image/svg+xml;base64,"+btoa("<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='32' fill='"+bg+"'/><circle cx='32' cy='24' r='12' fill='#8b5e4b'/><path d='M12 64c3-16 12-24 20-24s17 8 20 24' fill='#223b68'/></svg>")}
+function eligible(x){return stock>0 && x.rel!=='active' && x.rel!=='declined'}
+function action(x){if(stock===0)return "<button class='btn act' disabled title='Estoque zerado: reponha o SKU primeiro'>Bloqueado</button>";if(x.rel==='active')return "<button class='btn act campaign' data-action='campaign' data-id='"+x.id+"'>Ver campanha</button>";if(x.rel==='declined')return "<button class='btn act wait' data-action='wait' data-id='"+x.id+"'>Aguardar<br><span class='sub'>até "+x.retry+"</span></button>";if(x.rel==='worked')return "<button class='btn act' data-action='invite' data-id='"+x.id+"'>Convidar de novo</button>";return "<button class='btn primary act' data-action='invite' data-id='"+x.id+"'>Convidar</button>"}
+function relBadge(x){const cls=x.rel==='declined'?'red':x.rel==='active'?'green':x.rel==='worked'?'green':'blue';const src=x.rel==='new'?'':' <span class=source>Seu histórico</span>';return "<span class='badge "+cls+"'>"+x.relLabel+"</span>"+src}
+function match(x){const rel=$('relation').value,ct=$('contentType').value;if(rel!=='all'&&x.rel!==rel)return false;if(ct!=='all'&&x.content!==ct)return false;if(tab==='similar'&&x.sim<5)return false;if(tab==='high'&&x.p<80)return false;if(tab==='new'&&x.rel!=='new')return false;if(tab==='lookalike'&&![1,2,4,6].includes(x.id))return false;if(tab==='merchantbest'&&![2,3,5].includes(x.id))return false;return true}
+function rows(){let a=C.filter(match);a.sort((x,y)=>{const bx=x.rel==='declined'||x.rel==='active',by=y.rel==='declined'||y.rel==='active';if(bx!==by)return bx?1:-1;return y.p-x.p});$('body').innerHTML=a.map((x,i)=>"<tr><td><input class='pick' data-id='"+x.id+"' type='checkbox' "+(sel.has(x.id)?'checked':'')+" "+(!eligible(x)?'disabled':'')+"></td><td>"+(i+1)+"</td><td><div class='creator'><img class='av' src='"+avatar(x.id)+"'><div><b>"+x.n+"</b><div class='sub'>"+x.h+" "+(x.live?"<span class='badge red'>LIVE</span>":"")+"</div></div></div></td><td>"+x.f+" <span class='source'>TikTok</span></td><td>"+x.e+" <span class='source'>TikTok</span></td><td>"+money(x.v)+"<br><span class='source'>TikTok</span></td><td>"+x.sim+"</td><td>"+x.cm+"%<br><span class='source'>Em comparáveis</span></td><td>"+relBadge(x)+"</td><td><span class='badge "+(x.aff==='Baixa'?'red':x.aff==='Média'?'amber':'green')+"'>"+x.aff+"</span></td><td>"+x.reason+"</td><td><span class='priority'>"+x.p+"</span></td><td>"+action(x)+"</td></tr>").join('');bind()}
+function bind(){document.querySelectorAll('.pick').forEach(e=>e.onchange=()=>{const id=+e.dataset.id;e.checked?sel.add(id):sel.delete(id);bulk()});document.querySelectorAll('[data-action]').forEach(e=>e.onclick=()=>{const x=C.find(v=>v.id==e.dataset.id);if(e.dataset.action==='wait')toast('Recusa recente. Reavaliar a partir de '+x.retry);else if(e.dataset.action==='campaign')toast('Abrindo campanha ativa de '+x.n);else toast('Creator selecionado para convite: '+x.n)});document.querySelectorAll('.creator').forEach((e,i)=>e.onclick=()=>open(C.filter(match).sort((x,y)=>{const bx=x.rel==='declined'||x.rel==='active',by=y.rel==='declined'||y.rel==='active';if(bx!==by)return bx?1:-1;return y.p-x.p})[i].id))}
+function bulk(){$('selectedCount').textContent=sel.size+' selecionados';$('bulkInvite').disabled=sel.size===0||stock===0}
+function open(id){const x=C.find(v=>v.id===id);$('dName').textContent=x.n;$('dHandle').textContent=x.h;$('dHeader').innerHTML="<div class='row'><img class='av' src='"+avatar(x.id)+"'><span>"+relBadge(x)+"</span></div><div style='margin-top:10px'><button class='btn primary' "+(!eligible(x)?"disabled title='"+(x.rel==='active'?'Já está em campanha':x.rel==='declined'?'Recusa recente':'Estoque zerado')+"'":"")+">"+(x.rel==='active'?'Ver campanha':x.rel==='declined'?'Aguardar':'Convidar para este produto')+"</button></div>";pane(x,'overview');$('drawer').classList.add('open')}
+function pane(x,p){document.querySelectorAll('.drawerTabs button').forEach(b=>b.classList.toggle('on',b.dataset.pane===p));if(p==='overview')$('pane').innerHTML="<div class='metricGrid'><div class='metric'><b>"+x.f+"</b><br><span class='sub'>Seguidores</span><br><span class='source'>TikTok</span></div><div class='metric'><b>"+x.e+"</b><br><span class='sub'>Engajamento</span><br><span class='source'>TikTok</span></div><div class='metric'><b>"+money(x.v)+"</b><br><span class='sub'>Vendas em produtos similares (30d)</span><br><span class='source'>TikTok</span></div></div><h3>Motivos da recomendação</h3><div class='reason'>✓ "+x.reason+" <span class='source'>"+(x.rel==='new'?'TikTok':'Seu histórico')+"</span></div><div class='reason'>✓ Comissão dentro da faixa observada <span class='source'>Em comparáveis</span></div><div class='reason'>✓ Prioridade <b>"+x.p+"</b> <span class='source'>Heurística v0.1 — não é previsão calibrada</span></div><h3>Contexto do SKU</h3><div class='row'><span>GMV total do SKU (todos os canais)</span><b>R$ 92,4K</b></div><div class='row'><span>Receita atribuída (creators)</span><b>R$ 59,1K</b></div>";else if(p==='content')$('pane').innerHTML="<h3>Conteúdos que venderam</h3><div class='card' style='padding:10px;margin-bottom:8px'>🔴 LIVE · 245K visualizações · <b>R$ 18,2K</b></div><div class='card' style='padding:10px'>▶ Vídeo · 126K visualizações · <b>R$ 9,6K</b></div>";else if(p==='performance')$('pane').innerHTML="<h3>Desempenho comercial</h3><div class='row'><span>Vendas similares</span><b>"+money(x.v)+"</b></div><div class='row'><span>Produtos similares</span><b>"+x.sim+"</b></div>";else $('pane').innerHTML="<h3>Seu histórico</h3><p>"+(x.rel==='new'?'Sem histórico com este lojista.':x.relLabel)+"</p>"}
+function toast(s){$('toast').textContent=s;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1700)}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');tab=b.dataset.tab;rows()});
+['relation','contentType'].forEach(id=>$(id).onchange=rows);
+$('heuristic').title='Heurística v0.1 — não é previsão calibrada';
+$('all').onchange=e=>{if(e.checked)C.filter(x=>eligible(x)&&match(x)).forEach(x=>sel.add(x.id));else sel.clear();rows();bulk()};
+$('bulkInvite').onclick=()=>{const ids=[...sel],bad=C.filter(x=>ids.includes(x.id)&&!eligible(x));const good=C.filter(x=>ids.includes(x.id)&&eligible(x));toast(good.length+' elegíveis; '+bad.length+' pulados por relação/estoque')};
+$('searchTikTok').onclick=()=>toast('Consulta TikTok em tempo real para este lojista');
+$('exportBtn').onclick=()=>toast('Exportação ampla aguarda decisão jurídica');
+$('sampleBtn').onclick=()=>toast('Disponível após o convite aceito');
+$('campaignBtn').onclick=()=>toast('Adicionar seleção à campanha');
+$('backSku').onclick=()=>location.href='../sku-opportunity/index.html';
+$('close').onclick=()=>$('drawer').classList.remove('open');
+document.querySelectorAll('.drawerTabs button').forEach(b=>b.onclick=()=>{const x=C.find(v=>v.n===$('dName').textContent);if(x)pane(x,b.dataset.pane)});
+rows();bulk();
+</script></body></html>
