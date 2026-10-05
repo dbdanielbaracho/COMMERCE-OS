@@ -2,7 +2,7 @@
   "name": "creator-commerce-os-ui-gates",
   "private": true,
   "scripts": {
-    "test:ui": "playwright test tests/ui-smoke.spec.js",
+    "test:ui": "playwright test tests/*.spec.js",
     "test:ui:update": "playwright test tests/ui-smoke.spec.js --update-snapshots"
   },
   "devDependencies": {
