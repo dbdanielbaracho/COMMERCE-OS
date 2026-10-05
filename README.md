@@ -8,7 +8,7 @@ A especificação oficial do produto está em:
 
 - [MASTER_PRODUCT_SPEC.md](./MASTER_PRODUCT_SPEC.md)
 
-**Baseline vigente:** v1.5.4  
+**Baseline vigente:** v1.5.5  
 **Status:** Product Spec Baseline aprovada, com errata editorial pós-auditoria aplicada.
 
 Neste momento, este repositório é somente documental. Nenhum código de produto deve ser criado aqui sem decisão explícita do Product Owner.
@@ -42,3 +42,8 @@ O Documento Mestre continua sendo a fonte normativa; a memória preserva o hist�
 - `npm run test:ui`
 
 O gate automatizado abre a SKU Opportunity em navegador real, falha em erro JavaScript não tratado, exige conteúdo renderizado, testa controles críticos, verifica overflow horizontal em 1536 px e preserva captura da página funcional nos resultados de CI.
+
+### Referência visual congelada — SKU Opportunity
+
+- `prototype/sku-opportunity/reference-approved.html` — referência congelada usada pelo teste de regressão visual.
+- O teste compara pixels da página funcional com esta referência; mudanças visuais intencionais exigem revisão e atualização explícita da referência.
