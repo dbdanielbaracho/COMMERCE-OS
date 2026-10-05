@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.8  
+Versão: 1.5.9  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.8 e pendências vigentes
+36\. Changelog v1.5.9 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -1968,6 +1968,37 @@ Prioridade e ação, não apenas aparecer como informação visual.
 - A capacidade “Parecidos com quem já vendeu” pode existir como filtro/atalho
   de shortlist apenas quando usa seeds e dados permitidos dentro do workspace
   corrente; não autoriza construir base global própria de creators.
+
+### Ajustes finais de ordenação e semântica — Creator Shortlist v3
+
+Antes da versão funcional, aplicar:
+
+- Motivo e relação devem ser logicamente coerentes. Creator com relação **Novo**
+  não pode exibir motivo dependente de histórico do merchant (“bom histórico
+  com o lojista”, “já trabalhou”, “recusou” etc.).
+
+- Ordenação padrão = **Prioridade decrescente entre creators elegíveis**.
+  Creators em estado **Aguardar/Recusou recentemente** e **Ativo em campanha**
+  não competem no topo com candidatos elegíveis para novo convite; ficam em
+  grupo secundário/final ou são separados por estado operacional.
+
+- Selo de conta/plataforma não pode se confundir com relação operacional.
+  Se for necessário indicar estado da conta, usar **Conta ativa**; o rótulo
+  **Ativo em campanha** fica reservado à relação tenant-scoped.
+
+- **Lookalike** = similaridade de perfil/conteúdo com um creator seed escolhido.
+  **Parecidos com quem já vendeu** = similaridade com creators do próprio
+  merchant que já tiveram outcome positivo. Se essas semânticas não puderem
+  ser diferenciadas na fonte disponível, unificar as duas superfícies.
+
+- Exportação de creators permanece **DECISION REQUIRED / jurídico P0**. Até
+  decisão, a UI não deve oferecer exportação ampla da lista TikTok. Pode
+  oferecer apenas exportação explicitamente permitida de seleção/objetos do
+  próprio workflow quando houver base contratual; caso contrário, controle
+  desabilitado com motivo.
+
+- Tooltip de **Prioridade ⓘ** deve conter “Heurística v0.1 — não é previsão
+  calibrada” quando não houver histórico/outcome suficiente.
 
 ## 13.3 Model lifecycle
 
@@ -3985,7 +4016,7 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.8 e pendências vigentes
+# 36. Changelog v1.5.9 e pendências vigentes
 
 A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
 rastreabilidade da restrição de competir/replicar nos termos atuais do
@@ -3994,6 +4025,11 @@ regras de estoque, ações em massa, atalhos decision-first e visual
 regression contra referência congelada.
 
 
+
+- v1.5.9: Creator Shortlist v3 fecha coerência de motivo/relação, ordenação
+  por Prioridade com inelegíveis fora do topo, semântica separada para
+  Lookalike versus “Parecidos com quem já vendeu”, selo “Conta ativa” quando
+  necessário e exportação ampla de creators marcada DECISION REQUIRED/P0.
 
 - v1.5.8: Creator Shortlist passa a governar Prioridade e ações pela relação
   tenant-scoped com o lojista. Novo → Convidar; Já trabalhou → Convidar de
