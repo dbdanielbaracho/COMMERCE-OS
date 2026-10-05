@@ -8,7 +8,7 @@ A especificação oficial do produto está em:
 
 - [MASTER_PRODUCT_SPEC.md](./MASTER_PRODUCT_SPEC.md)
 
-**Baseline vigente:** v1.5.5  
+**Baseline vigente:** v1.5.9  
 **Status:** Product Spec Baseline aprovada, com errata editorial pós-auditoria aplicada.
 
 Neste momento, este repositório é somente documental. Nenhum código de produto deve ser criado aqui sem decisão explícita do Product Owner.
@@ -47,3 +47,9 @@ O gate automatizado abre a SKU Opportunity em navegador real, falha em erro Java
 
 - `prototype/sku-opportunity/reference-approved.html` — referência congelada usada pelo teste de regressão visual.
 - O teste compara pixels da página funcional com esta referência; mudanças visuais intencionais exigem revisão e atualização explícita da referência.
+
+### Creator Shortlist
+
+- `prototype/creator-shortlist/index.html` — versão funcional em validação.
+- `tests/creator-shortlist.spec.js` — gates de relação→ação, ordenação, bulk eligibility, estoque, provenance, heurística, LIVE, filtros, layout e regressão visual.
+- Exportação ampla de creators permanece desabilitada até decisão jurídica/Product Owner.
