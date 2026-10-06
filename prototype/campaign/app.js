@@ -204,7 +204,7 @@ function openContent(id,assetId){
   $('contentModalTitle').textContent=a.title;$('contentModalMeta').textContent='Publicado por '+x.n+' · '+(x.activation.postedAt||'data indisponível');
   $('contentPreview').innerHTML='<div>'+a.type+'<small>'+a.title+'</small></div>';
   $('contentCreator').textContent=x.n;$('contentType').textContent=a.type;$('contentStatus').textContent=a.status==='approved'?'Aprovado':'Aguardando aprovação';
-  $('contentViews').textContent=Number(a.views||0).toLocaleString('pt-BR');$('contentOrders').textContent=x.activation.orders||0;$('contentRevenue').textContent=money(x.activation.revenue||0);
+  $('contentViews').textContent=Number(a.views||0).toLocaleString('pt-BR');$('contentOrders').textContent=a.orders!=null?a.orders:(x.activation.orders||0);$('contentRevenue').textContent=money(a.revenue!=null?a.revenue:(x.activation.revenue||0));
   $('goContentResults').dataset.id=x.id;openModal('contentModal');
 }
 function approveContent(id,assetId){
