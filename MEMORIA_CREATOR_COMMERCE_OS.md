@@ -1105,3 +1105,38 @@ Isto é um protótipo funcional local. Tracking real de transportadora, envio f�
 **Gate final:** workflow UI Gates run `37405257719` concluído com **42/42 testes aprovados**.
 
 **Estado:** Campanha/ativação agora é protótipo funcional aprovado. Próxima etapa natural do Marco 1: Conteúdo/resultado atribuído e fechamento da continuidade até Unit Economics/Aprendizado.
+
+
+### 05/10/2026 — Campanha fechada e início de Conteúdo + resultado atribuído
+A verificação manual pós-funcionalização confirmou 42/42 testes e todos os fluxos principais da Campanha. Restavam dois controles sem efeito: "Abrir conteúdo" e a barra superior.
+
+**Campanha — fechamento**
+- "Abrir conteúdo" agora abre modal funcional com conteúdo, creator, status, views, pedidos e receita atribuída, além de link para a nova tela Conteúdo + resultado;
+- topbar ganhou os mesmos comportamentos do Outreach: busca filtra creators/conteúdo, período informa recorte fixo, usuário mostra workspace e market mantém Brasil/TikTok Shop;
+- modal "Adicionar creator" ganhou empty-state útil e link para Outreach quando não houver novo aceite;
+- navegação de Campanha passou a habilitar Conteúdos.
+
+**Nova tela — Conteúdo + resultado atribuído (design v1)**
+Criado `prototype/content-results/` com dados compartilhados em `shared/demo-data.js`.
+O desenho implementa:
+- conteúdos publicados de Vídeo e LIVE com creator, data, views, pedidos e receita atribuída;
+- pedidos liquidados separados dos provisórios;
+- bloco "Desempenho atribuído" separado de "Contexto do negócio", com aviso explícito de que contexto não implica causalidade;
+- modal de detalhe por conteúdo;
+- passagem para Unit Economics e retorno à Campanha;
+- bloco Aprendizado por creator × SKU no formato recomendação → decisão → ação → resultado;
+- topbar e menu canônico.
+
+**Benchmark atual usado no desenho**
+- FastMoss: vídeo/LIVE, monitoramento e análise de performance;
+- Kalodata: detalhe de creator, vídeo e LIVE com revenue, views e item sold;
+- Reacher: GMV, visualizações, eficiência por vídeo/amostra e principais conteúdos;
+- TikTok Seller Center permanece baseline nativo de pedidos/afiliados.
+
+**Gates**
+- Campanha: novos testes cobrem modal "Abrir conteúdo", topbar e empty-state de adicionar creator;
+- Conteúdo + resultado: testes cobrem separação atribuído/contexto, Vídeo/LIVE, provisional/settled, detalhe, aprendizado e topbar.
+
+**Gate final:** UI Gates run `37407037818` concluído com **51/51 testes aprovados**.
+
+**Estado:** Campanha funcional fechada para o protótipo local. Conteúdo + resultado atribuído está em design v1 funcional/navegável e pronto para revisão visual/competitiva antes de ser promovido a funcionalidade persistente.
