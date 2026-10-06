@@ -31,7 +31,7 @@
 
 <div class="grid"><section class="card creatorsCard"><div class="row tableTitle"><div class="sectionTitle">Creators na campanha</div><span class="sub">Owner + próxima ação + ações em massa</span></div>
 <table><thead><tr><th><input type="checkbox" id="selectAll"></th><th>Creator</th><th>Comissão</th><th>Etapa</th><th>Owner</th><th>Próxima ação</th><th>Prazo</th><th>Pedidos</th><th>Receita</th><th>Ação</th></tr></thead><tbody id="creatorRows"></tbody></table>
-<div class="bulk"><b id="selectedCount">0 selecionados</b><button class="btn" id="bulkSample" disabled>Enviar amostras</button><button class="btn" id="bulkReminder" disabled>Lembrar creators</button><button class="btn" id="bulkRepeat" disabled>Repetir creators</button></div></section>
+<div class="bulk"><b id="selectedCount">0 selecionados</b><button class="btn" id="bulkSample" disabled title="Selecione creators">Enviar amostras</button><button class="btn" id="bulkReminder" disabled title="Selecione creators">Lembrar creators</button><button class="btn" id="bulkRepeat" disabled title="Selecione creators">Repetir creators</button><span class="sub" id="bulkPreview">Selecione creators para ver elegíveis e pulados.</span></div></section>
 
 <aside class="card brief"><div class="sectionTitle">Configuração</div><div class="kv"><span>Tipo</span><b id="campaignType"></b></div><div class="kv"><span>Regra de amostra</span><b id="samplePolicy"></b></div><div class="kv stack"><span>Briefing</span><b id="brief"></b></div><div class="kv"><span>Deliverable</span><b>1 conteúdo por creator</b></div><div class="kv"><span>Aprovação</span><b>Obrigatória antes de publicar</b></div><div class="kv"><span>SLA após entrega</span><b id="sampleSla"></b></div></aside></div>
 
@@ -44,4 +44,7 @@
 <div class="grid lower"><section class="card contentCard"><div class="row"><div class="sectionTitle">Conteúdo e aprovação</div><span class="sub">Obrigatório aprovar antes de publicar</span></div><div id="contentQueue"></div></section>
 <section class="card salesCard"><div class="sectionTitle">Vendas da campanha</div><div class="salesKpi"><b id="salesRevenue"></b><span>Receita atribuída</span></div><svg id="salesChart" viewBox="0 0 320 100" preserveAspectRatio="none"><polyline fill="none" stroke="#1769e0" stroke-width="4" points="0,88 45,80 90,84 135,62 180,69 225,42 270,48 320,20"/></svg><div class="sub">Tendência DEMO · pedidos atribuídos da campanha</div></section></div>
 </div></main></div>
+<div class="modalOverlay" id="modalOverlay"></div>
+<div class="modal" id="campaignModal"><h3>Editar campanha</h3><label>Objetivo<input id="editObjective"></label><label>Responsável<input id="editOwner"></label><label>Orçamento<input id="editBudget" type="number" min="0"></label><div class="modalActions"><button class="btn" id="cancelEdit">Cancelar</button><button class="btn primary" id="saveEdit">Salvar</button></div></div>
+<div class="modal" id="creatorModal"><h3>Adicionar creator</h3><div class="sub">Somente creators que aceitaram no Outreach aparecem aqui.</div><div id="eligibleCreators"></div><div class="modalActions"><button class="btn" id="closeCreatorModal">Fechar</button></div></div>
 <div class="toast" id="toast"></div><script src="../shared/demo-data.js"></script><script src="./app.js"></script></body></html>
