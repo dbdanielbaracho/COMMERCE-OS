@@ -161,12 +161,15 @@ function renderEconomics(){
   const T=totals();$('campaignRevenue').textContent=money(T.revenue);$('baseMarginValue').textContent=money(T.baseMargin);$('commissionCost').textContent='− '+money(T.commission);$('sampleCost').textContent='− '+money(T.sample);$('shippingCost').textContent='− '+money(T.ship);$('campaignMargin').textContent=money(T.margin);$('campaignMarginPct').textContent=(T.revenue?T.margin/T.revenue*100:0).toFixed(1).replace('.',',')+'% da receita atribuída';$('salesRevenue').textContent=money(T.revenue);
 }
 function renderContent(){
-  $('contentQueue').innerHTML=members().map(x=>{const a=x.activation.contentAsset;if(!a)return "<div class='contentItem'><div class='thumb pending'>📦</div><div><b>"+x.n+"</b><div class='sub'>Nenhum conteúdo enviado · prazo após entrega da amostra</div></div><button class='btn' disabled title='Aguarde o envio do conteúdo'>Aprovar conteúdo</button></div>";const approved=a.status==='approved';return "<div class='contentItem'><div class='thumb'>"+a.type+"</div><div><b>"+a.title+"</b><div class='sub'>"+x.n+" · "+a.views.toLocaleString('pt-BR')+" visualizações · "+(approved?'Aprovado em '+a.approvedAt:'Aguardando aprovação')+"</div></div><div class='contentActions'>"+(approved?"<button class='btn' disabled title='Conteúdo já aprovado'>Aprovado</button>":"<button class='btn approve' data-id='"+x.id+"'>Aprovar conteúdo</button>")+"<button class='btn'>Abrir conteúdo</button></div></div>"}).join('');
+  $('contentQueue').innerHTML=members().map(x=>{const a=x.activation.contentAsset;if(!a)return "<div class='contentItem'><div class='thumb pending'>📦</div><div><b>"+x.n+"</b><div class='sub'>Nenhum conteúdo enviado · prazo após entrega da amostra</div></div><button class='btn' disabled title='Aguarde o envio do conteúdo'>Aprovar conteúdo</button></div>";const approved=a.status==='approved';return "<div class='contentItem'><div class='thumb'>"+a.type+"</div><div><b>"+a.title+"</b><div class='sub'>"+x.n+" · "+a.views.toLocaleString('pt-BR')+" visualizações · "+(approved?'Aprovado em '+a.approvedAt:'Aguardando aprovação')+"</div></div><div class='contentActions'>"+(approved?"<button class='btn' disabled title='Conteúdo já aprovado'>Aprovado</button>":"<button class='btn approve' data-id='"+x.id+"'>Aprovar conteúdo</button>")+"<button class='btn openContent' data-id='"+x.id+"'>Abrir conteúdo</button></div></div>"}).join('');
   document.querySelectorAll('.approve').forEach(b=>b.onclick=()=>approveContent(+b.dataset.id));
+  document.querySelectorAll('.openContent').forEach(b=>b.onclick=()=>openContent(+b.dataset.id));
 }
 function renderEligible(){
   const accepted=state.creators.filter(x=>x.outreach?.status==='accepted');
+  const addable=accepted.filter(x=>!x.activation);
   $('eligibleCreators').innerHTML=accepted.length?accepted.map(x=>"<div class='eligibleRow'><div class='creator'><span class='creatorPic'>"+(avatarEmoji[x.id]||'👤')+"</span><div><b>"+x.n+"</b><div class='sub'>"+x.h+"</div></div></div>"+(x.activation?"<button class='btn' disabled>Já adicionado</button>":"<button class='btn addEligible' data-id='"+x.id+"'>Adicionar</button>")+"</div>").join(''):"<p class='sub'>Nenhum creator aceito disponível no Outreach.</p>";
+  if(!addable.length)$('eligibleCreators').insertAdjacentHTML('beforeend',"<div class='sub' style='margin-top:10px'>Nenhum creator novo disponível. Convide ou aguarde novos aceites no Outreach.</div>");
   document.querySelectorAll('.addEligible').forEach(b=>b.onclick=()=>addAcceptedCreator(+b.dataset.id));
 }
 function renderAll(){evaluateExceptions();renderHeader();renderFunnel();renderBottleneck();renderPipeline();renderRows();renderBulk();renderSamples();renderEconomics();renderContent();saveState()}
@@ -191,6 +194,14 @@ function runBulk(action){
   toast(status.eligible.length+' elegíveis; '+status.skipped.length+' pulados'+(suffix?' · '+suffix:''));
   renderAll();
 }
+function openContent(id){
+  const x=members().find(v=>v.id===id),a=x?.activation?.contentAsset;if(!x||!a)return;
+  $('contentModalTitle').textContent=a.title;$('contentModalMeta').textContent='Publicado por '+x.n+' · '+(x.activation.postedAt||'data indisponível');
+  $('contentPreview').innerHTML='<div>'+a.type+'<small>'+a.title+'</small></div>';
+  $('contentCreator').textContent=x.n;$('contentType').textContent=a.type;$('contentStatus').textContent=a.status==='approved'?'Aprovado':'Aguardando aprovação';
+  $('contentViews').textContent=Number(a.views||0).toLocaleString('pt-BR');$('contentOrders').textContent=x.activation.orders||0;$('contentRevenue').textContent=money(x.activation.revenue||0);
+  $('goContentResults').dataset.id=x.id;openModal('contentModal');
+}
 function approveContent(id){
   const x=members().find(v=>v.id===id);if(!x?.activation.contentAsset||x.activation.contentAsset.status==='approved')return;
   x.activation.contentAsset.status='approved';x.activation.contentAsset.approvedAt='05/10/2026';toast('Conteúdo aprovado para '+x.n);renderAll();
@@ -204,9 +215,11 @@ $('selectAll').onchange=e=>{selected=e.target.checked?new Set(members().map(x=>x
 $('bulkSample').onclick=()=>runBulk('sample');$('bulkReminder').onclick=()=>runBulk('reminder');$('bulkRepeat').onclick=()=>runBulk('repeat');
 $('editCampaign').onclick=()=>{$('editObjective').value=state.campaign.objective;$('editOwner').value=state.campaign.owner;$('editBudget').value=state.campaign.budget;openModal('campaignModal')};
 $('saveEdit').onclick=()=>{state.campaign.objective=$('editObjective').value.trim()||state.campaign.objective;state.campaign.owner=$('editOwner').value.trim()||state.campaign.owner;state.campaign.budget=Math.max(0,Number($('editBudget').value)||state.campaign.budget);closeModals();toast('Campanha salva');renderAll()};
-$('cancelEdit').onclick=closeModals;$('addCreator').onclick=()=>{renderEligible();openModal('creatorModal')};$('closeCreatorModal').onclick=closeModals;$('modalOverlay').onclick=closeModals;
+$('cancelEdit').onclick=closeModals;$('addCreator').onclick=()=>{renderEligible();openModal('creatorModal')};$('closeCreatorModal').onclick=closeModals;$('goOutreach').onclick=()=>location.href='../outreach/index.html';$('closeContentModal').onclick=closeModals;$('goContentResults').onclick=()=>location.href='../content-results/index.html';$('modalOverlay').onclick=closeModals;
 $('viewPending').onclick=()=>{const p=members().filter(x=>['FOLLOW_UP_SAMPLE','TRACK_SAMPLE','WAIT_FOR_CONTENT'].includes(x.activation.nextAction));toast(p.length?p.map(x=>x.n+': '+nextLabel(x)).join(' · '):'Nenhuma pendência')};
 $('openEconomics').onclick=()=>location.href='../unit-economics/index.html';$('navSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navShortlist').onclick=()=>location.href='../creator-shortlist/index.html';$('navOutreach').onclick=()=>location.href='../outreach/index.html';$('navEconomics').onclick=()=>location.href='../unit-economics/index.html';
+$('periodBtn').onclick=()=>toast('Período fixado em 30 dias neste protótipo');$('userBtn').onclick=()=>toast('Workspace Principal · Daniel Santos');$('market').onchange=()=>toast('Somente Brasil · TikTok Shop disponível neste protótipo');
+$('globalSearch').oninput=e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll('#creatorRows tr').forEach(tr=>tr.style.display=!q||tr.textContent.toLowerCase().includes(q)?'':'none');document.querySelectorAll('#contentQueue .contentItem').forEach(el=>el.style.display=!q||el.textContent.toLowerCase().includes(q)?'':'none')};
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1800)}
 window.__campaignTest={
   reset(){localStorage.removeItem(STORAGE_KEY);location.reload()},
