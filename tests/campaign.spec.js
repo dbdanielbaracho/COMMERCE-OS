@@ -139,3 +139,33 @@ test('Sample tracking and follow-up automation remain visible', async ({page})=>
   await expect(page.locator('.automationNote')).toContainText('Automação de follow-up ativa');
   await expect(page.locator('.automationNote')).not.toContainText('WAIT_FOR_CONTENT');
 });
+
+
+test('Campaign open content shows functional detail modal', async ({page})=>{
+  await openFresh(page);
+  const camila=page.locator('#contentQueue .contentItem').filter({hasText:'Camila Rocha'});
+  await camila.locator('.openContent').click();
+  await expect(page.locator('#contentModal')).toHaveClass(/show/);
+  await expect(page.locator('#contentModalTitle')).toContainText('Teste de cor + hidratação ao vivo');
+  await expect(page.locator('#contentCreator')).toHaveText('Camila Rocha');
+  await expect(page.locator('#contentOrders')).toHaveText('86');
+  await expect(page.locator('#contentRevenue')).toContainText('3.431,40');
+});
+
+test('Campaign topbar matches Outreach behavior and search filters visible rows', async ({page})=>{
+  await openFresh(page);
+  await page.locator('#periodBtn').click();
+  await expect(page.locator('#toast')).toContainText('Período fixado em 30 dias');
+  await page.locator('#userBtn').click();
+  await expect(page.locator('#toast')).toContainText('Workspace Principal');
+  await page.locator('#globalSearch').fill('Camila');
+  await expect(page.locator('#creatorRows tr').filter({hasText:'Camila Rocha'})).toBeVisible();
+  await expect(page.locator('#creatorRows tr').filter({hasText:'Lucas Ferreira'})).toBeHidden();
+});
+
+test('Add creator empty state points back to Outreach when no new accepted creator exists', async ({page})=>{
+  await openFresh(page);
+  await page.locator('#addCreator').click();
+  await expect(page.locator('#eligibleCreators')).toContainText('Nenhum creator novo disponível');
+  await expect(page.locator('#goOutreach')).toHaveText('Abrir Outreach');
+});
