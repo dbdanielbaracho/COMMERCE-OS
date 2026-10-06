@@ -1140,3 +1140,28 @@ O desenho implementa:
 **Gate final:** UI Gates run `37407037818` concluído com **51/51 testes aprovados**.
 
 **Estado:** Campanha funcional fechada para o protótipo local. Conteúdo + resultado atribuído está em design v1 funcional/navegável e pronto para revisão visual/competitiva antes de ser promovido a funcionalidade persistente.
+
+
+### 05/10/2026 — Conteúdo + resultado atribuído v1.1 após revisão competitiva
+A revisão do design v1 contra Kalodata, TikTok Affiliate Performance, FastMoss e Reacher confirmou a arquitetura correta, mas pediu maior profundidade de análise por conteúdo.
+
+**Melhorias aplicadas no v1.1**
+- filtros por tipo de conteúdo (LIVE/Vídeo) e creator;
+- eficiência explícita `Pedidos / 1k views`;
+- provenance e freshness por conteúdo na tabela e no detalhe;
+- detalhe de conteúdo agora mostra fonte e freshness;
+- ação de "Abrir conteúdo publicado" respeita Production Truth: como o fixture DEMO não possui URL real, o botão fica desabilitado com motivo explícito em vez de usar link fictício;
+- separação `Desempenho atribuído` vs `Contexto do negócio` preservada;
+- provisional vs settled preservado;
+- Aprendizado recomendação → decisão → ação → resultado preservado.
+
+**Benchmark confirmado**
+- TikTok Affiliate Performance v3: GMV, orders, items sold, traffic, creators, products, videos e livestreams com filtros e drill-down;
+- Kalodata: Video & Ad e Live com revenue, views e item sold;
+- nosso diferencial continua em provisional/settled, contexto sem causalidade, conexão com Unit Economics e loop de aprendizado.
+
+O primeiro gate do v1.1 falhou por um teste incorreto que procurava o cabeçalho `Pedidos / 1k views` apenas dentro do `tbody`; o produto estava correto. O teste foi corrigido para validar a tabela completa.
+
+**Gate final:** UI Gates run `37407771946` concluído com **53/53 testes aprovados**.
+
+**Estado:** Campanha permanece fechada como protótipo funcional local. Conteúdo + resultado atribuído v1.1 está pronto para revisão visual final antes de promoção para funcional/persistente.
