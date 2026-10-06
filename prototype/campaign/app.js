@@ -229,7 +229,7 @@ function toast(t){$('toast').textContent=t;$('toast').style.display='block';setT
 window.__campaignTest={
   reset(){localStorage.removeItem(STORAGE_KEY);location.reload()},
   setDeliveredPending(id,deliveredAt){const x=state.creators.find(v=>v.id===id);if(!x?.activation)return;x.activation.sample='delivered';x.activation.shipping='delivered';x.activation.stage='sample_delivered';x.activation.content='pending';x.activation.deliveredAt=deliveredAt;x.activation.nextAction='REVIEW';evaluateExceptions(new Date(2026,9,10));renderAll()},
-  setPendingContent(id){const x=state.creators.find(v=>v.id===id);if(!x?.activation)return;x.activation.contentAsset={type:'VIDEO',title:'Conteúdo aguardando aprovação',status:'pending',views:1200};renderAll()},
+  setPendingContent(id){const x=state.creators.find(v=>v.id===id);if(!x?.activation)return;const a={id:'TEST-PENDING',type:'VIDEO',title:'Conteúdo aguardando aprovação',status:'pending',views:1200};x.activation.contentAsset=a;x.activation.contentAssets=[a];renderAll()},
   getState(){return clone(state)}
 };
 renderAll();
