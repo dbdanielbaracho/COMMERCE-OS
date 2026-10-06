@@ -189,6 +189,23 @@ test('Creator Shortlist existing navigation and sort controls work', async ({ pa
   await expect(page.locator('#body tr')).toHaveCount(4);
 });
 
+test('Creator content performance is coherent with creator sales', async ({ page }) => {
+  await page.goto(pageUrl);
+
+  const values = await page.evaluate(() => {
+    const top = C.reduce((a,b)=>a.v>b.v?a:b);
+    const bottom = C.reduce((a,b)=>a.v<b.v?a:b);
+    const topM = contentMetrics(top);
+    const bottomM = contentMetrics(bottom);
+    const maxTop = Math.max(topM.live, topM.video1, topM.video2);
+    const maxBottom = Math.max(bottomM.live, bottomM.video1, bottomM.video2);
+    return { topSales: top.v, bottomSales: bottom.v, maxTop, maxBottom, topName: top.n, bottomName: bottom.n };
+  });
+
+  expect(values.topSales).toBeGreaterThan(values.bottomSales);
+  expect(values.maxTop, `${values.topName} should not have weaker top content than ${values.bottomName}`).toBeGreaterThan(values.maxBottom);
+});
+
 test('Creator Shortlist visual regression', async ({ browser }, testInfo) => {
   const viewport={width:1536,height:960};
   const live=await browser.newPage({viewport});
