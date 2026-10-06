@@ -955,3 +955,32 @@ Após a implementação funcional do Outreach v4, o primeiro UI Gate falhou e a 
 **Gate final:** workflow **UI Gates** run `37399046071` concluído com **success** no commit `8060b93e98e7432b15b48c0e275d83d98931b1e6`.
 
 **Estado:** Outreach v4 fechado em design + funcionalidade para esta etapa. O menu canônico permanece em cinco áreas primárias — Opportunities, Intelligence, Creators, Campaigns e Performance — e **Unit Economics** permanece como nome do módulo.
+
+
+### 05/10/2026 — Unit Economics restaurada e Outreach v4 alinhado ao desenho aprovado
+A verificação externa pós-fechamento identificou uma regressão real: Unit Economics quebrava ao abrir porque o JavaScript ainda exigia o antigo elemento `openCoverage` removido pela navegação canônica. Como não havia teste dedicado da tela, o CI anterior ficou verde sem detectar a falha.
+
+**Unit Economics — correção e novo gate**
+- binding de coverage passou a ser null-safe, preservando `coverageBtn` e `openCoverage2` quando presentes;
+- adicionado `tests/unit-economics.spec.js`;
+- gate verifica ausência de erro JavaScript, waterfall com 9 linhas, gráfico visível e controles críticos de custo/coverage funcionais.
+
+**Outreach v4 — paridade restaurada com desenho aprovado**
+- tabela ajustada para caber em 1536 px sem cortar a coluna Ações;
+- creator aceito agora mostra "Pode enviar" e botão "Enviar amostra";
+- comissão voltou a mostrar selo "Dentro da faixa", "Abaixo da faixa" ou "Acima da faixa", usando a mesma regra inclusiva 10–20% da Creator Shortlist;
+- painel "Ações rápidas" restaurado com Importar da Shortlist, Reenviar falhos, Ver bloqueados e Modelos de mensagem;
+- barra de etapas restaurada como stepper com círculos numerados de 1 a 6;
+- referência visual/funcional do Outreach sincronizada com essas mudanças intencionais;
+- teste de Outreach passou a cobrir largura em 1536 px, amostra após aceite, classificação de comissão, Ações rápidas e stepper.
+
+**Gate final:** workflow UI Gates run `37400723144` concluído com **29/29 testes aprovados**.
+
+**Estado após a rodada:**
+- SKU Opportunity: funcionando e testada;
+- Creator Shortlist: funcionando e testada;
+- Outreach v4: funcionando, testado e novamente alinhado ao desenho aprovado nos itens 1–5;
+- Unit Economics: restaurada e agora protegida por teste automático;
+- pendência visual não bloqueante mantida: drawer/painel do creator cobre parte da tabela, igual à pendência já registrada na Shortlist.
+
+**Decisão:** o bloqueio para seguir à próxima etapa do Marco 1 foi removido. O fluxo SKU → Creator → Proposta → Outreach → Unit Economics volta a fechar tecnicamente no protótipo.
