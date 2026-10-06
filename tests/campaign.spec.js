@@ -169,3 +169,15 @@ test('Add creator empty state points back to Outreach when no new accepted creat
   await expect(page.locator('#eligibleCreators')).toContainText('Nenhum creator novo disponível');
   await expect(page.locator('#goOutreach')).toHaveText('Abrir Outreach');
 });
+
+
+test('Campaign continuity includes both Camila contents and combined attributed totals', async ({page})=>{
+  await openFresh(page);
+  const camilaRows=page.locator('#contentQueue .contentItem').filter({hasText:'Camila Rocha'});
+  await expect(camilaRows).toHaveCount(2);
+  await expect(page.locator('#contentQueue')).toContainText('Teste de cor + hidratação ao vivo');
+  await expect(page.locator('#contentQueue')).toContainText('3 formas de usar o hidratante labial com cor');
+  await expect(page.locator('#creatorRows tr').filter({hasText:'Camila Rocha'})).toContainText('127');
+  await expect(page.locator('#creatorRows tr').filter({hasText:'Camila Rocha'})).toContainText('5.067,30');
+  await expect(page.locator('#campaignRevenue')).toContainText('5.067,30');
+});
