@@ -114,3 +114,40 @@ test('Outreach visual regression', async ({ browser }) => {
   expect(mismatched/(a.width*a.height)).toBeLessThanOrEqual(.002);
   await live.close(); await ref.close();
 });
+
+
+test('Outreach fits at 1536px with Actions column visible', async ({ page }) => {
+  await page.setViewportSize({width:1536,height:960});
+  await page.goto(pageUrl);
+  await expect(page.locator('#body tr').first()).toBeVisible();
+  const overflow=await page.locator('.tablebox').evaluate(el=>el.scrollWidth-el.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+  await expect(page.locator('thead th').filter({hasText:'Ações'})).toBeVisible();
+});
+
+test('Outreach accepted creator can send sample', async ({ page }) => {
+  await page.goto(pageUrl);
+  const lucas=page.locator('#body tr').filter({hasText:'Lucas Ferreira'});
+  await expect(lucas).toContainText('Pode enviar');
+  await expect(lucas.locator('[data-act="sample"]')).toHaveText('Enviar amostra');
+});
+
+test('Outreach commission classification matches Shortlist boundary rules', async ({ page }) => {
+  await page.goto(pageUrl);
+  const lucas=page.locator('#body tr').filter({hasText:'Lucas Ferreira'});
+  const thiago=page.locator('#body tr').filter({hasText:'Thiago Lima'});
+  await expect(lucas).toContainText('Dentro da faixa');
+  await expect(thiago).toContainText('Abaixo da faixa');
+});
+
+test('Outreach restores quick actions and numbered Marco 1 stepper', async ({ page }) => {
+  await page.goto(pageUrl);
+  await expect(page.locator('.quickActions')).toContainText('Ações rápidas');
+  await expect(page.locator('#quickImport')).toHaveText('Importar da Shortlist');
+  await expect(page.locator('#quickRetry')).toHaveText('Reenviar falhos');
+  await expect(page.locator('#quickBlocked')).toHaveText('Ver bloqueados');
+  await expect(page.locator('#quickTemplates')).toHaveText('Modelos de mensagem');
+  await expect(page.locator('.flow i')).toHaveCount(6);
+  await page.locator('#quickBlocked').click();
+  await expect(page.locator('#body tr').filter({hasText:'Bianca Oliveira'})).toBeVisible();
+});
