@@ -924,3 +924,15 @@ A revisão do desenho v3 foi recalibrada porque os números exibidos são DEMO. 
 **Veredito:** design geral aprovado para seguir; superior ao Affiliate Center e em paridade com Reacher/Colaba nesta etapa. A funcionalização só começa após os dois bloqueadores visuais/operacionais acima entrarem no desenho final.
 
 O Documento Mestre v1.5.10 já contém essas regras em §7.11.1; nenhuma mudança normativa adicional foi necessária nesta revisão.
+
+### 05/10/2026 — Outreach v4 aprovado para funcional; menu canônico escolhido
+A revisão v4 aprovou o desenho para seguir à versão funcional, restando a escolha de menu e pequenos ajustes. A decisão foi resolvida pelo Documento Mestre §5.1: usar a navegação canônica em cinco áreas primárias — **Opportunities, Intelligence, Creators, Campaigns e Performance** — com módulos secundários dentro dessas áreas. O nome **Unit Economics** permanece; “Medição” não substitui o nome do módulo.
+
+**Aplicado:**
+- menu canônico começou a ser aplicado em Creator Shortlist, SKU Opportunity, Unit Economics e Outreach;
+- Creator Shortlist e Outreach passaram a compartilhar `prototype/shared/demo-data.js` para continuidade de SKU/creators no protótipo;
+- criada versão funcional do Outreach em `prototype/outreach/` com shell, estilos e comportamento separados;
+- regras implementadas: campanha/amostra condicionadas ao aceite; opt-out e recusa bloqueiam envio; quota/cooldown/dedupe governam elegibilidade; follow-up só após prazo; bulk actions mostram elegíveis/pulados; proposta mostra comissão, comparáveis e margem pós-comissão; exportação ampla segue P0;
+- criada referência funcional congelada e suite `tests/outreach.spec.js` com gates de continuidade Shortlist→Outreach, aceite, opt-out/recusa, quota, follow-up, bulk actions, margem dinâmica, navegação canônica e regressão visual.
+
+Master permanece v1.5.10 porque §5.1 e §7.11.1 já cobrem a decisão; não houve nova regra normativa além da aplicação concreta.
