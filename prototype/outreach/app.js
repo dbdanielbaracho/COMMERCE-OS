@@ -44,7 +44,8 @@ function nextAction(x){
   if(s==='campaign')return "<button class='btn' data-act='campaign' data-id='"+x.id+"'>Ver campanha</button>";
   if(s==='declined')return "<button class='btn' data-act='decline' data-id='"+x.id+"'>Ver recusa</button>";
   if(s==='blocked')return "<span class='badge red'>Opt-out</span>";
-  return "<button class='btn primary' data-act='invite' data-id='"+x.id+"'>Convidar</button>";
+  if(s==='new')return inviteEligible(x)?"<button class='btn primary' data-act='invite' data-id='"+x.id+"'>Convidar</button>":"<span class='badge red'>Cota atingida</span>";
+  return "<span class='badge blue'>Sem ação</span>";
 }
 function sampleText(x){return x.outreach.status==='campaign'?'Enviada':sampleEligible(x)?'Elegível após aceite':'Não enviada'}
 
@@ -134,7 +135,7 @@ function toast(s){$('toast').textContent=s;$('toast').style.display='block';setT
 $('skuName').textContent=SKU.name;$('skuMeta').textContent=SKU.id+' · '+SKU.category;$('skuPrice').textContent=money(SKU.price);$('skuCommission').textContent=SKU.commissionPct+'%';$('skuMargin').textContent=SKU.baseMarginPct.toFixed(1).replace('.',',')+'%';$('skuStock').textContent=SKU.stock;
 $('quotaUsed').textContent=quotaUsed;$('quotaMax').textContent=quotaMax;
 ['statusFilter','ownerFilter','channelFilter'].forEach(id=>$(id).onchange=rows);$('globalSearch').oninput=rows;
-$('all').onchange=e=>{if(e.checked)filtered().forEach(x=>sel.add(x.id));else filtered().forEach(x=>sel.delete(x.id));rows()};
+$('all').onclick=e=>{const visible=filtered();sel=e.currentTarget.checked?new Set(visible.map(x=>x.id)):new Set();rows()};
 $('bulkInvite').onclick=()=>{const p=preview('invite');toast(p.ok.length+' elegíveis; '+p.skip.length+' pulados por estado/quota/cooldown/opt-out')};
 $('bulkFollow').onclick=()=>{const p=preview('follow');toast(p.ok.length+' elegíveis; '+p.skip.length+' pulados')};
 $('bulkCampaign').onclick=()=>{const p=preview('campaign');toast(p.ok.length+' aceitos; '+p.skip.length+' pulados')};
