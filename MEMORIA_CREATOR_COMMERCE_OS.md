@@ -1023,3 +1023,28 @@ Criado `prototype/campaign/` com:
 **Gate de regressão existente:** workflow UI Gates run `37401965879` permaneceu verde com **29/29 testes aprovados** após as mudanças de continuidade.
 
 **Estado:** desenho v1 de Campanha/ativação criado. Ainda não declarar funcional; próxima etapa é revisão de design + comparação competitiva antes da funcionalização e criação dos gates próprios da Campanha.
+
+
+### 05/10/2026 — Campanha/ativação v2 após revisão crítica do v1
+A revisão visual/competitiva do v1 confirmou estrutura correta, mas identificou falta de operação real por creator, sampled-not-posted/SLA, conteúdo/aprovação e margem da campanha. O v1 não foi promovido à versão funcional.
+
+**Campanha v2 — mudanças de desenho:**
+- creators agora exibem owner, próxima ação e código explicável (`FOLLOW_UP_SAMPLE`, `REPEAT_CREATOR`), prazo e ação direta;
+- barra de ações em massa: enviar amostras, lembrar creators e repetir creators;
+- pipeline operacional em quadro: Aceitou → Amostra → Conteúdo → Publicado/Resultado;
+- regra explícita “recebeu amostra e não publicou”, com SLA, lembrete, exceção e `WAIT_FOR_CONTENT`;
+- estados de amostra apresentados em português;
+- funil corrigido para Contatado → Respondeu → Aceitou → Amostra → Publicou → Converteu, sem “Vendeu” duplicado;
+- gargalo agora aponta creator, motivo, prazo e próxima ação;
+- bloco Conteúdo e aprovação com asset DEMO da Camila, miniatura/LIVE, visualizações e botão Aprovar conteúdo;
+- margem da campanha exibe receita, margem antes da comissão, comissão, custo de amostras, frete e margem depois de comissão + amostra + frete;
+- custo da amostra passou a usar `sku.unitCost=9.95` (custo informado pelo lojista), não preço de venda;
+- orçamento mostra gasto/restante e barra de consumo;
+- tendência de vendas adicionada;
+- continuidade preservada via `shared/demo-data.js`: Lucas e Camila são as mesmas entidades de Outreach e Unit Economics.
+
+**Gates próprios criados:** `tests/campaign.spec.js` cobre continuidade/next actions, SLA e sampled-not-posted, estados PT-BR, conteúdo/aprovação, margem, funil, orçamento e bulk actions.
+
+**Gate final:** workflow UI Gates run `37402966722` concluído com **34/34 testes aprovados**.
+
+**Estado:** Campanha v2 está pronta para nova revisão de desenho/benchmark. Ainda não declarar funcional até aprovação visual/competitiva e implementação dos fluxos materiais (editar campanha, adicionar creator aceito, envio real de amostra, lembretes, aprovação e persistência).
