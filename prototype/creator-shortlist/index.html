@@ -83,10 +83,21 @@ function avatar(id){const cs=['#f9d5c4','#cde1ff','#f8d1da','#e2d4ff','#d4f1df']
 function eligible(x){return stock>0 && x.rel!=='active' && x.rel!=='declined'}
 function commissionState(x){return x.cm<10?['Abaixo da faixa','red']:x.cm>20?['Acima da faixa','amber']:['Dentro da faixa','green']}
 function reasonSource(x){const r=x.reason.toLowerCase();return (r.includes('recusa')||r.includes('cooldown')||r.includes('lojista')||r.includes('já trabalhou'))?'Seu histórico':'TikTok'}
+function contentMetrics(x){
+  const base=x.v/1000;
+  return {
+    live:x.live?Math.max(1,base*.25):0,
+    video1:Math.max(1,base*(x.live?.18:.35)),
+    video2:Math.max(.8,base*(x.live?.11:.22)),
+    liveViews:Math.round(80+x.v/520),
+    video1Views:Math.round(45+x.v/900),
+    video2Views:Math.round(30+x.v/1400)
+  };
+}
 function contentHTML(x){
-  const video1=70+x.id*9, video2=42+x.id*7, gmv1=(4.8+x.id*1.1).toFixed(1).replace('.',','), gmv2=(2.9+x.id*.7).toFixed(1).replace('.',',');
-  const live=x.live?"<div class='card' style='padding:10px;margin-bottom:8px'><span class='badge red'>LIVE</span> "+(120+x.id*18)+"K visualizações · <b>R$ "+(7.5+x.id*1.3).toFixed(1).replace('.',',')+"K</b></div>":"";
-  return "<h3>Conteúdos que venderam</h3>"+live+"<div class='card' style='padding:10px;margin-bottom:8px'>▶ Vídeo · "+video1+"K visualizações · <b>R$ "+gmv1+"K</b></div><div class='card' style='padding:10px'>▶ Vídeo · "+video2+"K visualizações · <b>R$ "+gmv2+"K</b></div>";
+  const m=contentMetrics(x),fmt=n=>n.toFixed(1).replace('.',',');
+  const live=x.live?"<div class='card' style='padding:10px;margin-bottom:8px'><span class='badge red'>LIVE</span> "+m.liveViews+"K visualizações · <b>R$ "+fmt(m.live)+"K</b></div>":"";
+  return "<h3>Conteúdos que venderam</h3>"+live+"<div class='card' style='padding:10px;margin-bottom:8px'>▶ Vídeo · "+m.video1Views+"K visualizações · <b>R$ "+fmt(m.video1)+"K</b></div><div class='card' style='padding:10px'>▶ Vídeo · "+m.video2Views+"K visualizações · <b>R$ "+fmt(m.video2)+"K</b></div>";
 }
 function economicsHTML(x){const cs=commissionState(x);return "<h3>Economics deste SKU</h3><div class='card' id='economicsBlock' style='padding:10px'><div class='row'><span>Preço</span><b>R$ 39,90</b></div><div class='row'><span>Custo <span class='source'>Informado pelo usuário</span></span><b>R$ 14,00</b></div><div class='row'><span>Margem de contribuição</span><b>30,1%</b></div><div class='row'><span>Comissão esperada <span class='source'>38 comparáveis</span></span><b>"+x.cm+"% <span class='badge "+cs[1]+"'>"+cs[0]+"</span></b></div></div>"}
 function action(x){if(stock===0)return "<button class='btn act' disabled title='Estoque zerado: reponha o SKU primeiro'>Bloqueado</button>";if(x.rel==='active')return "<button class='btn act campaign' data-action='campaign' data-id='"+x.id+"'>Ver campanha</button>";if(x.rel==='declined')return "<button class='btn act wait' data-action='wait' data-id='"+x.id+"'>Aguardar<br><span class='sub'>até "+x.retry+"</span></button>";if(x.rel==='worked')return "<button class='btn act' data-action='invite' data-id='"+x.id+"'>Convidar de novo</button>";return "<button class='btn primary act' data-action='invite' data-id='"+x.id+"'>Convidar</button>"}
