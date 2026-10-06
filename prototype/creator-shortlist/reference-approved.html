@@ -24,7 +24,13 @@ main{min-width:0}.top{height:58px;background:#fff;border-bottom:1px solid var(--
 <body>
 <div class="app">
 <aside class="side"><div class="brand">Creator Commerce OS</div><div class="nav">
-<button disabled title="Em breve">⌂ Início</button><b class="sub">INTELLIGENCE</b><button disabled title="Wave 2 / depende de provider">Product Research</button><button id="navSku">SKU Opportunity</button><button class="on">Creator Shortlist</button><button disabled title="Em breve">Creator Research</button><button disabled title="Em breve">Shop Research</button><button disabled title="Em breve">Video Research</button><button disabled title="Em breve">LIVE Research</button><b class="sub">CREATORS</b><button disabled title="Em breve">Criadores</button><button disabled title="Em breve">Listas e Segmentos</button><b class="sub">CAMPAIGNS</b><button disabled title="Em breve">Campanhas</button><button disabled title="Disponível na próxima etapa">Outreach</button><button disabled title="Em breve">Conteúdos</button><button disabled title="Em breve">Pedidos</button><button disabled title="Em breve">Performance</button><b class="sub">ANALYTICS</b><button id="navEconomics">Unit Economics</button><button disabled title="Em breve">Relatórios</button></div></aside>
+<button disabled title="Em breve">⌂ Início</button>
+<b class="sub">OPPORTUNITIES</b><button id="navSku">SKU Opportunity</button>
+<b class="sub">INTELLIGENCE</b><button disabled title="Wave 2 / depende de provider">Product Research</button><button disabled title="Em breve">Creator Research</button><button disabled title="Em breve">Shop Research</button><button disabled title="Em breve">Video Research</button><button disabled title="Em breve">LIVE Research</button>
+<b class="sub">CREATORS</b><button class="on">Creator Shortlist</button><button disabled title="Em breve">Criadores</button><button disabled title="Em breve">Listas e Segmentos</button>
+<b class="sub">CAMPAIGNS</b><button id="navOutreach">Outreach</button><button disabled title="Em breve">Campanhas</button><button disabled title="Em breve">Conteúdos</button><button disabled title="Em breve">Samples</button>
+<b class="sub">PERFORMANCE</b><button disabled title="Em breve">Performance</button><button id="navEconomics">Unit Economics</button><button disabled title="Em breve">Relatórios</button>
+</div></aside>
 <main>
 <div class="top"><input id="globalSearch" placeholder="Buscar produtos, criadores, campanhas..."><select id="market"><option>🇧🇷 Brasil · TikTok Shop</option></select><button class="btn" id="periodBtn">Últimos 30 dias</button><button class="btn" id="userBtn">DS · Daniel Santos</button></div>
 <div class="content">
@@ -64,19 +70,11 @@ main{min-width:0}.top{height:58px;background:#fff;border-bottom:1px solid var(--
 <div class="pad" id="pane"></div></aside>
 <div class="toast" id="toast"></div>
 
+<script src="../shared/demo-data.js"></script>
 <script>
-const C=[
-{id:1,n:'Mariana Silva',h:'@marisilva',f:'2,1M',e:'4,8%',v:128400,sim:14,cm:12,rel:'new',relLabel:'Novo',aff:'Muito alta',reason:'Já promoveu 8 produtos similares',p:92,live:true,source:'TikTok',content:'live'},
-{id:2,n:'Lucas Ferreira',h:'@lucasferr',f:'1,8M',e:'3,9%',v:96200,sim:12,cm:10,rel:'worked',relLabel:'Já trabalhou · 15/08/26',aff:'Alta',reason:'Alto engajamento em beleza',p:88,live:false,source:'TikTok',content:'video'},
-{id:3,n:'Camila Rocha',h:'@camilarocha',f:'1,2M',e:'6,1%',v:78500,sim:11,cm:15,rel:'active',relLabel:'Ativo em campanha',aff:'Alta',reason:'Já promoveu 5 produtos similares',p:85,live:true,source:'TikTok',content:'live'},
-{id:4,n:'Juliana Mendes',h:'@julianamendes',f:'680K',e:'5,2%',v:54800,sim:7,cm:18,rel:'new',relLabel:'Novo',aff:'Média',reason:'Conteúdo de maquiagem com boa afinidade',p:78,live:false,source:'TikTok',content:'video'},
-{id:5,n:'Thiago Lima',h:'@thiagolima',f:'420K',e:'4,1%',v:41200,sim:6,cm:8,rel:'worked',relLabel:'Já trabalhou · 12/07/26',aff:'Média',reason:'Já promoveu 3 produtos similares',p:74,live:false,source:'TikTok',content:'video'},
-{id:6,n:'Letícia Santos',h:'@letisantos',f:'310K',e:'5,8%',v:38600,sim:5,cm:12,rel:'new',relLabel:'Novo',aff:'Média',reason:'Engajamento alto e crescimento recente',p:71,live:true,source:'TikTok',content:'live'},
-{id:7,n:'Bianca Oliveira',h:'@biancaoliveira',f:'180K',e:'4,9%',v:28100,sim:3,cm:12,rel:'new',relLabel:'Novo',aff:'Baixa',reason:'Boa afinidade, baixo volume',p:64,live:false,source:'TikTok',content:'video'},
-{id:8,n:'Pedro Martins',h:'@pedromartins',f:'150K',e:'3,1%',v:21700,sim:2,cm:10,rel:'new',relLabel:'Novo',aff:'Baixa',reason:'Novo para o lojista, conteúdo promissor',p:61,live:false,source:'TikTok',content:'video'},
-{id:9,n:'Rafael Costa',h:'@rafaelcosta',f:'950K',e:'3,4%',v:62100,sim:9,cm:10,rel:'declined',relLabel:'Recusou · 21/09/26',aff:'Alta',reason:'Conversão forte, mas recusa recente',p:32,live:false,source:'TikTok',content:'video',retry:'21/12/26'},
-{id:10,n:'Gustavo Almeida',h:'@gustavoalmeida',f:'290K',e:'3,4%',v:32400,sim:4,cm:10,rel:'declined',relLabel:'Recusou · 10/08/26',aff:'Média',reason:'Crescimento recente; aguardando cooldown',p:28,live:false,source:'TikTok',content:'video',retry:'10/11/26'}
-];
+const C=window.CREATOR_COMMERCE_DEMO.creators.map(x=>({...x}));
+/* shared fixture source */
+const LEGACY_C=[];
 let tab='all',sortKey='priority',sortDir='desc',sel=new Set(),stock=248;
 const $=id=>document.getElementById(id),money=n=>'R$ '+(n/1000).toFixed(1).replace('.',',')+'K';
 function avatar(id){const cs=['#f9d5c4','#cde1ff','#f8d1da','#e2d4ff','#d4f1df'];const bg=cs[id%cs.length];return "data:image/svg+xml;base64,"+btoa("<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='32' fill='"+bg+"'/><circle cx='32' cy='24' r='12' fill='#8b5e4b'/><path d='M12 64c3-16 12-24 20-24s17 8 20 24' fill='#223b68'/></svg>")}function spark(id){const ps=[[2,12,5,10,4,8,3],[11,9,10,6,8,4,2],[8,11,7,9,5,7,3],[12,10,8,9,6,5,4]][(id-1)%4];return "<svg class='miniSpark' viewBox='0 0 54 14'><polyline fill='none' stroke='#16a34a' stroke-width='1.5' points='"+ps.map((y,i)=>(i*9)+','+y).join(' ')+"'/></svg>"}function productThumb(seed){const bg=['#ffe4e6','#fef3c7','#dbeafe','#ede9fe'][seed%4],fg=['#e11d48','#d97706','#2563eb','#7c3aed'][seed%4];return "data:image/svg+xml;base64,"+btoa("<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='"+bg+"'/><rect x='22' y='13' width='20' height='39' rx='7' fill='"+fg+"'/><rect x='26' y='20' width='12' height='13' rx='3' fill='white' opacity='.72'/></svg>")}
@@ -120,7 +118,7 @@ $('searchTikTok').onclick=()=>toast('Consulta TikTok em tempo real para este loj
 $('exportBtn').onclick=()=>toast('Exportação ampla aguarda decisão jurídica');
 $('sampleBtn').onclick=()=>toast('Disponível após o convite aceito');
 $('campaignBtn').onclick=()=>toast('Adicionar seleção à campanha');
-$('backSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navEconomics').onclick=()=>location.href='../unit-economics/index.html';$('periodBtn').onclick=()=>toast('Período fixado em 30 dias neste protótipo');$('userBtn').onclick=()=>toast('Workspace Principal · Daniel Santos');$('market').onchange=()=>toast('Somente Brasil · TikTok Shop disponível neste protótipo');
+$('backSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navEconomics').onclick=()=>location.href='../unit-economics/index.html';$('navOutreach').onclick=()=>{sessionStorage.setItem('ccos_outreach_creator_ids',JSON.stringify([...sel]));location.href='../outreach/index.html'};$('periodBtn').onclick=()=>toast('Período fixado em 30 dias neste protótipo');$('userBtn').onclick=()=>toast('Workspace Principal · Daniel Santos');$('market').onchange=()=>toast('Somente Brasil · TikTok Shop disponível neste protótipo');
 $('close').onclick=()=>$('drawer').classList.remove('open');
 document.querySelectorAll('.drawerTabs button').forEach(b=>b.onclick=()=>{const x=C.find(v=>v.n===$('dName').textContent);if(x)pane(x,b.dataset.pane)});
 rows();bulk();
