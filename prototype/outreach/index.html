@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Outreach — Creator Commerce OS</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">Creator Commerce OS</div>
+  <div class="nav">
+    <button disabled title="Em breve">⌂ Início</button>
+    <div class="grp">OPPORTUNITIES</div><button id="navSku">SKU Opportunity</button>
+    <div class="grp">INTELLIGENCE</div>
+    <button disabled title="Wave 2 / depende de provider">Product Research</button>
+    <button disabled title="Em breve">Creator Research</button>
+    <button disabled title="Em breve">Shop Research</button>
+    <button disabled title="Em breve">Video Research</button>
+    <button disabled title="Em breve">LIVE Research</button>
+    <div class="grp">CREATORS</div>
+    <button id="navShortlist">Creator Shortlist</button>
+    <button disabled title="Em breve">Criadores</button>
+    <button disabled title="Em breve">Listas e Segmentos</button>
+    <div class="grp">CAMPAIGNS</div>
+    <button class="on">Outreach</button>
+    <button disabled title="Em breve">Campanhas</button>
+    <button disabled title="Em breve">Conteúdos</button>
+    <button disabled title="Em breve">Samples</button>
+    <div class="grp">PERFORMANCE</div>
+    <button disabled title="Em breve">Performance</button>
+    <button id="navEconomics">Unit Economics</button>
+    <button disabled title="Em breve">Relatórios</button>
+  </div>
+</aside>
+
+<main>
+  <header class="top">
+    <input id="globalSearch" placeholder="Buscar creators...">
+    <select id="market"><option>🇧🇷 Brasil · TikTok Shop</option></select>
+    <button class="btn" id="periodBtn">Últimos 30 dias</button>
+    <button class="btn" id="userBtn">DS · Daniel Santos</button>
+  </header>
+
+  <div class="content">
+    <div class="row headerRow">
+      <div>
+        <div class="sub">Campaigns › Outreach</div>
+        <h1>Outreach</h1>
+        <div class="sub">Convide, acompanhe respostas e leve creators aceitos para campanha.</div>
+      </div>
+      <div class="flow"><span>1 SKU</span><span>2 Shortlist</span><b>3 Outreach</b><span>4 Campanha</span><span>5 Medição</span><span>6 Aprendizado</span></div>
+    </div>
+
+    <section class="card sku">
+      <div class="skuImg">💄</div>
+      <div>
+        <b id="skuName" class="skuTitle"></b>
+        <div class="sub" id="skuMeta"></div>
+        <div class="metrics">
+          <div><span class="sub">Preço</span><br><b id="skuPrice"></b></div>
+          <div><span class="sub">Comissão atual</span><br><b id="skuCommission"></b></div>
+          <div><span class="sub">Margem sem comissão</span><br><b id="skuMargin"></b></div>
+          <div><span class="sub">Estoque</span><br><b id="skuStock"></b></div>
+        </div>
+      </div>
+      <div class="quota">
+        <span class="sub">Convites hoje</span><br>
+        <b><span id="quotaUsed">45</span> de <span id="quotaMax">2500</span></b>
+        <div class="bar"><span id="quotaBar"></span></div>
+        <div class="sub" id="quotaText">1,8% da cota</div>
+      </div>
+    </section>
+
+    <div class="tabs" id="tabs"></div>
+
+    <div class="row">
+      <div class="filters">
+        <select id="statusFilter"><option value="all">Status: Todos</option><option value="waiting">Aguardando</option><option value="responded">Responderam</option><option value="accepted">Aceitaram</option><option value="campaign">Em campanha</option><option value="declined">Recusaram</option><option value="blocked">Bloqueados</option></select>
+        <select id="ownerFilter"><option value="all">Responsável: Todos</option><option>Ana</option><option>Bruno</option><option>Carlos</option></select>
+        <select id="channelFilter"><option value="all">Canal: Todos</option><option>TikTok Affiliate</option></select>
+      </div>
+      <button class="btn" id="exportBtn" disabled title="DECISION REQUIRED / jurídico P0">Exportar seleção</button>
+    </div>
+
+    <section class="card tablebox">
+      <table>
+        <thead><tr><th><input type="checkbox" id="all"></th><th>Creator</th><th>Seguidores</th><th>Prioridade</th><th>Status</th><th>Motivo da escolha</th><th>Último contato</th><th>Próxima ação</th><th>Comissão proposta</th><th>Amostra</th><th>Responsável</th><th>Ações</th></tr></thead>
+        <tbody id="body"></tbody>
+      </table>
+    </section>
+
+    <div class="bulk">
+      <span id="selectedCount">0 selecionados</span>
+      <button class="btn primary" id="bulkInvite" disabled title="Selecione creators">Enviar convite</button>
+      <button class="btn" id="bulkFollow" disabled title="Selecione creators elegíveis para follow-up">Follow-up</button>
+      <button class="btn" id="bulkCampaign" disabled title="Selecione creators aceitos">Adicionar à campanha</button>
+      <span class="sub" id="bulkPreview">Selecione creators para prévia de elegibilidade.</span>
+    </div>
+
+    <div class="bottom">
+      <div class="card"><b>Cota e controle de envio</b><p class="sub">Quota, cooldown, deduplicação, opt-out e suppression são revalidados antes de cada envio.</p></div>
+      <div class="card"><b>Regras de envio</b><p class="check">✓ Cooldowns e deduplicação</p><p class="check">✓ Consentimento / opt-out</p><p class="check">✓ Lista de supressão</p><p class="check">✓ Nunca exceder quota conhecida</p></div>
+      <div class="card"><b>Canal de envio</b><p>● TikTok Affiliate <span class="badge green">Disponível</span></p><p>○ E-mail <span class="badge amber">Em breve</span></p><p class="sub">Apenas canais autorizados são executáveis.</p></div>
+    </div>
+  </div>
+</main>
+</div>
+
+<aside class="drawer" id="drawer">
+  <div class="pad"><div class="row"><div><h2 id="dName"></h2><div id="dHandle" class="sub"></div></div><button class="btn" id="close">×</button></div><div id="dBadges"></div></div>
+  <div class="drawerTabs"><button class="on" data-pane="conversation">Conversa</button><button data-pane="details">Detalhes</button><button data-pane="economics">Economics</button><button data-pane="content">Conteúdos</button></div>
+  <div class="pad" id="pane"></div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script src="../shared/demo-data.js"></script>
+<script src="./app.js"></script>
+</body></html>
