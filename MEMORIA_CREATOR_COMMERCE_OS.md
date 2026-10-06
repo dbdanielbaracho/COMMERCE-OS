@@ -908,3 +908,19 @@ A revisão do desenho Outreach v2 confirmou melhora forte, mas bloqueou a versã
 Também foram aceitos para o contrato de UI/funcionalidade: quota/cota, opt-out/suppression, deduplicação e contato recente; responsável/owner; ações em massa com prévia X elegíveis/Y pulados; proposta formal com comissão/amostra/canal/validade; estados completos de envio; canal indisponível explícito; aba Em campanha; paginação; comissão com provenance e margem depois da comissão; exportação DECISION REQUIRED/P0.
 
 O Documento Mestre foi atualizado para v1.5.10 com §7.11.1 Outreach — contrato de UI e operação v0.1. Próximo gate: redesenhar Outreach v3 com continuidade real da Creator Shortlist antes de qualquer versão funcional.
+
+### 05/10/2026 — Outreach v3: revisão corrigida, foco em design + funcionalidade
+A revisão do desenho v3 foi recalibrada porque os números exibidos são DEMO. Diferenças de preço, estoque, seguidores, nomes e datas de exemplo não bloqueiam o desenho por si só; o que importa é a funcionalidade: na versão funcional, Outreach deve receber o SKU/creators vindos da Creator Shortlist, sem manter uma lista própria desconectada.
+
+**Bloqueadores reais antes da versão funcional:**
+1. “Adicionar à campanha” não pode estar habilitado para creator em estado Aguardando; deve ficar desabilitado com motivo “Disponível após o aceite”.
+2. O menu lateral deve ser o mesmo das outras telas; não criar navegação paralela específica para Outreach.
+
+**Ajustes que podem entrar já na versão funcional:**
+- mostrar margem depois da comissão no Resumo da proposta;
+- corrigir textos de “Motivo da escolha” para razões positivas/explicativas;
+- remover referências internas como “(7.11)” e duplicidade de cota.
+
+**Veredito:** design geral aprovado para seguir; superior ao Affiliate Center e em paridade com Reacher/Colaba nesta etapa. A funcionalização só começa após os dois bloqueadores visuais/operacionais acima entrarem no desenho final.
+
+O Documento Mestre v1.5.10 já contém essas regras em §7.11.1; nenhuma mudança normativa adicional foi necessária nesta revisão.
