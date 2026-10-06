@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campanha — Creator Commerce OS</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">Creator Commerce OS</div>
+  <div class="nav">
+    <button disabled title="Em breve">⌂ Início</button>
+    <div class="grp">OPPORTUNITIES</div><button id="navSku">SKU Opportunity</button>
+    <div class="grp">INTELLIGENCE</div>
+    <button disabled title="Wave 2 / depende de provider">Product Research</button>
+    <button disabled title="Em breve">Creator Research</button>
+    <button disabled title="Em breve">Shop Research</button>
+    <button disabled title="Em breve">Video Research</button>
+    <button disabled title="Em breve">LIVE Research</button>
+    <div class="grp">CREATORS</div>
+    <button id="navShortlist">Creator Shortlist</button>
+    <button disabled title="Em breve">Criadores</button>
+    <button disabled title="Em breve">Listas e Segmentos</button>
+    <div class="grp">CAMPAIGNS</div>
+    <button id="navOutreach">Outreach</button>
+    <button class="on">Campanhas</button>
+    <button disabled title="Em breve">Conteúdos</button>
+    <button disabled title="Em breve">Samples</button>
+    <div class="grp">PERFORMANCE</div>
+    <button disabled title="Em breve">Performance</button>
+    <button id="navEconomics">Unit Economics</button>
+    <button disabled title="Em breve">Relatórios</button>
+  </div>
+</aside>
+
+<main>
+<header class="top">
+  <input id="globalSearch" placeholder="Buscar creator, campanha, conteúdo...">
+  <select><option>🇧🇷 Brasil · TikTok Shop</option></select>
+  <button class="btn">Últimos 30 dias</button>
+  <button class="btn">DS · Daniel Santos</button>
+</header>
+
+<div class="content">
+  <div class="row headerRow">
+    <div>
+      <div class="sub">Campaigns › Campanha</div>
+      <h1 id="campaignName"></h1>
+      <div class="sub">Orquestre creators, amostras, conteúdo e vendas sem sair do fluxo.</div>
+    </div>
+    <div class="flow">
+      <span><i>1</i>SKU</span><span><i>2</i>Shortlist</span><span><i>3</i>Outreach</span><b><i>4</i>Campanha</b><span><i>5</i>Medição</span><span><i>6</i>Aprendizado</span>
+    </div>
+  </div>
+
+  <section class="card campaignHead">
+    <div class="productMark">💄</div>
+    <div>
+      <b id="skuName" class="big"></b>
+      <div class="sub" id="skuMeta"></div>
+      <div class="headMetrics">
+        <div><span class="sub">Objetivo</span><br><b id="objective"></b></div>
+        <div><span class="sub">Período</span><br><b id="dates"></b></div>
+        <div><span class="sub">Responsável</span><br><b id="owner"></b></div>
+        <div><span class="sub">Orçamento</span><br><b id="budget"></b></div>
+      </div>
+    </div>
+    <div class="headActions">
+      <button class="btn">Editar campanha</button>
+      <button class="btn primary">Adicionar creator</button>
+    </div>
+  </section>
+
+  <section class="funnel" id="funnel"></section>
+
+  <section class="card bottleneck">
+    <div><span class="badge amber">Gargalo detectado</span><b id="bottleneck"></b><div class="sub">O sistema destaca a etapa que está travando o funil.</div></div>
+    <button class="btn">Ver pendências</button>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <div class="sectionTitle">Creators na campanha</div>
+      <table>
+        <thead><tr><th>Creator</th><th>Comissão</th><th>Etapa</th><th>Amostra</th><th>Conteúdo</th><th>Pedidos</th><th>Receita</th><th>Ação</th></tr></thead>
+        <tbody id="creatorRows"></tbody>
+      </table>
+    </section>
+
+    <aside class="card brief">
+      <div class="sectionTitle">Configuração</div>
+      <div class="kv"><span>Tipo</span><b id="campaignType"></b></div>
+      <div class="kv"><span>Regra de amostra</span><b id="samplePolicy"></b></div>
+      <div class="kv stack"><span>Briefing</span><b id="brief"></b></div>
+      <div class="kv"><span>Deliverable</span><b>1 conteúdo por creator</b></div>
+      <div class="kv"><span>Aprovação</span><b>Obrigatória antes de publicar</b></div>
+    </aside>
+  </div>
+
+  <div class="grid lower">
+    <section class="card samples">
+      <div class="row"><div class="sectionTitle">Amostras</div><span class="sub">requested → review → approved → shipped → delivered → content_due → posted / expired</span></div>
+      <div id="sampleCards"></div>
+    </section>
+
+    <section class="card economics">
+      <div class="sectionTitle">Impacto em Unit Economics</div>
+      <div class="kv"><span>Custo das amostras</span><b id="sampleCost"></b></div>
+      <div class="kv"><span>Frete das amostras</span><b id="shippingCost"></b></div>
+      <div class="kv"><span>Receita atribuída</span><b id="campaignRevenue"></b></div>
+      <div class="divider"></div>
+      <button class="btn primary" id="openEconomics">Abrir Unit Economics →</button>
+      <div class="sub">Custos de amostra e frete entram no waterfall de margem.</div>
+    </section>
+  </div>
+</div>
+</main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="../shared/demo-data.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
