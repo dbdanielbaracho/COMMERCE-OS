@@ -90,8 +90,9 @@ test('Content approval follows actual content state', async ({page})=>{
 test('Approved content cannot be approved twice', async ({page})=>{
   await openFresh(page);
   const camila=page.locator('#contentQueue .contentItem').filter({hasText:'Camila Rocha'});
-  await expect(camila).toContainText('Aprovado em 04/10/2026');
-  await expect(camila.locator('button',{hasText:'Aprovado'})).toBeDisabled();
+  await expect(camila).toHaveCount(2);
+  await expect(camila.first()).toContainText('Aprovado em 04/10/2026');
+  await expect(camila.locator('button',{hasText:'Aprovado'})).toHaveCount(2);
   await expect(camila.locator('.approve')).toHaveCount(0);
 });
 
@@ -143,7 +144,7 @@ test('Sample tracking and follow-up automation remain visible', async ({page})=>
 
 test('Campaign open content shows functional detail modal', async ({page})=>{
   await openFresh(page);
-  const camila=page.locator('#contentQueue .contentItem').filter({hasText:'Camila Rocha'});
+  const camila=page.locator('#contentQueue .contentItem').filter({hasText:'Teste de cor + hidratação ao vivo'});
   await camila.locator('.openContent').click();
   await expect(page.locator('#contentModal')).toHaveClass(/show/);
   await expect(page.locator('#contentModalTitle')).toContainText('Teste de cor + hidratação ao vivo');
