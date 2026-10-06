@@ -936,3 +936,22 @@ A revisão v4 aprovou o desenho para seguir à versão funcional, restando a esc
 - criada referência funcional congelada e suite `tests/outreach.spec.js` com gates de continuidade Shortlist→Outreach, aceite, opt-out/recusa, quota, follow-up, bulk actions, margem dinâmica, navegação canônica e regressão visual.
 
 Master permanece v1.5.10 porque §5.1 e §7.11.1 já cobrem a decisão; não houve nova regra normativa além da aplicação concreta.
+
+
+### 05/10/2026 — Outreach v4 funcional: UI Gate corrigido e verde
+Após a implementação funcional do Outreach v4, o primeiro UI Gate falhou e a tela não foi considerada concluída até a correção.
+
+**Falhas encontradas pelo gate:**
+- quota no limite ainda deixava a ação visual "Convidar" disponível para creator novo;
+- seleção em massa não atualizava corretamente a prévia "X elegíveis; Y pulados";
+- a padronização da navegação da SKU Opportunity removeu o elemento `coverage`, mas o JavaScript ainda o acessava de forma obrigatória, interrompendo a renderização da tabela antes de `rows()`.
+
+**Correções aplicadas:**
+- creator novo deixa de exibir "Convidar" quando a quota está esgotada e passa a mostrar bloqueio explícito;
+- seleção geral do Outreach reconstrói o conjunto selecionado a partir dos creators visíveis e atualiza a prévia de elegibilidade;
+- SKU Opportunity passou a tolerar a ausência do antigo item `coverage` e ganhou navegação funcional para Creator Shortlist e Outreach;
+- a referência aprovada da SKU Opportunity recebeu a mesma correção executável sem mudança visual.
+
+**Gate final:** workflow **UI Gates** run `37399046071` concluído com **success** no commit `8060b93e98e7432b15b48c0e275d83d98931b1e6`.
+
+**Estado:** Outreach v4 fechado em design + funcionalidade para esta etapa. O menu canônico permanece em cinco áreas primárias — Opportunities, Intelligence, Creators, Campaigns e Performance — e **Unit Economics** permanece como nome do módulo.
