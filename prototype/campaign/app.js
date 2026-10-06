@@ -160,10 +160,15 @@ function renderSamples(){
 function renderEconomics(){
   const T=totals();$('campaignRevenue').textContent=money(T.revenue);$('baseMarginValue').textContent=money(T.baseMargin);$('commissionCost').textContent='− '+money(T.commission);$('sampleCost').textContent='− '+money(T.sample);$('shippingCost').textContent='− '+money(T.ship);$('campaignMargin').textContent=money(T.margin);$('campaignMarginPct').textContent=(T.revenue?T.margin/T.revenue*100:0).toFixed(1).replace('.',',')+'% da receita atribuída';$('salesRevenue').textContent=money(T.revenue);
 }
+function contentAssets(x){return x.activation.contentAssets?.length?x.activation.contentAssets:(x.activation.contentAsset?[x.activation.contentAsset]:[])}
 function renderContent(){
-  $('contentQueue').innerHTML=members().map(x=>{const a=x.activation.contentAsset;if(!a)return "<div class='contentItem'><div class='thumb pending'>📦</div><div><b>"+x.n+"</b><div class='sub'>Nenhum conteúdo enviado · prazo após entrega da amostra</div></div><button class='btn' disabled title='Aguarde o envio do conteúdo'>Aprovar conteúdo</button></div>";const approved=a.status==='approved';return "<div class='contentItem'><div class='thumb'>"+a.type+"</div><div><b>"+a.title+"</b><div class='sub'>"+x.n+" · "+a.views.toLocaleString('pt-BR')+" visualizações · "+(approved?'Aprovado em '+a.approvedAt:'Aguardando aprovação')+"</div></div><div class='contentActions'>"+(approved?"<button class='btn' disabled title='Conteúdo já aprovado'>Aprovado</button>":"<button class='btn approve' data-id='"+x.id+"'>Aprovar conteúdo</button>")+"<button class='btn openContent' data-id='"+x.id+"'>Abrir conteúdo</button></div></div>"}).join('');
-  document.querySelectorAll('.approve').forEach(b=>b.onclick=()=>approveContent(+b.dataset.id));
-  document.querySelectorAll('.openContent').forEach(b=>b.onclick=()=>openContent(+b.dataset.id));
+  $('contentQueue').innerHTML=members().map(x=>{
+    const assets=contentAssets(x);
+    if(!assets.length)return "<div class='contentItem'><div class='thumb pending'>📦</div><div><b>"+x.n+"</b><div class='sub'>Nenhum conteúdo enviado · prazo após entrega da amostra</div></div><button class='btn' disabled title='Aguarde o envio do conteúdo'>Aprovar conteúdo</button></div>";
+    return assets.map(a=>{const approved=a.status==='approved';return "<div class='contentItem'><div class='thumb'>"+(a.type==='VIDEO'?'Vídeo':a.type)+"</div><div><b>"+a.title+"</b><div class='sub'>"+x.n+" · "+Number(a.views||0).toLocaleString('pt-BR')+" visualizações · "+(approved?'Aprovado em '+a.approvedAt:'Aguardando aprovação')+(a.orders!=null?' · '+a.orders+' pedidos':'')+"</div></div><div class='contentActions'>"+(approved?"<button class='btn' disabled title='Conteúdo já aprovado'>Aprovado</button>":"<button class='btn approve' data-id='"+x.id+"' data-asset='"+(a.id||'single')+"'>Aprovar conteúdo</button>")+"<button class='btn openContent' data-id='"+x.id+"' data-asset='"+(a.id||'single')+"'>Abrir conteúdo</button></div></div>"}).join('');
+  }).join('');
+  document.querySelectorAll('.approve').forEach(b=>b.onclick=()=>approveContent(+b.dataset.id,b.dataset.asset));
+  document.querySelectorAll('.openContent').forEach(b=>b.onclick=()=>openContent(+b.dataset.id,b.dataset.asset));
 }
 function renderEligible(){
   const accepted=state.creators.filter(x=>x.outreach?.status==='accepted');
@@ -194,17 +199,17 @@ function runBulk(action){
   toast(status.eligible.length+' elegíveis; '+status.skipped.length+' pulados'+(suffix?' · '+suffix:''));
   renderAll();
 }
-function openContent(id){
-  const x=members().find(v=>v.id===id),a=x?.activation?.contentAsset;if(!x||!a)return;
+function openContent(id,assetId){
+  const x=members().find(v=>v.id===id),assets=x?contentAssets(x):[],a=assets.find(v=>(v.id||'single')===assetId)||assets[0];if(!x||!a)return;
   $('contentModalTitle').textContent=a.title;$('contentModalMeta').textContent='Publicado por '+x.n+' · '+(x.activation.postedAt||'data indisponível');
   $('contentPreview').innerHTML='<div>'+a.type+'<small>'+a.title+'</small></div>';
   $('contentCreator').textContent=x.n;$('contentType').textContent=a.type;$('contentStatus').textContent=a.status==='approved'?'Aprovado':'Aguardando aprovação';
   $('contentViews').textContent=Number(a.views||0).toLocaleString('pt-BR');$('contentOrders').textContent=x.activation.orders||0;$('contentRevenue').textContent=money(x.activation.revenue||0);
   $('goContentResults').dataset.id=x.id;openModal('contentModal');
 }
-function approveContent(id){
-  const x=members().find(v=>v.id===id);if(!x?.activation.contentAsset||x.activation.contentAsset.status==='approved')return;
-  x.activation.contentAsset.status='approved';x.activation.contentAsset.approvedAt='05/10/2026';toast('Conteúdo aprovado para '+x.n);renderAll();
+function approveContent(id,assetId){
+  const x=members().find(v=>v.id===id),assets=x?contentAssets(x):[],a=assets.find(v=>(v.id||'single')===assetId)||assets[0];if(!a||a.status==='approved')return;
+  a.status='approved';a.approvedAt='05/10/2026';toast('Conteúdo aprovado para '+x.n);renderAll();
 }
 function addAcceptedCreator(id){
   const x=state.creators.find(v=>v.id===id);if(!x||x.outreach?.status!=='accepted'||x.activation)return;
