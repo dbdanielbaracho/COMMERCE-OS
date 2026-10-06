@@ -56,3 +56,25 @@ test('Content topbar and search controls are functional', async ({page})=>{
   await expect(page.locator('#contentRows tr').filter({hasText:'Teste de cor + hidratação ao vivo'})).toBeVisible();
   await expect(page.locator('#contentRows tr').filter({hasText:'3 formas de usar'})).toBeHidden();
 });
+
+
+test('Content results filters by type and creator', async ({page})=>{
+  await page.goto(pageUrl);
+  await page.locator('#typeFilter').selectOption('LIVE');
+  await expect(page.locator('#contentRows tr')).toHaveCount(1);
+  await expect(page.locator('#contentRows')).toContainText('Teste de cor + hidratação ao vivo');
+  await page.locator('#typeFilter').selectOption('all');
+  await page.locator('#creatorFilter').selectOption('3');
+  await expect(page.locator('#contentRows tr')).toHaveCount(2);
+});
+
+test('Content results exposes efficiency provenance and honest link state', async ({page})=>{
+  await page.goto(pageUrl);
+  await expect(page.locator('#contentRows')).toContainText('Pedidos / 1k views');
+  await expect(page.locator('#contentRows')).toContainText('freshness 2 h');
+  await page.locator('#contentRows .detail').first().click();
+  await expect(page.locator('#detailSource')).toHaveText('TikTok Shop Affiliate');
+  await expect(page.locator('#detailFreshness')).toHaveText('2 h');
+  await expect(page.locator('#openPublishedContent')).toBeDisabled();
+  await expect(page.locator('#openPublishedContent')).toHaveAttribute('title','URL real do conteúdo não disponível neste fixture DEMO');
+});
