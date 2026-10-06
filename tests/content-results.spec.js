@@ -85,12 +85,10 @@ test('Content v2 filters by type and creator', async ({page})=>{
 
 test('Content v2 numeric headers sort rows', async ({page})=>{
   await page.goto(pageUrl);
-  const firstBefore=await page.locator('#contentRows tr').first().textContent();
-  await page.locator('th[data-sort="views"]').click();
-  const firstAfter=await page.locator('#contentRows tr').first().textContent();
-  expect(firstAfter).not.toBe(firstBefore);
   await page.locator('th[data-sort="views"]').click();
   await expect(page.locator('#contentRows tr').first()).toContainText('Teste de cor + hidratação ao vivo');
+  await page.locator('th[data-sort="views"]').click();
+  await expect(page.locator('#contentRows tr').first()).toContainText('3 formas de usar o hidratante labial com cor');
 });
 
 test('Content v2 confirms continuity with Campaign totals', async ({page})=>{
