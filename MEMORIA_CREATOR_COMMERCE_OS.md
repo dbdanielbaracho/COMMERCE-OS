@@ -862,3 +862,42 @@ A revisão final em planilha confirmou que o único bloqueador restante era a co
 **Pendências não bloqueantes registradas para acabamento futuro:** Economics reagir à comissão específica do creator; drawer não cobrir Prioridade/Ação; produtos similares com métricas/selos LIVE; curva de vendas; “Como calculamos?”; “Adicionar à lista”; tooltip de “Convidar selecionados”; explicação do seletor de país.
 
 **Próxima tela:** Outreach, seguindo o mesmo processo: desenho → comparação competitiva → versão funcional → testes automáticos → revisão adversarial.
+
+### 05/10/2026 — Consolidação da conversa: SKU Opportunity → Creator Shortlist → Outreach
+O Product Owner pediu que as conversas recentes fossem consolidadas no arquivo de memória e que o Documento Mestre só fosse alterado quando houver mudança normativa real.
+
+**SKU Opportunity — estado fechado para esta etapa**
+- desenho e versão funcional passaram por múltiplas rodadas de revisão adversarial;
+- regressões encontradas e corrigidas: busca sem `.trim()`, paginação sem `page/pageSize`, chave ausente em `bind()`, overflow em 1536 px, prompt nativo de custo, sparklines repetidas e inconsistências de labels/provenance;
+- gate Playwright passou a ser obrigatório, com browser smoke test, conteúdo renderizado, controles críticos, largura, captura funcional e visual regression contra referência funcional congelada;
+- SKU Opportunity encerrou esta etapa com regras de estoque, bulk action, comparáveis, Economics, provenance, GMV do SKU e next action protegidas por testes.
+
+**Creator Shortlist — estado fechado para esta etapa**
+- desenho v3 aprovado após comparação com TikTok Affiliate Center, Euka, Cruva, FastMoss e Kalodata;
+- regras normativas incorporadas ao Master v1.5.9: busca on-demand por merchant/workspace, sem base global própria de creators; provenance por métrica; Prioridade heurística explicável; relação com o lojista governando ação; estoque zero como hard block; Lookalike separado de “Parecidos com quem já vendeu”; export amplo DECISION REQUIRED/P0;
+- versão funcional criada em `prototype/creator-shortlist/index.html`;
+- regras relação→ação: Novo → Convidar; Já trabalhou → Convidar de novo; Ativo em campanha → Ver campanha; Recusou recentemente → Aguardar/Ver recusa;
+- bulk invite pula creators inelegíveis e informa exclusões;
+- Conteúdos são creator-specific e coerentes com vendas em similares; LIVE só aparece quando aplicável;
+- Economics do SKU aparece no painel, commission fit é coerente com a faixa observada e provenance diferencia TikTok / Seu histórico / comparáveis;
+- ordenação por Prioridade, vendas, seguidores e engajamento; Lookalike com seed; navegação real para SKU Opportunity e Unit Economics;
+- fechamento confirmado com **14/14 testes Playwright aprovados** após o teste extra de coerência conteúdo × vendas.
+
+**Pendências não bloqueantes da Creator Shortlist**
+- Economics reagir à comissão específica do creator;
+- drawer não cobrir Prioridade/Ação;
+- produtos similares com métricas/selos LIVE;
+- curva de vendas;
+- “Como calculamos?”;
+- “Adicionar à lista”;
+- tooltip em “Convidar selecionados”;
+- explicação do seletor de país.
+
+**Outreach — definição operacional acordada na conversa**
+Outreach é a etapa que transforma um creator escolhido em relacionamento/ativação real. Ele começa depois da Creator Shortlist e deve preservar o contexto do SKU e do creator.
+
+Fluxo operacional esperado: **SKU Opportunity → Creator Shortlist → Outreach → Campanha/ativação → Medição → Aprendizado**.
+
+No Outreach o merchant deve conseguir, quando a integração permitir: enviar convite/mensagem; propor ou negociar comissão; oferecer amostra; acompanhar resposta/aceite/recusa; executar follow-up; evitar contato duplicado; respeitar cooldown/opt-out; e, após aceite, continuar para campanha, sample ou ativação. O diferencial não é “mandar mensagem”, e sim preservar a cadeia **por que este creator → para qual SKU → qual economics/comissão → o que foi proposto → resposta → outcome**.
+
+A revisão do Documento Mestre confirmou que esta definição já está coberta pelas seções 1 (ciclo Activate), 3.1 (JTBD), 7.11 (Outreach), 7.12 (Creator CRM) e pela continuidade definida na Creator Shortlist. Portanto, **nenhuma alteração normativa adicional no Master foi necessária nesta conversa**.
