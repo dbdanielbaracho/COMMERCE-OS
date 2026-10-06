@@ -13,7 +13,7 @@ function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
 const $=id=>document.getElementById(id);
 const money=n=>'R$ '+Number(n||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const statePt={requested:'Solicitada',review:'Em análise',approved:'Aprovada',shipped:'Enviada',delivered:'Entregue',content_due:'Aguardando conteúdo',posted:'Publicada',expired:'Expirada',pending:'Pendente'};
-const actionLabel={FOLLOW_UP_SAMPLE:'Enviar amostra',WAIT_FOR_CONTENT:'Aguardar conteúdo',REPEAT_CREATOR:'Repetir creator'};
+const actionLabel={FOLLOW_UP_SAMPLE:'Enviar amostra',TRACK_SAMPLE:'Acompanhar entrega',WAIT_FOR_CONTENT:'Aguardar conteúdo',REPEAT_CREATOR:'Repetir creator'};
 const avatarEmoji={2:'🧑🏻',3:'👩🏽',1:'👩🏻',4:'👩🏼',5:'🧑🏽',6:'👩🏾',7:'👩🏻',8:'🧑🏼',9:'🧑🏾',10:'🧑🏻'};
 let selected=new Set();
 
@@ -74,6 +74,7 @@ function stageView(x){
 function due(x){
   const a=x.activation;
   if(a.nextAction==='FOLLOW_UP_SAMPLE')return a.shipDue||'—';
+  if(a.nextAction==='TRACK_SAMPLE')return a.tracking?.nextCheck||'—';
   if(a.nextAction==='WAIT_FOR_CONTENT')return a.contentDue||'—';
   return '—';
 }
@@ -81,7 +82,7 @@ function nextLabel(x){return actionLabel[x.activation.nextAction]||'Revisar'}
 function actionReason(x,action){
   const a=x.activation;
   if(action==='sample')return a.nextAction==='FOLLOW_UP_SAMPLE'?null:'Creator não está aguardando envio de amostra';
-  if(action==='reminder')return ['FOLLOW_UP_SAMPLE','WAIT_FOR_CONTENT'].includes(a.nextAction)?null:'Creator não tem follow-up pendente';
+  if(action==='reminder')return ['FOLLOW_UP_SAMPLE','TRACK_SAMPLE','WAIT_FOR_CONTENT'].includes(a.nextAction)?null:'Creator não tem follow-up pendente';
   if(action==='repeat')return a.nextAction==='REPEAT_CREATOR'?null:'Creator ainda não está elegível para repetição';
   return null;
 }
@@ -173,11 +174,12 @@ function openModal(id){$('modalOverlay').classList.add('show');$(id).classList.a
 function closeModals(){$('modalOverlay').classList.remove('show');document.querySelectorAll('.modal').forEach(x=>x.classList.remove('show'))}
 function sendSample(x){
   if(actionReason(x,'sample'))return false;
-  x.activation.stage='sample_shipped';x.activation.sample='shipped';x.activation.shipping='shipped';x.activation.tracking={status:'Enviada',carrier:'Correios',code:'BR'+String(Date.now()).slice(-9)+'BR',nextCheck:'10/10/2026 09:00'};x.activation.reminder='Acompanhar entrega';x.activation.nextAction='WAIT_FOR_CONTENT';x.activation.contentDue='14/10/2026';return true;
+  x.activation.stage='sample_shipped';x.activation.sample='shipped';x.activation.shipping='shipped';x.activation.tracking={status:'Enviada',carrier:'Correios',code:'BR'+String(Date.now()).slice(-9)+'BR',nextCheck:'10/10/2026 09:00'};x.activation.reminder='Acompanhar entrega';x.activation.nextAction='TRACK_SAMPLE';x.activation.contentDue='—';return true;
 }
 function runRowAction(id){
   const x=members().find(v=>v.id===id);if(!x)return;
   if(x.activation.nextAction==='FOLLOW_UP_SAMPLE'){sendSample(x);toast('Amostra enviada para '+x.n);renderAll();return}
+  if(x.activation.nextAction==='TRACK_SAMPLE'){toast('Tracking consultado para '+x.n);return}
   if(x.activation.nextAction==='WAIT_FOR_CONTENT'){toast('Lembrete enviado para '+x.n);return}
   if(x.activation.nextAction==='REPEAT_CREATOR'){toast('Creator preparado para nova ativação: '+x.n);return}
 }
@@ -203,7 +205,7 @@ $('bulkSample').onclick=()=>runBulk('sample');$('bulkReminder').onclick=()=>runB
 $('editCampaign').onclick=()=>{$('editObjective').value=state.campaign.objective;$('editOwner').value=state.campaign.owner;$('editBudget').value=state.campaign.budget;openModal('campaignModal')};
 $('saveEdit').onclick=()=>{state.campaign.objective=$('editObjective').value.trim()||state.campaign.objective;state.campaign.owner=$('editOwner').value.trim()||state.campaign.owner;state.campaign.budget=Math.max(0,Number($('editBudget').value)||state.campaign.budget);closeModals();toast('Campanha salva');renderAll()};
 $('cancelEdit').onclick=closeModals;$('addCreator').onclick=()=>{renderEligible();openModal('creatorModal')};$('closeCreatorModal').onclick=closeModals;$('modalOverlay').onclick=closeModals;
-$('viewPending').onclick=()=>{const p=members().filter(x=>['FOLLOW_UP_SAMPLE','WAIT_FOR_CONTENT'].includes(x.activation.nextAction));toast(p.length?p.map(x=>x.n+': '+nextLabel(x)).join(' · '):'Nenhuma pendência')};
+$('viewPending').onclick=()=>{const p=members().filter(x=>['FOLLOW_UP_SAMPLE','TRACK_SAMPLE','WAIT_FOR_CONTENT'].includes(x.activation.nextAction));toast(p.length?p.map(x=>x.n+': '+nextLabel(x)).join(' · '):'Nenhuma pendência')};
 $('openEconomics').onclick=()=>location.href='../unit-economics/index.html';$('navSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navShortlist').onclick=()=>location.href='../creator-shortlist/index.html';$('navOutreach').onclick=()=>location.href='../outreach/index.html';$('navEconomics').onclick=()=>location.href='../unit-economics/index.html';
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1800)}
 window.__campaignTest={
