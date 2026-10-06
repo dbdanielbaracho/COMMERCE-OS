@@ -984,3 +984,42 @@ A verificação externa pós-fechamento identificou uma regressão real: Unit Ec
 - pendência visual não bloqueante mantida: drawer/painel do creator cobre parte da tabela, igual à pendência já registrada na Shortlist.
 
 **Decisão:** o bloqueio para seguir à próxima etapa do Marco 1 foi removido. O fluxo SKU → Creator → Proposta → Outreach → Unit Economics volta a fechar tecnicamente no protótipo.
+
+
+### 05/10/2026 — Continuidade Unit Economics e primeiro desenho de Campanha/ativação
+A verificação pós-Outreach confirmou que o bloqueio anterior estava removido e trouxe três observações não bloqueantes antes de Campanha: Unit Economics ainda usava creators próprios, itens "Em breve" do menu pareciam links ativos e "Escalar campanha" não explicava o bloqueio no próprio botão.
+
+**Unit Economics — ajustes de continuidade**
+- passou a ler creators de `prototype/shared/demo-data.js`;
+- a tabela econômica agora usa os mesmos creators aceitos/ativos do fluxo, incluindo Lucas Ferreira e Camila Rocha;
+- itens indisponíveis do menu passaram a exibir estado desabilitado e motivo;
+- "Escalar campanha" ganhou motivo explícito no próprio botão;
+- link de Campanhas preparado no menu.
+
+**Fixture compartilhada**
+- `shared/demo-data.js` ganhou bloco `campaign` e estados de ativação para Lucas e Camila;
+- Lucas: aceite + amostra aprovada, envio pendente;
+- Camila: amostra entregue, conteúdo publicado, pedidos/receita DEMO;
+- custos de amostra e frete ficam no mesmo fixture para conexão posterior com Unit Economics.
+
+**Primeiro desenho de Campanha/ativação**
+Criado `prototype/campaign/` com:
+- dados da campanha: objetivo, produto, creators, comissão, regra de amostra, briefing, datas, responsável e orçamento;
+- stepper do Marco 1;
+- funil targeted/contacted/replied/accepted/sampled/posted/converted adaptado para a UI;
+- gargalo automático visível;
+- tabela de creators com Lucas e Camila vindos do mesmo arquivo compartilhado;
+- gestão visual de amostras por estados;
+- caso "recebeu amostra e não publicou" previsto no desenho;
+- ligação visual com Unit Economics e custos de amostra/frete;
+- menu canônico de cinco áreas.
+
+**Benchmark de desenho a revisar**
+- Reacher: CRM + status/mensagens/amostras/GMV e fila de samples;
+- Cruva: pipeline creator-first e workflow de sample → post → repeat;
+- Euka: campanhas/contests, regras, budget, deliverables e usage rights;
+- TikTok Affiliate Center: baseline nativo de samples/collaboration.
+
+**Gate de regressão existente:** workflow UI Gates run `37401965879` permaneceu verde com **29/29 testes aprovados** após as mudanças de continuidade.
+
+**Estado:** desenho v1 de Campanha/ativação criado. Ainda não declarar funcional; próxima etapa é revisão de design + comparação competitiva antes da funcionalização e criação dos gates próprios da Campanha.
