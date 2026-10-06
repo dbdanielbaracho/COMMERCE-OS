@@ -29,8 +29,8 @@ window.CREATOR_COMMERCE_DEMO = {
   contentResults: {
     businessContext: {orders: 412, revenue: 16438.00, period: 'Últimos 30 dias', source: 'TikTok Shop · loja', freshness: '2 h'},
     contents: [
-      {id:'CNT-001',creatorId:3,type:'LIVE',title:'Teste de cor + hidratação ao vivo',publishedAt:'04/10/2026 19:30',views:48200,orders:86,revenue:3431.40,settledOrders:63,settledRevenue:2513.70,provisionalOrders:23,provisionalRevenue:917.70,source:'TikTok Shop Affiliate',status:'MEASURED_PROVISIONAL',link:'#live-demo'},
-      {id:'CNT-002',creatorId:3,type:'VIDEO',title:'3 formas de usar o hidratante labial com cor',publishedAt:'02/10/2026 14:10',views:31600,orders:41,revenue:1635.90,settledOrders:34,settledRevenue:1356.60,provisionalOrders:7,provisionalRevenue:279.30,source:'TikTok Shop Affiliate',status:'MEASURED_PROVISIONAL',link:'#video-demo'}
+      {id:'CNT-001',creatorId:3,type:'LIVE',title:'Teste de cor + hidratação ao vivo',publishedAt:'04/10/2026 19:30',views:48200,orders:86,revenue:3431.40,settledOrders:63,settledRevenue:2513.70,provisionalOrders:23,provisionalRevenue:917.70,source:'TikTok Shop Affiliate',freshness:'2 h',status:'MEASURED_PROVISIONAL',link:null,linkReason:'URL real do conteúdo não disponível neste fixture DEMO'},
+      {id:'CNT-002',creatorId:3,type:'VIDEO',title:'3 formas de usar o hidratante labial com cor',publishedAt:'02/10/2026 14:10',views:31600,orders:41,revenue:1635.90,settledOrders:34,settledRevenue:1356.60,provisionalOrders:7,provisionalRevenue:279.30,source:'TikTok Shop Affiliate',freshness:'2 h',status:'MEASURED_PROVISIONAL',link:null,linkReason:'URL real do conteúdo não disponível neste fixture DEMO'}
     ],
     learning: [
       {creatorId:3,recommendation:'Repetir creator com conteúdo LIVE',decision:'Aprovada',action:'LIVE publicada + comissão 15%',result:'127 pedidos atribuídos · R$ 5.067,30 · margem positiva'},
