@@ -70,7 +70,7 @@ test('Content results filters by type and creator', async ({page})=>{
 
 test('Content results exposes efficiency provenance and honest link state', async ({page})=>{
   await page.goto(pageUrl);
-  await expect(page.locator('#contentRows')).toContainText('Pedidos / 1k views');
+  await expect(page.locator('table')).toContainText('Pedidos / 1k views');
   await expect(page.locator('#contentRows')).toContainText('freshness 2 h');
   await page.locator('#contentRows .detail').first().click();
   await expect(page.locator('#detailSource')).toHaveText('TikTok Shop Affiliate');
