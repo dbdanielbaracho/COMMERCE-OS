@@ -1165,3 +1165,42 @@ O primeiro gate do v1.1 falhou por um teste incorreto que procurava o cabeçalho
 **Gate final:** UI Gates run `37407771946` concluído com **53/53 testes aprovados**.
 
 **Estado:** Campanha permanece fechada como protótipo funcional local. Conteúdo + resultado atribuído v1.1 está pronto para revisão visual final antes de promoção para funcional/persistente.
+
+
+### 05/10/2026 — Conteúdo + resultado atribuído v2 após revisão do v1
+A revisão visual do v1 apontou quatro bloqueadores antes da funcionalização: divergência de continuidade com Campanha, lucro tratado como confirmado apesar de pedidos provisórios, ausência de margem por conteúdo/creator e métricas inferiores a FastMoss/Kalodata. Os itens rápidos de linguagem, aprendizado, ordenação, miniaturas e participação contextual também foram incorporados.
+
+**Continuidade Campanha ↔ Conteúdo**
+- o vídeo da Camila foi incorporado à mesma campanha `CMP-001`;
+- Campanha passou a usar LIVE + Vídeo, totalizando 127 pedidos e R$ 5.067,30 atribuídos;
+- `contentAssets` na Campanha passa a conter os dois conteúdos;
+- margem da Campanha agora usa os mesmos resultados agregados da tela Conteúdo;
+- modal de conteúdo da Campanha passou a mostrar pedidos/receita do asset aberto, não o total da creator.
+
+**Conteúdo + resultado v2**
+- margem atribuída total e por conteúdo, depois de comissão + rateio de amostra/frete;
+- resumo por creator com views, pedidos, receita, margem e estado de lucro;
+- estado de lucro apresentado como `Lucro incompleto · provisório` enquanto houver pedidos provisórios;
+- aprendizado da Camila corrigido para “margem positiva, ainda provisória”;
+- conversão por conteúdo;
+- receita por 1.000 views;
+- tendência de receita de 7 dias por conteúdo e no detalhe;
+- participação do atribuído na receita da loja, sem inferência causal;
+- estados e linguagem em PT-BR: Provisório, Liquidado, Vídeo, Atualizado há 2 h;
+- aprendizado ganhou bloco de Reutilização explícito para próxima Shortlist;
+- cabeçalhos numéricos passaram a ordenar em ambas as direções;
+- miniaturas passaram a diferenciar visualmente LIVE e Vídeo;
+- continuidade explícita com a Campanha em bloco próprio.
+
+**Production Truth**
+- links reais de conteúdo continuam ausentes no fixture DEMO; botão permanece desabilitado com motivo, sem URL fictícia.
+
+**Gates**
+- Campanha ganhou gate de continuidade para 2 conteúdos, 127 pedidos e R$ 5.067,30;
+- Conteúdo v2 ganhou gates de margem, lucro provisório, conversão, receita/1k views, tendências, PT-BR, participação contextual, aprendizado reutilizável, ordenação, provenance e continuidade com Campanha;
+- um bug real encontrado no gate foi corrigido: o modal da Campanha mostrava 127 pedidos totais ao abrir a LIVE, em vez dos 86 pedidos do conteúdo específico;
+- um teste de ordenação foi corrigido porque ordem decrescente por views coincidia com a ordem inicial por receita; agora valida as duas direções.
+
+**Gate final:** UI Gates run `37408726315` concluído com **56/56 testes aprovados**.
+
+**Estado:** Campanha permanece funcional e consistente com a nova fonte compartilhada. Conteúdo + resultado atribuído v2 está pronto para revisão visual final. Ainda não promover a funcional/persistente até aprovação do desenho.
