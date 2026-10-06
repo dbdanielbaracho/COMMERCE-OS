@@ -901,3 +901,10 @@ Fluxo operacional esperado: **SKU Opportunity → Creator Shortlist → Outreach
 No Outreach o merchant deve conseguir, quando a integração permitir: enviar convite/mensagem; propor ou negociar comissão; oferecer amostra; acompanhar resposta/aceite/recusa; executar follow-up; evitar contato duplicado; respeitar cooldown/opt-out; e, após aceite, continuar para campanha, sample ou ativação. O diferencial não é “mandar mensagem”, e sim preservar a cadeia **por que este creator → para qual SKU → qual economics/comissão → o que foi proposto → resposta → outcome**.
 
 A revisão do Documento Mestre confirmou que esta definição já está coberta pelas seções 1 (ciclo Activate), 3.1 (JTBD), 7.11 (Outreach), 7.12 (Creator CRM) e pela continuidade definida na Creator Shortlist. Portanto, **nenhuma alteração normativa adicional no Master foi necessária nesta conversa**.
+
+### 05/10/2026 — Outreach v2: revisão adversarial e contrato v1.5.10
+A revisão do desenho Outreach v2 confirmou melhora forte, mas bloqueou a versão funcional por quatro problemas: inconsistência de SKU/creators versus Creator Shortlist; campanha liberada antes do aceite; follow-up com data passada; menu lateral divergente das telas anteriores.
+
+Também foram aceitos para o contrato de UI/funcionalidade: quota/cota, opt-out/suppression, deduplicação e contato recente; responsável/owner; ações em massa com prévia X elegíveis/Y pulados; proposta formal com comissão/amostra/canal/validade; estados completos de envio; canal indisponível explícito; aba Em campanha; paginação; comissão com provenance e margem depois da comissão; exportação DECISION REQUIRED/P0.
+
+O Documento Mestre foi atualizado para v1.5.10 com §7.11.1 Outreach — contrato de UI e operação v0.1. Próximo gate: redesenhar Outreach v3 com continuidade real da Creator Shortlist antes de qualquer versão funcional.
