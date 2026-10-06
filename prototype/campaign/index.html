@@ -1,126 +1,47 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Campanha — Creator Commerce OS</title>
-<link rel="stylesheet" href="./styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campanha — Creator Commerce OS</title><link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-<div class="app">
-<aside class="side">
-  <div class="brand">Creator Commerce OS</div>
-  <div class="nav">
-    <button disabled title="Em breve">⌂ Início</button>
-    <div class="grp">OPPORTUNITIES</div><button id="navSku">SKU Opportunity</button>
-    <div class="grp">INTELLIGENCE</div>
-    <button disabled title="Wave 2 / depende de provider">Product Research</button>
-    <button disabled title="Em breve">Creator Research</button>
-    <button disabled title="Em breve">Shop Research</button>
-    <button disabled title="Em breve">Video Research</button>
-    <button disabled title="Em breve">LIVE Research</button>
-    <div class="grp">CREATORS</div>
-    <button id="navShortlist">Creator Shortlist</button>
-    <button disabled title="Em breve">Criadores</button>
-    <button disabled title="Em breve">Listas e Segmentos</button>
-    <div class="grp">CAMPAIGNS</div>
-    <button id="navOutreach">Outreach</button>
-    <button class="on">Campanhas</button>
-    <button disabled title="Em breve">Conteúdos</button>
-    <button disabled title="Em breve">Samples</button>
-    <div class="grp">PERFORMANCE</div>
-    <button disabled title="Em breve">Performance</button>
-    <button id="navEconomics">Unit Economics</button>
-    <button disabled title="Em breve">Relatórios</button>
-  </div>
-</aside>
-
-<main>
-<header class="top">
-  <input id="globalSearch" placeholder="Buscar creator, campanha, conteúdo...">
-  <select><option>🇧🇷 Brasil · TikTok Shop</option></select>
-  <button class="btn">Últimos 30 dias</button>
-  <button class="btn">DS · Daniel Santos</button>
-</header>
-
+<body><div class="app">
+<aside class="side"><div class="brand">Creator Commerce OS</div><div class="nav">
+<button disabled title="Em breve">⌂ Início</button>
+<div class="grp">OPPORTUNITIES</div><button id="navSku">SKU Opportunity</button>
+<div class="grp">INTELLIGENCE</div><button disabled title="Wave 2 / depende de provider">Product Research</button><button disabled title="Em breve">Creator Research</button><button disabled title="Em breve">Shop Research</button><button disabled title="Em breve">Video Research</button><button disabled title="Em breve">LIVE Research</button>
+<div class="grp">CREATORS</div><button id="navShortlist">Creator Shortlist</button><button disabled title="Em breve">Criadores</button><button disabled title="Em breve">Listas e Segmentos</button>
+<div class="grp">CAMPAIGNS</div><button id="navOutreach">Outreach</button><button class="on">Campanhas</button><button disabled title="Em breve">Conteúdos</button><button disabled title="Em breve">Samples</button>
+<div class="grp">PERFORMANCE</div><button disabled title="Em breve">Performance</button><button id="navEconomics">Unit Economics</button><button disabled title="Em breve">Relatórios</button>
+</div></aside>
+<main><header class="top"><input id="globalSearch" placeholder="Buscar creator, campanha, conteúdo..."><select><option>🇧🇷 Brasil · TikTok Shop</option></select><button class="btn">Últimos 30 dias</button><button class="btn">DS · Daniel Santos</button></header>
 <div class="content">
-  <div class="row headerRow">
-    <div>
-      <div class="sub">Campaigns › Campanha</div>
-      <h1 id="campaignName"></h1>
-      <div class="sub">Orquestre creators, amostras, conteúdo e vendas sem sair do fluxo.</div>
-    </div>
-    <div class="flow">
-      <span><i>1</i>SKU</span><span><i>2</i>Shortlist</span><span><i>3</i>Outreach</span><b><i>4</i>Campanha</b><span><i>5</i>Medição</span><span><i>6</i>Aprendizado</span>
-    </div>
-  </div>
+<div class="row headerRow"><div><div class="sub">Campaigns › Campanha</div><h1 id="campaignName"></h1><div class="sub">Orquestre creators, amostras, conteúdo e vendas com próxima ação explícita.</div></div>
+<div class="flow"><span><i>1</i>SKU</span><span><i>2</i>Shortlist</span><span><i>3</i>Outreach</span><b><i>4</i>Campanha</b><span><i>5</i>Medição</span><span><i>6</i>Aprendizado</span></div></div>
 
-  <section class="card campaignHead">
-    <div class="productMark">💄</div>
-    <div>
-      <b id="skuName" class="big"></b>
-      <div class="sub" id="skuMeta"></div>
-      <div class="headMetrics">
-        <div><span class="sub">Objetivo</span><br><b id="objective"></b></div>
-        <div><span class="sub">Período</span><br><b id="dates"></b></div>
-        <div><span class="sub">Responsável</span><br><b id="owner"></b></div>
-        <div><span class="sub">Orçamento</span><br><b id="budget"></b></div>
-      </div>
-    </div>
-    <div class="headActions">
-      <button class="btn">Editar campanha</button>
-      <button class="btn primary">Adicionar creator</button>
-    </div>
-  </section>
+<section class="card campaignHead"><div class="productMark">💄</div><div><b id="skuName" class="big"></b><div class="sub" id="skuMeta"></div>
+<div class="headMetrics"><div><span class="sub">Objetivo</span><br><b id="objective"></b></div><div><span class="sub">Período</span><br><b id="dates"></b></div><div><span class="sub">Responsável</span><br><b id="owner"></b></div><div><span class="sub">Orçamento</span><br><b id="budget"></b><div class="sub" id="budgetUsage"></div></div></div>
+<div class="budgetBar"><span id="budgetBar"></span></div></div><div class="headActions"><button class="btn" id="editCampaign">Editar campanha</button><button class="btn primary" id="addCreator">Adicionar creator</button></div></section>
 
-  <section class="funnel" id="funnel"></section>
+<section class="funnel" id="funnel"></section>
+<section class="card bottleneck"><div><span class="badge amber">Gargalo detectado</span><b id="bottleneck"></b><div class="sub" id="bottleneckDetail"></div></div><button class="btn" id="viewPending">Ver pendências</button></section>
 
-  <section class="card bottleneck">
-    <div><span class="badge amber">Gargalo detectado</span><b id="bottleneck"></b><div class="sub">O sistema destaca a etapa que está travando o funil.</div></div>
-    <button class="btn">Ver pendências</button>
-  </section>
+<section class="card pipelineWrap"><div class="sectionTitle">Pipeline operacional</div><div class="pipeline">
+<div class="pipeCol"><span>Aceitou</span><div id="pipeAccepted"></div></div><div class="pipeCol"><span>Amostra</span><div id="pipeSample"></div></div><div class="pipeCol"><span>Conteúdo</span><div id="pipeContent"></div></div><div class="pipeCol"><span>Publicado / Resultado</span><div id="pipeResult"></div></div>
+</div></section>
 
-  <div class="grid">
-    <section class="card">
-      <div class="sectionTitle">Creators na campanha</div>
-      <table>
-        <thead><tr><th>Creator</th><th>Comissão</th><th>Etapa</th><th>Amostra</th><th>Conteúdo</th><th>Pedidos</th><th>Receita</th><th>Ação</th></tr></thead>
-        <tbody id="creatorRows"></tbody>
-      </table>
-    </section>
+<div class="grid"><section class="card creatorsCard"><div class="row tableTitle"><div class="sectionTitle">Creators na campanha</div><span class="sub">Owner + próxima ação + ações em massa</span></div>
+<table><thead><tr><th><input type="checkbox" id="selectAll"></th><th>Creator</th><th>Comissão</th><th>Etapa</th><th>Owner</th><th>Próxima ação</th><th>Prazo</th><th>Pedidos</th><th>Receita</th><th>Ação</th></tr></thead><tbody id="creatorRows"></tbody></table>
+<div class="bulk"><b id="selectedCount">0 selecionados</b><button class="btn" id="bulkSample" disabled>Enviar amostras</button><button class="btn" id="bulkReminder" disabled>Lembrar creators</button><button class="btn" id="bulkRepeat" disabled>Repetir creators</button></div></section>
 
-    <aside class="card brief">
-      <div class="sectionTitle">Configuração</div>
-      <div class="kv"><span>Tipo</span><b id="campaignType"></b></div>
-      <div class="kv"><span>Regra de amostra</span><b id="samplePolicy"></b></div>
-      <div class="kv stack"><span>Briefing</span><b id="brief"></b></div>
-      <div class="kv"><span>Deliverable</span><b>1 conteúdo por creator</b></div>
-      <div class="kv"><span>Aprovação</span><b>Obrigatória antes de publicar</b></div>
-    </aside>
-  </div>
+<aside class="card brief"><div class="sectionTitle">Configuração</div><div class="kv"><span>Tipo</span><b id="campaignType"></b></div><div class="kv"><span>Regra de amostra</span><b id="samplePolicy"></b></div><div class="kv stack"><span>Briefing</span><b id="brief"></b></div><div class="kv"><span>Deliverable</span><b>1 conteúdo por creator</b></div><div class="kv"><span>Aprovação</span><b>Obrigatória antes de publicar</b></div><div class="kv"><span>SLA após entrega</span><b id="sampleSla"></b></div></aside></div>
 
-  <div class="grid lower">
-    <section class="card samples">
-      <div class="row"><div class="sectionTitle">Amostras</div><span class="sub">requested → review → approved → shipped → delivered → content_due → posted / expired</span></div>
-      <div id="sampleCards"></div>
-    </section>
+<div class="grid lower"><section class="card samples"><div class="row"><div class="sectionTitle">Amostras</div><span class="sub">Solicitada → Em análise → Aprovada → Enviada → Entregue → Aguardando conteúdo → Publicada / Expirada</span></div><div id="sampleCards"></div>
+<div class="exceptionRule"><b>Regra automática: “recebeu amostra e não publicou”</b><span>Entregue + sem conteúdo por <strong id="exceptionDays"></strong> dias → marcar exceção, criar lembrete e sugerir <code>WAIT_FOR_CONTENT</code>.</span><span class="badge green">0 creators neste estado agora</span><small id="reminderRule"></small></div></section>
 
-    <section class="card economics">
-      <div class="sectionTitle">Impacto em Unit Economics</div>
-      <div class="kv"><span>Custo das amostras</span><b id="sampleCost"></b></div>
-      <div class="kv"><span>Frete das amostras</span><b id="shippingCost"></b></div>
-      <div class="kv"><span>Receita atribuída</span><b id="campaignRevenue"></b></div>
-      <div class="divider"></div>
-      <button class="btn primary" id="openEconomics">Abrir Unit Economics →</button>
-      <div class="sub">Custos de amostra e frete entram no waterfall de margem.</div>
-    </section>
-  </div>
-</div>
-</main>
-</div>
+<section class="card economics"><div class="sectionTitle">Margem da campanha</div><div class="kv"><span>Receita atribuída</span><b id="campaignRevenue"></b></div><div class="kv"><span>Margem antes da comissão</span><b id="baseMarginValue"></b></div><div class="kv"><span>Comissão de creators</span><b id="commissionCost"></b></div><div class="kv"><span>Custo das amostras</span><b id="sampleCost"></b></div><div class="kv"><span>Frete das amostras</span><b id="shippingCost"></b></div><div class="divider"></div>
+<div class="marginHero"><span>Margem depois de comissão + amostra + frete</span><b id="campaignMargin"></b><small id="campaignMarginPct"></small></div><button class="btn primary" id="openEconomics">Abrir Unit Economics →</button><div class="sub">Amostra usa custo informado do produto, não preço de venda.</div></section></div>
 
-<div class="toast" id="toast"></div>
-<script src="../shared/demo-data.js"></script>
-<script src="./app.js"></script>
-</body>
-</html>
+<div class="grid lower"><section class="card contentCard"><div class="row"><div class="sectionTitle">Conteúdo e aprovação</div><span class="sub">Obrigatório aprovar antes de publicar</span></div><div id="contentQueue"></div></section>
+<section class="card salesCard"><div class="sectionTitle">Vendas da campanha</div><div class="salesKpi"><b id="salesRevenue"></b><span>Receita atribuída</span></div><svg id="salesChart" viewBox="0 0 320 100" preserveAspectRatio="none"><polyline fill="none" stroke="#1769e0" stroke-width="4" points="0,88 45,80 90,84 135,62 180,69 225,42 270,48 320,20"/></svg><div class="sub">Tendência DEMO · pedidos atribuídos da campanha</div></section></div>
+</div></main></div>
+<div class="toast" id="toast"></div><script src="../shared/demo-data.js"></script><script src="./app.js"></script></body></html>
