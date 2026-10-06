@@ -1048,3 +1048,28 @@ A revisão visual/competitiva do v1 confirmou estrutura correta, mas identificou
 **Gate final:** workflow UI Gates run `37402966722` concluído com **34/34 testes aprovados**.
 
 **Estado:** Campanha v2 está pronta para nova revisão de desenho/benchmark. Ainda não declarar funcional até aprovação visual/competitiva e implementação dos fluxos materiais (editar campanha, adicionar creator aceito, envio real de amostra, lembretes, aprovação e persistência).
+
+
+### 05/10/2026 — Revisão competitiva do Campanha v2 e correções de desenho
+A revisão do Campanha v2 contra Reacher, Cruva, Euka e baseline nativo de Affiliate Center confirmou melhora substancial, mas encontrou dois problemas de desenho antes da funcionalização:
+1. Lucas aparecia simultaneamente em "Aceitou" e "Amostra" no pipeline, duplicando a etapa atual.
+2. Camila já tinha conteúdo `approved`, mas a UI ainda oferecia "Aprovar conteúdo".
+
+**Correções aplicadas:**
+- pipeline operacional passou a tratar cada creator em uma única etapa atual;
+- Lucas fica somente em Amostra; Camila fica em Publicado/Resultado;
+- conteúdo já aprovado mostra botão desabilitado "Aprovado" e data da aprovação, sem nova ação de aprovação;
+- tracking de amostra passou a aparecer no fixture e na UI (status, carrier/código quando disponível);
+- bloco "Automação de follow-up ativa" passou a exibir próxima checagem e regra `WAIT_FOR_CONTENT`.
+
+**Benchmark usado:**
+- Reacher: CRM por creator com status, amostras, GMV, mensagens e direitos de uso;
+- Cruva: pipeline creator-first, tracking completo de sample request → ship → deliver → post, follow-ups automáticos e repeat;
+- Euka: contests/campaigns com budget, submissions, payouts e usage rights;
+- Affiliate Center: baseline de colaboração e free samples.
+
+**Gates adicionados:** unicidade de etapa no pipeline, conteúdo aprovado não reaprovável, tracking visível e automação visível.
+
+**Gate final:** UI Gates run `37403973975` concluído com **36/36 testes aprovados**.
+
+**Estado:** Campanha v2.1 pronta para revisão visual final. Em termos de desenho, está acima do Affiliate Center no bloco de economics e próxima ação; aproxima paridade operacional com Reacher/Cruva. Persistência, automações reais, fulfillment/tracking provider e edição continuam reservados para a versão funcional.
