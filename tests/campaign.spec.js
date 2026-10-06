@@ -46,3 +46,20 @@ test('Campaign v2 bulk actions react to creator selection', async ({page})=>{
   await expect(page.locator('#bulkSample')).toBeEnabled();
   await expect(page.locator('#bulkRepeat')).toBeEnabled();
 });
+
+
+test('Campaign pipeline keeps each creator in one current stage', async ({page})=>{
+  await page.goto(pageUrl);
+  await expect(page.locator('#pipeAccepted')).not.toContainText('Lucas Ferreira');
+  await expect(page.locator('#pipeSample')).toContainText('Lucas Ferreira');
+  await expect(page.locator('#pipeResult')).toContainText('Camila Rocha');
+});
+
+test('Campaign approved content does not offer approval twice and sample tracking is visible', async ({page})=>{
+  await page.goto(pageUrl);
+  const camila=page.locator('#contentQueue .contentItem').filter({hasText:'Camila Rocha'});
+  await expect(camila).toContainText('Aprovado em 04/10/2026');
+  await expect(camila.locator('button',{hasText:'Aprovado'})).toBeDisabled();
+  await expect(page.locator('#sampleCards')).toContainText('Tracking:');
+  await expect(page.locator('.automationNote')).toContainText('Automação de follow-up ativa');
+});
