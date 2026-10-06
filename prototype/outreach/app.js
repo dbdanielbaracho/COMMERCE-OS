@@ -20,6 +20,7 @@ function followDue(x){const iso=followDate(x);return x.outreach.status==='waitin
 function inviteEligible(x){return quotaUsed<quotaMax && x.outreach.status==='new'}
 function campaignEligible(x){return x.outreach.status==='accepted'||x.outreach.status==='campaign'}
 function sampleEligible(x){return x.outreach.status==='accepted'||x.outreach.status==='campaign'}
+function commissionState(x){return x.cm<SKU.commissionRange[0]?['Abaixo da faixa','red']:x.cm>SKU.commissionRange[1]?['Acima da faixa','amber']:['Dentro da faixa','green']}
 function marginAfter(x,commission=x.cm){return Math.max(-99,SKU.baseMarginPct-commission)}
 function reasonSource(x){const r=x.reason.toLowerCase();return (r.includes('recusa')||r.includes('lojista')||r.includes('já trabalhou'))?'Seu histórico':'TikTok'}
 
@@ -47,7 +48,7 @@ function nextAction(x){
   if(s==='new')return inviteEligible(x)?"<button class='btn primary' data-act='invite' data-id='"+x.id+"'>Convidar</button>":"<span class='badge red'>Cota atingida</span>";
   return "<span class='badge blue'>Sem ação</span>";
 }
-function sampleText(x){return x.outreach.status==='campaign'?'Enviada':sampleEligible(x)?'Elegível após aceite':'Não enviada'}
+function sampleText(x){if(x.outreach.status==='campaign')return 'Enviada';if(x.outreach.status==='accepted')return "<span class='badge green'>Pode enviar</span><br><button class='btn' data-act='sample' data-id='"+x.id+"'>Enviar amostra</button>";return 'Não enviada'}
 
 function rows(){
   const a=filtered();
@@ -58,7 +59,7 @@ function rows(){
     "<td><span class='badge "+statusClass(x.outreach.status)+"'>"+statusLabel(x.outreach.status)+"</span></td>"+
     "<td>"+x.reason+" <span class='sub'>ⓘ "+reasonSource(x)+"</span></td>"+
     "<td>"+x.outreach.last+"</td><td>"+nextAction(x)+"</td>"+
-    "<td><b>"+x.cm+"%</b><div class='sub'>"+SKU.commissionRange[0]+"–"+SKU.commissionRange[1]+"% · "+SKU.comparableCount+" comparáveis</div></td>"+
+    "<td><b>"+x.cm+"%</b><div><span class='badge "+commissionState(x)[1]+"'>"+commissionState(x)[0]+"</span></div><div class='sub'>"+SKU.commissionRange[0]+"–"+SKU.commissionRange[1]+"% · "+SKU.comparableCount+" comparáveis</div></td>"+
     "<td>"+sampleText(x)+"</td><td>"+x.outreach.owner+"</td>"+
     "<td><button class='btn detail' data-id='"+x.id+"'>Ver detalhes</button></td></tr>").join('');
   bind();bulk();
@@ -87,6 +88,8 @@ function doAction(act,id){
   if(act==='invite'&&!inviteEligible(x))return toast('Envio bloqueado por estado, quota, cooldown ou opt-out');
   if(act==='follow'&&!followDue(x))return toast('Follow-up ainda em cooldown');
   if(act==='campaign'&&!campaignEligible(x))return toast('Disponível após o aceite');
+  if(act==='sample'&&!sampleEligible(x))return toast('Amostra disponível somente após o aceite');
+  if(act==='sample')return toast('Amostra preparada para envio a '+x.n);
   if(act==='decline')return toast('Recusa registrada. Reavaliar após '+(x.retry||'cooldown'));
   toast(act==='campaign'?'Abrindo campanha de '+x.n:act==='respond'?'Abrindo conversa com '+x.n:'Ação liberada para '+x.n);
 }
@@ -143,4 +146,8 @@ $('close').onclick=()=>$('drawer').classList.remove('open');
 document.querySelectorAll('.drawerTabs button').forEach(b=>b.onclick=()=>{const x=C.find(v=>v.id===openCreatorId);if(x)pane(x,b.dataset.pane)});
 $('navSku').onclick=()=>location.href='../sku-opportunity/index.html';$('navShortlist').onclick=()=>location.href='../creator-shortlist/index.html';$('navEconomics').onclick=()=>location.href='../unit-economics/index.html';
 $('periodBtn').onclick=()=>toast('Período fixado em 30 dias neste protótipo');$('userBtn').onclick=()=>toast('Workspace Principal · Daniel Santos');$('market').onchange=()=>toast('Somente Brasil · TikTok Shop disponível neste protótipo');$('exportBtn').onclick=()=>toast('Exportação aguarda decisão jurídica P0');
+$('quickImport').onclick=()=>location.href='../creator-shortlist/index.html';
+$('quickRetry').onclick=()=>toast('Nenhum envio falhou neste recorte');
+$('quickBlocked').onclick=()=>{tab='blocked';tabs();rows();};
+$('quickTemplates').onclick=()=>toast('Modelos: Convite inicial · Follow-up · Negociação de comissão');
 tabs();rows();
