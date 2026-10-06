@@ -8,7 +8,8 @@ window.CREATOR_COMMERCE_DEMO = {
     commissionPct: 12,
     commissionRange: [10,20],
     comparableCount: 38,
-    stock: 248
+    stock: 248,
+    unitCost: 9.95
   },
   campaign: {
     id: 'CMP-001',
@@ -21,12 +22,14 @@ window.CREATOR_COMMERCE_DEMO = {
     budget: 3500,
     samplePolicy: '1 unidade por creator aceito; frete incluso',
     brief: 'Demonstrar cor, hidratação e uso diário. Priorizar vídeo curto e LIVE quando houver fit.',
-    bottleneck: 'Amostras aprovadas ainda não enviadas'
+    bottleneck: 'Lucas: amostra aprovada; envio pendente até 09/10',
+    sampleSlaDays: 5,
+    sampleReminder: 'Lembrar creator 24h antes do prazo e novamente no vencimento'
   },
   creators: [
     {id:1,n:'Mariana Silva',h:'@marisilva',f:'2,1M',e:'4,8%',v:128400,sim:14,cm:12,rel:'new',relLabel:'Novo',aff:'Muito alta',reason:'Já promoveu 8 produtos similares',p:92,live:true,source:'TikTok',content:'live',outreach:{status:'waiting',owner:'Ana',channel:'TikTok Affiliate',last:'05/10, 14:20',next:'07/10, 14:20'}},
-    {id:2,n:'Lucas Ferreira',h:'@lucasferr',f:'1,8M',e:'3,9%',v:96200,sim:12,cm:10,rel:'worked',relLabel:'Já trabalhou · 15/08/26',aff:'Alta',reason:'Alto engajamento em beleza',p:88,live:false,source:'TikTok',content:'video',outreach:{status:'accepted',owner:'Bruno',channel:'TikTok Affiliate',last:'05/10, 10:15',next:'Adicionar à campanha'},activation:{stage:'sample_approved',sample:'approved',shipping:'pending',content:'pending',orders:0,revenue:0,sampleCost:39.9,shippingCost:14.5}},
-    {id:3,n:'Camila Rocha',h:'@camilarocha',f:'1,2M',e:'6,1%',v:78500,sim:11,cm:15,rel:'active',relLabel:'Ativo em campanha',aff:'Alta',reason:'Já promoveu 5 produtos similares',p:85,live:true,source:'TikTok',content:'live',outreach:{status:'campaign',owner:'Bruno',channel:'TikTok Affiliate',last:'04/10, 10:15',next:'Ver campanha'},activation:{stage:'posted',sample:'delivered',shipping:'delivered',content:'posted',orders:86,revenue:3431.4,sampleCost:39.9,shippingCost:14.5}},
+    {id:2,n:'Lucas Ferreira',h:'@lucasferr',f:'1,8M',e:'3,9%',v:96200,sim:12,cm:10,rel:'worked',relLabel:'Já trabalhou · 15/08/26',aff:'Alta',reason:'Alto engajamento em beleza',p:88,live:false,source:'TikTok',content:'video',outreach:{status:'accepted',owner:'Bruno',channel:'TikTok Affiliate',last:'05/10, 10:15',next:'Adicionar à campanha'},activation:{stage:'sample_approved',sample:'approved',shipping:'pending',content:'pending',orders:0,revenue:0,sampleCost:9.95,shippingCost:14.5,owner:'Bruno',nextAction:'FOLLOW_UP_SAMPLE',sampleApprovedAt:'07/10/2026',shipDue:'09/10/2026',contentDue:'—',reminder:'Enviar amostra até 09/10'}},
+    {id:3,n:'Camila Rocha',h:'@camilarocha',f:'1,2M',e:'6,1%',v:78500,sim:11,cm:15,rel:'active',relLabel:'Ativo em campanha',aff:'Alta',reason:'Já promoveu 5 produtos similares',p:85,live:true,source:'TikTok',content:'live',outreach:{status:'campaign',owner:'Bruno',channel:'TikTok Affiliate',last:'04/10, 10:15',next:'Ver campanha'},activation:{stage:'posted',sample:'delivered',shipping:'delivered',content:'posted',orders:86,revenue:3431.4,sampleCost:9.95,shippingCost:14.5,owner:'Bruno',nextAction:'REPEAT_CREATOR',sampleApprovedAt:'01/10/2026',shipDue:'02/10/2026',deliveredAt:'03/10/2026',contentDue:'08/10/2026',postedAt:'04/10/2026',reminder:'Concluído antes do prazo',contentAsset:{type:'LIVE',title:'Teste de cor + hidratação ao vivo',status:'approved',approvedAt:'04/10/2026',views:48200}}},
     {id:4,n:'Juliana Mendes',h:'@julianamendes',f:'680K',e:'5,2%',v:54800,sim:7,cm:18,rel:'new',relLabel:'Novo',aff:'Média',reason:'Conteúdo de maquiagem com boa afinidade',p:78,live:false,source:'TikTok',content:'video',outreach:{status:'waiting',owner:'Carlos',channel:'TikTok Affiliate',last:'04/10, 16:50',next:'06/10, 16:50'}},
     {id:5,n:'Thiago Lima',h:'@thiagolima',f:'420K',e:'4,1%',v:41200,sim:6,cm:8,rel:'worked',relLabel:'Já trabalhou · 12/07/26',aff:'Média',reason:'Já promoveu 3 produtos similares',p:74,live:false,source:'TikTok',content:'video',outreach:{status:'responded',owner:'Ana',channel:'TikTok Affiliate',last:'05/10, 09:34',next:'Responder'}},
     {id:6,n:'Letícia Santos',h:'@letisantos',f:'310K',e:'5,8%',v:38600,sim:5,cm:12,rel:'new',relLabel:'Novo',aff:'Média',reason:'Engajamento alto e crescimento recente',p:71,live:true,source:'TikTok',content:'live',outreach:{status:'responded',owner:'Ana',channel:'TikTok Affiliate',last:'05/10, 09:34',next:'Responder'}},
