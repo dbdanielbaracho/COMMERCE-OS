@@ -281,7 +281,7 @@ document.getElementById("columnsBtn").onclick=()=>{hideProfit=!hideProfit;docume
 document.getElementById("watchBtn").onclick=e=>{e.target.textContent=e.target.textContent.includes("♡")?"♥ Na watchlist":"♡ Watchlist";toast("Watchlist atualizada")};
 document.getElementById("exportBtn").onclick=exportCSV;
 document.getElementById("refreshBtn").onclick=()=>{document.getElementById("freshness").textContent="Atualizado agora";toast("Dados demo atualizados")};
-["openCoverage","coverageBtn","openCoverage2"].forEach(id=>document.getElementById(id).onclick=openPanel);
+["openCoverage","coverageBtn","openCoverage2"].forEach(id=>{const el=document.getElementById(id);if(el)el.onclick=openPanel});
 document.getElementById("closePanel").onclick=closePanel;
 document.getElementById("overlay").onclick=()=>{closePanel();closeCost();closeCreator()};
 document.getElementById("editCostBtn").onclick=openCost;
