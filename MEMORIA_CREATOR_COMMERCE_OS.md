@@ -1073,3 +1073,35 @@ A revisão do Campanha v2 contra Reacher, Cruva, Euka e baseline nativo de Affil
 **Gate final:** UI Gates run `37403973975` concluído com **36/36 testes aprovados**.
 
 **Estado:** Campanha v2.1 pronta para revisão visual final. Em termos de desenho, está acima do Affiliate Center no bloco de economics e próxima ação; aproxima paridade operacional com Reacher/Cruva. Persistência, automações reais, fulfillment/tracking provider e edição continuam reservados para a versão funcional.
+
+
+### 05/10/2026 — Campanha/ativação promovida a protótipo funcional
+A revisão visual final do Campanha v2.1 foi aprovada para funcionalização. A rodada funcional incorporou os ajustes finais e implementou comportamento real no protótipo, com persistência local via `localStorage`.
+
+**Ajustes finais de UX**
+- prazo de Lucas no card de amostra alinhado com o lembrete: 09/10/2026;
+- tracking renomeado de "Aguardando postagem" para "Aguardando envio";
+- botões em massa agora explicam por que estão desabilitados (`Selecione creators`) e mostram elegíveis/pulados;
+- códigos internos (`FOLLOW_UP_SAMPLE`, `TRACK_SAMPLE`, `WAIT_FOR_CONTENT`, `REPEAT_CREATOR`) saíram da visão principal e ficam apenas em `title`/metadados;
+- avatares deixaram de usar apenas iniciais e conteúdos ganharam tratamento visual mais rico;
+- sidebar passou a acompanhar a altura total da página.
+
+**Fluxos funcionais implementados**
+- Editar campanha abre modal, salva objetivo/owner/orçamento e persiste após reload;
+- Adicionar creator mostra somente quem aceitou no Outreach; creator já incluído aparece como "Já adicionado";
+- Enviar amostra muda estado para enviada, cria tracking DEMO, atualiza pipeline, funil, orçamento, frete e margem;
+- após envio, próxima ação é `TRACK_SAMPLE` / "Acompanhar entrega", sem pular prematuramente para conteúdo;
+- regra sampled-not-posted avalia entrega + 5 dias sem publicação e então move para `WAIT_FOR_CONTENT` / "Aguardar conteúdo", cria lembrete e atualiza gargalo/pipeline;
+- aprovação de conteúdo respeita o estado: pendente pode ser aprovado; aprovado não oferece nova aprovação;
+- ações em massa calculam elegíveis e pulados com motivos e aplicam somente aos elegíveis;
+- estado funcional do protótipo persiste em `localStorage`.
+
+**Limite de verdade**
+Isto é um protótipo funcional local. Tracking real de transportadora, envio físico, automações server-side, persistência multiusuário/backend e integrações/provider continuam externos/não implementados e não devem ser descritos como produção.
+
+**Gates**
+`tests/campaign.spec.js` foi reescrito para cobrir os fluxos funcionais, incluindo persistência, envio de amostra, regra dos 5 dias, aprovação real de conteúdo, bulk eligibility/skip reasons, filtro de creators aceitos, economics e consistência do pipeline.
+
+**Gate final:** workflow UI Gates run `37405257719` concluído com **42/42 testes aprovados**.
+
+**Estado:** Campanha/ativação agora é protótipo funcional aprovado. Próxima etapa natural do Marco 1: Conteúdo/resultado atribuído e fechamento da continuidade até Unit Economics/Aprendizado.
