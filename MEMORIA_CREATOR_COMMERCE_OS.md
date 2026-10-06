@@ -853,3 +853,12 @@ A revisão final confirmou 13/13 testes e os dois bloqueadores anteriores resolv
 **Corrigido:** Conteúdos agora derivam de `x.v` (vendas em similares) por regra determinística, preservando a coerência relativa entre creators. Foi adicionado teste automático garantindo que o creator de maior venda não tenha top conteúdo menor que o creator de menor venda.
 
 **Pendências não bloqueantes registradas para acabamento:** Economics reagir à comissão específica do creator; drawer não cobrir Prioridade/Ação; produtos similares com métricas/selos LIVE; curva de vendas, “Como calculamos?” e “Adicionar à lista”; tooltip de “Convidar selecionados”; seletor de país com motivo explícito. Nenhuma delas impede iniciar Outreach após o gate verde.
+
+### 05/10/2026 — Creator Shortlist fechada para esta etapa
+A revisão final em planilha confirmou que o único bloqueador restante era a coerência dos números da aba Conteúdos. A correção foi aplicada: métricas de conteúdo agora derivam das vendas em produtos similares do próprio creator, e um teste automático garante que o top seller não tenha top conteúdo inferior ao creator de menor venda.
+
+**Gate final:** workflow UI Gates verde com **14/14 testes Playwright aprovados**. A Creator Shortlist fica fechada em design + funcionalidade para esta etapa.
+
+**Pendências não bloqueantes registradas para acabamento futuro:** Economics reagir à comissão específica do creator; drawer não cobrir Prioridade/Ação; produtos similares com métricas/selos LIVE; curva de vendas; “Como calculamos?”; “Adicionar à lista”; tooltip de “Convidar selecionados”; explicação do seletor de país.
+
+**Próxima tela:** Outreach, seguindo o mesmo processo: desenho → comparação competitiva → versão funcional → testes automáticos → revisão adversarial.
