@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conteúdo + resultado — Creator Commerce OS</title><link rel="stylesheet" href="./styles.css"></head>
+<body><div class="app">
+<aside class="side"><div class="brand">Creator Commerce OS</div><div class="nav">
+<button disabled title="Em breve">⌂ Início</button>
+<div class="grp">OPPORTUNITIES</div><button id="navSku">SKU Opportunity</button>
+<div class="grp">INTELLIGENCE</div><button disabled title="Wave 2 / depende de provider">Product Research</button><button disabled title="Em breve">Creator Research</button><button disabled title="Em breve">Shop Research</button><button disabled title="Em breve">Video Research</button><button disabled title="Em breve">LIVE Research</button>
+<div class="grp">CREATORS</div><button id="navShortlist">Creator Shortlist</button><button disabled title="Em breve">Criadores</button><button disabled title="Em breve">Listas e Segmentos</button>
+<div class="grp">CAMPAIGNS</div><button id="navOutreach">Outreach</button><button id="navCampaign">Campanhas</button><button class="on">Conteúdos</button><button disabled title="Em breve">Samples</button>
+<div class="grp">PERFORMANCE</div><button disabled title="Em breve">Performance</button><button id="navEconomics">Unit Economics</button><button disabled title="Em breve">Relatórios</button>
+</div></aside>
+<main><header class="top"><input id="globalSearch" placeholder="Buscar conteúdo ou creator..."><select id="market"><option>🇧🇷 Brasil · TikTok Shop</option></select><button class="btn" id="periodBtn">Últimos 30 dias</button><button class="btn" id="userBtn">DS · Daniel Santos</button></header>
+<div class="content">
+<div class="row headerRow"><div><div class="sub">Campaigns › Conteúdos</div><h1>Conteúdo + resultado atribuído</h1><div class="sub">Veja o que foi publicado, o que foi atribuído e o que fazer a seguir — sem confundir contexto do negócio com causalidade.</div></div>
+<div class="flow"><span><i>1</i>SKU</span><span><i>2</i>Shortlist</span><span><i>3</i>Outreach</span><span><i>4</i>Campanha</span><b><i>5</i>Medição</b><span><i>6</i>Aprendizado</span></div></div>
+
+<section class="answerGrid">
+<div class="card answer"><span class="label">Desempenho atribuído</span><b id="attrRevenue"></b><small id="attrOrders"></small><div class="badge blue">MEASURED_PROVISIONAL</div></div>
+<div class="card answer"><span class="label">Pedidos liquidados</span><b id="settledOrders"></b><small id="settledRevenue"></small><div class="badge green">SETTLED</div></div>
+<div class="card answer"><span class="label">Pedidos provisórios</span><b id="provOrders"></b><small id="provRevenue"></small><div class="badge amber">Janela de devolução</div></div>
+<div class="card answer"><span class="label">Conteúdos publicados</span><b id="contentCount"></b><small>Vídeo + LIVE</small><div class="badge blue">TikTok Shop Affiliate</div></div>
+</section>
+
+<div class="grid"><section class="card">
+<div class="row sectionHead"><div><h2>Desempenho atribuído</h2><div class="sub">Somente pedidos medidos/atribuídos aos conteúdos abaixo.</div></div><button class="btn" id="sortBtn">Ordenar por receita</button></div>
+<table><thead><tr><th>Conteúdo</th><th>Creator</th><th>Publicado</th><th>Views</th><th>Pedidos</th><th>Liquidados</th><th>Provisórios</th><th>Receita atribuída</th><th>Ação</th></tr></thead><tbody id="contentRows"></tbody></table>
+</section>
+<aside class="card context"><h2>Contexto do negócio</h2><div class="warning">Contexto ≠ causalidade. Estes números descrevem a loja no mesmo período; não dizem que a campanha causou a variação.</div><div class="kv"><span>Pedidos da loja</span><b id="businessOrders"></b></div><div class="kv"><span>Receita da loja</span><b id="businessRevenue"></b></div><div class="kv"><span>Período</span><b id="businessPeriod"></b></div><div class="kv"><span>Fonte</span><b id="businessSource"></b></div><div class="kv"><span>Freshness</span><b id="businessFreshness"></b></div></aside></div>
+
+<div class="grid lower"><section class="card ordersCard"><div class="row sectionHead"><div><h2>Pedidos atribuídos por estado</h2><div class="sub">Liquidados separados dos provisórios para não antecipar lucro.</div></div></div>
+<div class="orderSplit"><div><span>Liquidados</span><b id="settledPct"></b><small>já fora da janela relevante</small></div><div><span>Provisórios</span><b id="provPct"></b><small>ainda sujeitos a devolução/reconciliação</small></div></div>
+<div class="bar"><span id="settledBar"></span></div>
+</section>
+<section class="card nextCard"><h2>Próximas ações</h2><button class="btn primary" id="openEconomics">Abrir Unit Economics →</button><button class="btn" id="openCampaign">Voltar para Campanha</button><button class="btn" id="showLearning">Ver Aprendizado</button><div class="sub">Nunca usar GMV como substituto silencioso de lucro.</div></section></div>
+
+<section class="card learningCard"><div class="row sectionHead"><div><h2>Aprendizado por creator × SKU</h2><div class="sub">Recomendação → decisão → ação → resultado</div></div></div><div id="learningRows"></div></section>
+</div></main></div>
+<div class="modalOverlay" id="modalOverlay"></div><div class="modal" id="detailModal"><div class="row"><div><h3 id="detailTitle"></h3><div class="sub" id="detailMeta"></div></div><button class="btn" id="closeDetail">Fechar</button></div><div class="preview" id="detailPreview"></div><div class="kv"><span>Views</span><b id="detailViews"></b></div><div class="kv"><span>Pedidos atribuídos</span><b id="detailOrders"></b></div><div class="kv"><span>Liquidados</span><b id="detailSettled"></b></div><div class="kv"><span>Provisórios</span><b id="detailProv"></b></div><div class="kv"><span>Receita atribuída</span><b id="detailRevenue"></b></div></div>
+<div class="toast" id="toast"></div><script src="../shared/demo-data.js"></script><script src="./app.js"></script></body></html>
