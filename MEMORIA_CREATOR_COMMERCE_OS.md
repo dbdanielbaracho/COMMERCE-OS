@@ -846,3 +846,10 @@ A revisão adversarial aprovou os 8 pedidos do desenho anterior e identificou o 
 A revisão aprovou o desenho v3 no nível da SKU Opportunity e dos benchmarks, com cinco ajustes finais. O Master passou para v1.5.9: coerência entre relação e motivo; ordenação padrão por Prioridade com creators bloqueados no fim; “Conta ativa” separado de “Ativo em campanha”; semântica explícita entre Lookalike e “Parecidos com quem já vendeu”; exportação ampla de creators marcada DECISION REQUIRED/P0.
 
 **Versão funcional iniciada:** `prototype/creator-shortlist/index.html`, com relação→ação, Prioridade heurística, provenance, LIVE, Contexto do SKU, busca TikTok on-demand, export amplo desabilitado, bulk invite stock/relationship-aware e visual reference separada. Testes dedicados em `tests/creator-shortlist.spec.js` cobrem recusa, ativo em campanha, já trabalhou, ordenação, bulk exclusions, estoque zero, provenance, heurística, LIVE e regressão visual.
+
+### 05/10/2026 — Creator Shortlist: revisão final de coerência de Conteúdos
+A revisão final confirmou 13/13 testes e os dois bloqueadores anteriores resolvidos. Restou um erro pequeno nos dados DEMO da aba Conteúdos: os valores cresciam com o id do creator, o que podia fazer um creator de menor venda aparentar conteúdo melhor que o top seller.
+
+**Corrigido:** Conteúdos agora derivam de `x.v` (vendas em similares) por regra determinística, preservando a coerência relativa entre creators. Foi adicionado teste automático garantindo que o creator de maior venda não tenha top conteúdo menor que o creator de menor venda.
+
+**Pendências não bloqueantes registradas para acabamento:** Economics reagir à comissão específica do creator; drawer não cobrir Prioridade/Ação; produtos similares com métricas/selos LIVE; curva de vendas, “Como calculamos?” e “Adicionar à lista”; tooltip de “Convidar selecionados”; seletor de país com motivo explícito. Nenhuma delas impede iniciar Outreach após o gate verde.
