@@ -22,7 +22,7 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.9  
+Versão: 1.5.10  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
 Data: 04 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
@@ -142,7 +142,7 @@ benchmarks
 
 35\. Direção visual e funcional v1.4 — Intelligence-First Workspace
 
-36\. Changelog v1.5.9 e pendências vigentes
+36\. Changelog v1.5.10 e pendências vigentes
 
 Anexo H — Histórico de especificações substituídas
 
@@ -827,6 +827,79 @@ conhecida ou opt-out.</p></th>
 
 - Dynamic segments: cohorts atualizados por comportamento (posted,
   sampled-not-posted, gone quiet, GMV milestone, rights eligible etc.).
+
+## 7.11.1 Outreach — contrato de UI e operação v0.1
+
+Outreach é a continuidade direta da Creator Shortlist. A tela deve preservar
+o SKU, os economics relevantes, o motivo da escolha do creator e o estado
+operacional vindo da etapa anterior. Não pode reescrever fixtures de produto
+ou creator ao mudar de tela.
+
+### Continuidade obrigatória
+
+- O mesmo SKU deve manter código, nome, preço, comissão atual, faixa observada,
+  estoque, categoria e economics já usados na SKU Opportunity/Creator Shortlist.
+- O mesmo creator deve manter nome, handle, seguidores, relação com o merchant,
+  prioridade e demais sinais já apresentados na Shortlist.
+- O motivo da escolha deve permanecer acessível no Outreach, por coluna, tooltip
+  ou detalhe.
+- A navegação lateral e a taxonomia de módulos devem ser consistentes com as
+  demais telas; não criar um menu paralelo específico para Outreach.
+
+### Estados e ações
+
+- **Aguardando**: convite enviado sem resposta; follow-up só após cooldown.
+- **Resposta**: creator respondeu; próxima ação é responder/negociar.
+- **Aceitou**: pode avançar para campanha e, quando aplicável, amostra.
+- **Recusou**: não reenviar convite; próxima ação é Ver recusa / Aguardar até
+  a data de reconsideração.
+- **Em campanha**: não convidar novamente para a mesma ativação; mostrar
+  Ver campanha / Acompanhar.
+- **Bloqueado / opt-out / suppressed**: envio proibido e motivo visível.
+- Estados de entrega devem distinguir queued/sent/delivered/replied/failed/
+  suppressed quando a integração fornecer evidência.
+
+### Regras de envio obrigatórias
+
+- Mostrar quota/cota aplicável quando conhecida e bloquear envio ao atingir o
+  limite.
+- Aplicar cooldowns, deduplicação, opt-out e listas de supressão antes de cada
+  envio individual ou em massa.
+- Contato duplicado/recente deve ser explicitamente sinalizado.
+- Canais indisponíveis ou não autorizados aparecem desabilitados com motivo; a
+  UI não deve fingir capability real.
+- Follow-up só pode ficar disponível após o intervalo definido e deve exibir
+  data/hora futura coerente.
+- Amostra só pode avançar após aceite quando esta for a regra do fluxo.
+- “Adicionar à campanha” só pode ficar disponível após aceite ou para creator
+  já elegível/em campanha conforme o estado real.
+
+### Operação em massa
+
+- A tabela deve exibir owner/responsável e próxima ação.
+- Seleção em massa deve revalidar quota, opt-out, cooldown, duplicidade e estado
+  do creator imediatamente antes da ação.
+- A prévia deve informar **X elegíveis; Y pulados**, com razões agregadas.
+- Exportação de seleção/lista de creators permanece DECISION REQUIRED / P0
+  jurídico até base contratual explícita.
+
+### Economics e proposta
+
+- Comissão proposta deve mostrar provenance/faixa observada quando disponível,
+  inclusive tamanho da base de comparáveis quando conhecido.
+- O painel deve mostrar **margem depois da comissão proposta do creator** quando
+  houver base econômica suficiente; caso contrário, mostrar INCOMPLETE/UNKNOWN.
+- A proposta formal deve separar produto, comissão, amostra, canal, validade e
+  mensagem, em vez de esconder tudo apenas no texto livre.
+- Rascunho por IA é opcional e sempre sujeito a aprovação configurável.
+
+### Navegação e estados de lista
+
+- Abas mínimas: Todos, Aguardando, Responderam, Aceitaram, Recusaram, Em campanha
+  e Bloqueados quando esses estados existirem.
+- Paginação/virtualização é obrigatória quando a contagem exceder as linhas
+  mostradas.
+- O menu lateral deve usar a mesma arquitetura definida para o produto inteiro.
 
 ## 7.12 Creator CRM
 
@@ -4016,7 +4089,7 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.9 e pendências vigentes
+# 36. Changelog v1.5.10 e pendências vigentes
 
 A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
 rastreabilidade da restrição de competir/replicar nos termos atuais do
@@ -4025,6 +4098,12 @@ regras de estoque, ações em massa, atalhos decision-first e visual
 regression contra referência congelada.
 
 
+
+- v1.5.10: Outreach ganha contrato explícito de continuidade e operação:
+  fixtures de SKU/creator preservadas da Shortlist, quota/cooldown/opt-out/
+  dedupe obrigatórios, owner e bulk actions, follow-up temporalmente coerente,
+  campanha/amostra condicionadas ao aceite, economics pós-comissão, estados
+  completos, menu consistente e exportação marcada P0.
 
 - v1.5.9: Creator Shortlist v3 fecha coerência de motivo/relação, ordenação
   por Prioridade com inelegíveis fora do topo, semântica separada para
