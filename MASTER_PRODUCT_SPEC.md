@@ -4208,3 +4208,46 @@ conteúdo antigo não é normativo e não deve orientar implementação.
 - Debate Claude × ChatGPT e decisões intermediárias permanecem no
   changelog/rodadas; quando uma rodada posterior altera uma posição,
   prevalece a posterior.
+
+---
+
+## Addendum — Estado de execução e decisões de documentação — 08/10/2026
+
+Este addendum registra decisões de execução aprovadas após a consolidação da versão normativa anterior. A fonte canônica continua sendo este arquivo; a memória histórica permanece em `MEMORIA_CREATOR_COMMERCE_OS.md`.
+
+### Padrão visual obrigatório
+
+Todas as telas oficiais devem usar o mesmo padrão claro, com fundo claro, texto escuro, superfícies brancas, alto contraste e leitura consistente. A referência muito escura anteriormente produzida não é o padrão final e não deve orientar a implementação. O modo escuro, se existir no futuro, será secundário e não poderá reduzir a legibilidade.
+
+A linguagem visual deve ser compartilhada entre navegação, cabeçalho, filtros, tabelas, cards, botões e estados de carregamento, vazio, erro, bloqueio e sucesso. Toda tela só pode ser considerada concluída depois de ser aberta no navegador real, ter seus controles testados e possuir evidência visual.
+
+### Estrutura funcional registrada
+
+O produto é organizado em oito áreas principais:
+
+1. Opportunities / SKU Opportunity.
+2. Intelligence, com subvisões Product, Creator, Shop, Video, LIVE, Ads, Competitors e Market/Trends.
+3. Creators / CRM.
+4. Outreach.
+5. Campaigns / Activation.
+6. Performance / Unit Economics.
+7. Copilot / MCP.
+8. Market / Competitors.
+
+O número de oito áreas não representa um número fechado de rotas ou páginas. As rotas finais serão congeladas pelo mapa de navegação e pelos contratos funcionais.
+
+### Estado de execução do Marco 1
+
+As quatro telas centrais validadas são SKU Opportunity, Creator Shortlist, Outreach v4 e Unit Economics. A próxima etapa registrada para continuidade do Marco 1 é Campaign/Activation; o desenho v1 foi considerado insuficiente e deve passar pela revisão v2 antes de ser tratado como entrega final.
+
+A referência de cada tela só pode ser promovida a “funcional” quando os fluxos reais, estados, ações, persistência/integração aplicável, erros e gates de teste estiverem comprovados. Imagens estáticas anexadas ao DOCX são referências visuais, não evidência de funcionalidade.
+
+### Regra permanente de sincronização
+
+Toda mudança material de produto, arquitetura, dados, UX, benchmark, teste, status, risco ou documentação deve ser refletida no GitHub Web no mesmo ciclo de trabalho:
+
+- este `MASTER_PRODUCT_SPEC.md` recebe alterações normativas;
+- `MEMORIA_CREATOR_COMMERCE_OS.md` recebe o histórico e o contexto;
+- DOCX/PDF são artefatos derivados;
+- o commit e o resultado do GitHub devem ser verificados antes de declarar a atualização concluída;
+- se o GitHub estiver indisponível, o bloqueio deve ser informado explicitamente.
