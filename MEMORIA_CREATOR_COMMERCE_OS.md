@@ -1204,3 +1204,20 @@ A revisão visual do v1 apontou quatro bloqueadores antes da funcionalização: 
 **Gate final:** UI Gates run `37408726315` concluído com **56/56 testes aprovados**.
 
 **Estado:** Campanha permanece funcional e consistente com a nova fonte compartilhada. Conteúdo + resultado atribuído v2 está pronto para revisão visual final. Ainda não promover a funcional/persistente até aprovação do desenho.
+
+
+### 08/10/2026 — Regra de sincronização com o GitHub Web
+
+**Pedido do Product Owner:** “ATUALIZAR NO GITHUBWEB SEMPRE”.
+
+**Decisão de processo:** o repositório web `dbdanielbaracho/COMMERCE-OS` passa a ser atualizado no mesmo ciclo de toda mudança material do projeto. Isso inclui produto, arquitetura, dados, UX, benchmarks, testes, status, decisões, riscos e documentação.
+
+**Regra de sincronização:**
+1. `MASTER_PRODUCT_SPEC.md` continua sendo a fonte normativa canônica.
+2. `MEMORIA_CREATOR_COMMERCE_OS.md` registra o histórico, o contexto e as decisões.
+3. DOCX/PDF e outros arquivos exportados continuam sendo artefatos derivados.
+4. Sempre que uma mudança alterar o produto ou uma decisão vigente, atualizar o arquivo canônico e esta memória quando aplicável.
+5. Verificar o commit/resultado do GitHub antes de informar que a atualização foi concluída.
+6. Se o GitHub estiver bloqueado ou indisponível, informar explicitamente o bloqueio; não declarar sincronização concluída.
+
+**Estado registrado nesta atualização:** os documentos de trabalho foram atualizados com o padrão visual claro, as quatro telas funcionais validadas, Campaign/Activation como próxima etapa, as oito áreas principais e o registro consolidado das conversas acessíveis deste projeto.
