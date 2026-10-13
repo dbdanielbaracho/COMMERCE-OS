@@ -530,6 +530,25 @@ A partir de agora:
 
 ---
 
+### 13/10/2026 — Designs acordados incorporados ao Documento Mestre
+
+O Product Owner esclareceu que os designs acordados das telas devem estar no Documento Mestre, e não apenas na Memória. Em resposta, o MASTER_PRODUCT_SPEC.md foi atualizado para a versão 1.5.11 no commit d74917dffcf5970925dfd1e439179633aec54e08.
+
+A seção normativa 35.8 passou a registrar:
+
+- shell visual comum em tema claro, com navegação, contexto, filtros, estados e proveniência;
+- Opportunity Workspace / SKU Opportunity;
+- Creator Shortlist;
+- Outreach / Activation;
+- Campaign / Activation / Samples;
+- Content + Result;
+- Unit Economics / Performance;
+- Intelligence / Research;
+- Copilot contextual;
+- critérios de equivalência entre design aprovado e implementação funcional.
+
+A Memória continua sendo o registro histórico. O Documento Mestre é a fonte canônica dos designs e dos requisitos normativos. Nenhuma rotina de outro projeto foi interrompida, pausada ou desativada para esta atualização.
+
 ## 20. Log contínuo
 
 ### 03/10/2026 — Criação da memória do projeto
