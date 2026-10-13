@@ -1221,3 +1221,64 @@ A revisão visual do v1 apontou quatro bloqueadores antes da funcionalização: 
 6. Se o GitHub estiver bloqueado ou indisponível, informar explicitamente o bloqueio; não declarar sincronização concluída.
 
 **Estado registrado nesta atualização:** os documentos de trabalho foram atualizados com o padrão visual claro, as quatro telas funcionais validadas, Campaign/Activation como próxima etapa, as oito áreas principais e o registro consolidado das conversas acessíveis deste projeto.
+
+---
+
+## Registro de continuidade — 2026-10-13
+
+### Decisões recentes preservadas
+
+A comparação com Cruva, Euka, FastMoss e Kalodata foi consolidada como referência de produto:
+
+- Cruva orienta a operação diária e automações.
+- Euka orienta amplitude de creators, outreach, Copilot, campanhas e GMV.
+- FastMoss orienta profundidade de inteligência, rankings, produtos, creators, vídeos, LIVE, anúncios, concorrentes, histórico e API.
+- Kalodata orienta pesquisa de produto, creator, loja, tendências e comparação.
+
+A conclusão é que o produto precisa combinar inteligência e execução dentro do mesmo fluxo. O centro não será um painel genérico, mas um **Opportunity Workspace** com score, confiança, evidências, motivo da oportunidade, creators/conteúdos recomendados, economia, riscos, próxima ação e Copilot contextual.
+
+### Estrutura funcional definida
+
+A navegação oficial ficou organizada em oito áreas:
+
+1. Opportunities / SKU Opportunity
+2. Intelligence
+3. Creators / CRM
+4. Outreach
+5. Campaigns
+6. Performance / Unit Economics
+7. Copilot
+8. Market / Competitors
+
+Dentro de Intelligence, devem existir as visões Product, Creator, Shop, Video, LIVE, Ads, Competitors e Market, com filtros persistentes, rankings, histórico, comparação e exportação quando o contrato de dados permitir.
+
+Creators/CRM deve cobrir pipeline, contatos, convites, amostras, campanhas, tarefas e follow-up. Outreach deve refletir status de contato, negociação e próxima ação. Campaigns deve conectar creator, ativação, tarefas e resultado.
+
+### Correção de direção visual
+
+Foi rejeitada a direção visual escura. O padrão oficial passa a ser claro e de alto contraste:
+
+- fundo branco/cinza-claro;
+- texto navy/preto;
+- cards brancos e bordas suaves;
+- ações azuis/roxas;
+- verde positivo, amarelo atenção e vermelho apenas para erro/risco;
+- mesma linguagem de menu, header, espaçamento e tipografia em todas as telas.
+
+A crítica principal foi que uma solução com aparência de wireframe não seria suficiente. O produto deve parecer uma ferramenta madura e operacional, com densidade de dados, filtros e ações reais.
+
+### Status honesto registrado
+
+O histórico da revisão aponta quatro superfícies centrais já exercitadas/validadas: SKU Opportunity, Creator Shortlist, Outreach e Unit Economics. Campaign / Activation ficou como próxima frente. Intelligence completo, Copilot e Market / Competitors continuam como frentes a construir e validar.
+
+Esse status é deliberadamente conservador. Imagem de referência ou tela renderizada não equivale a funcionalidade aceita. Cada área precisa de comportamento real, dados/contratos, permissões, loading, erro, vazio, ações e testes. Não declarar conclusão integral apenas por haver telas ou ausência de PRs.
+
+### Próximas ações seguras
+
+1. Consolidar Campaign / Activation com fluxo executável e estados completos.
+2. Construir e validar as subvisões de Intelligence conforme os contratos disponíveis.
+3. Implementar o Copilot contextual dentro do Opportunity Workspace.
+4. Construir Market / Competitors com comparação e histórico verificáveis.
+5. Confirmar comportamento de filtros, rankings, gráficos, exportações e ações antes de registrar aceite.
+
+As áreas Growth OS e MLIVRETRABALHO continuam fora do escopo deste projeto. A sincronização versionada no GitHub e a atualização conjunta do Documento Mestre e da Memória são regras permanentes.
