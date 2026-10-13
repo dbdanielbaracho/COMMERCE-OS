@@ -22,9 +22,9 @@ vencedor e aprender com cada resultado.</th>
 </tbody>
 </table>
 
-Versão: 1.5.10  
+Versão: 1.5.11  
 Status: PRODUCT SPEC BASELINE APROVADA — v1.5.3 incorpora gates visuais/funcionais e contrato SKU Opportunity; congelada para execução; mudanças futuras exigem decisão explícita e changelog  
-Data: 04 de outubro de 2026  
+Data: 13 de outubro de 2026  
 Fonte de verdade: MASTER_PRODUCT_SPEC.md no repositório; este DOCX é
 artefato gerado
 
@@ -4089,7 +4089,155 @@ Toda nova tela ou revisão material deve ser avaliada em três dimensões:
   da referência aprovada, mesmo que a lógica funcione. O inverso também
   vale: imagem bonita sem comportamento real não fecha capability.
 
-# 36. Changelog v1.5.10 e pendências vigentes
+## 35.8 Designs acordados das telas — contrato normativo
+
+Esta seção transforma em contrato textual os designs acordados nas conversas e nas revisões do produto. O Documento Mestre continua sendo a fonte normativa; imagens, DOCX e PDF são referências/artefatos derivados. Nenhuma tela pode ser implementada como uma interpretação genérica ou como um dashboard decorativo.
+
+### Shell visual comum
+
+Todas as telas devem compartilhar:
+
+- tema claro obrigatório: fundo branco ou cinza-claro, texto navy/preto, alto contraste;
+- sidebar modular, cabeçalho consistente, seletor de mercado/plataforma e contexto persistente;
+- filtros persistentes, busca global, KPIs compactos, tabelas legíveis e cards somente quando agregarem decisão;
+- estados visíveis de loading/skeleton, vazio, parcial, stale, permissão, erro recuperável, limite e job assíncrono;
+- fonte/proveniência, frescor, confiança e limitações para todo dado relevante;
+- uma ação dominante clara e continuidade para a próxima etapa do ciclo;
+- nenhuma tela escura como padrão, nenhum placeholder apresentado como produto final e nenhuma métrica sem contrato.
+
+### Tela 1 — Opportunity Workspace / SKU Opportunity
+
+**Objetivo:** transformar um SKU do próprio merchant em uma decisão executável.
+
+**Composição acordada:**
+
+- cabeçalho com SKU, canal, mercado, período, estoque e estado da conexão;
+- faixa de decisão com score, confiança, “por que agora”, evidências e risco;
+- área econômica com custo/margem quando disponíveis, comissão comparada, cobertura e estado da informação;
+- creators e conteúdos recomendados, sempre com justificativa e provenance;
+- painel de próxima ação com CTA para shortlist, outreach ou campanha;
+- detalhe contextual à direita ou em painel expansível, sem abandonar o contexto do SKU.
+
+Opportunity global não substitui o SKU Opportunity no aceite inicial. Estoque zerado bloqueia ativação; custo ausente impede margem inventada e direciona para REVIEW_ECONOMICS.
+
+### Tela 2 — Creator Shortlist
+
+**Objetivo:** selecionar creators com maior probabilidade explicável de vender o SKU.
+
+**Composição acordada:**
+
+- busca e filtros por relação com o merchant, categoria/produto, vídeo/LIVE, comissão, status e elegibilidade;
+- tabela/ranking denso com creator, prioridade heurística, sinais, provenance, frescor e confiança;
+- justificativa de cada recomendação e separação clara entre resultado medido, estimado e inferido;
+- detalhe do creator com vídeos/LIVE permitidos, histórico de relacionamento e contexto do SKU;
+- ações por linha e ações em massa com revalidação de elegibilidade;
+- estados relacionais explícitos: Novo, Já trabalhou, Ativo em campanha, Recusou recentemente e outros estados contratados.
+
+A tela não pode construir ou sugerir uma base global de perfis sem autorização contratual. Lookalike e “parecidos com quem já vendeu” permanecem conceitos semanticamente separados.
+
+### Tela 3 — Outreach / Activation
+
+**Objetivo:** transformar uma recomendação em contato operacional rastreável.
+
+**Composição acordada:**
+
+- contexto persistente SKU → motivo → comissão → margem → proposta;
+- pipeline/tabela de creators com owner, status, quota, cooldown, opt-out, dedupe e próxima ação;
+- composer de mensagem/proposta, follow-up temporal e timeline de eventos;
+- entrada condicionada a estoque, elegibilidade e permissões;
+- bulk actions controladas, com preview, aprovação quando necessário, limite e auditoria;
+- continuidade explícita para amostra, campanha e Unit Economics.
+
+A interface não pode exibir outreach como simples lista de nomes ou botão decorativo. Cada ação precisa produzir estado, feedback e evidência.
+
+### Tela 4 — Campaign / Activation / Samples
+
+**Objetivo:** operar campanha e amostras sem romper a continuidade do fluxo.
+
+**Composição acordada para a revisão v2:**
+
+- cabeçalho da campanha com SKU, creators, período, owner e estado;
+- funil com convite, aceite, amostra, conteúdo, publicação e resultado;
+- dados de amostras, gargalos, aprovação de conteúdo, próxima ação e margem;
+- conexão de cada creator/conteúdo à economia e ao resultado;
+- estados de pendência, falha, atraso, cancelamento, limite e permissão;
+- retorno para Outreach, Content + Result e Unit Economics.
+
+A proposta v1 de Campaign foi rejeitada como insuficiente. Uma tela estática de campanha não é aceite.
+
+### Tela 5 — Content + Result
+
+**Objetivo:** ligar conteúdo e creator a resultado comercial sem confundir contexto com causalidade.
+
+**Composição acordada:**
+
+- tabela/detalhe de vídeos e LIVE com creator, produto, período, fonte e frescor;
+- conversão, pedidos, receita atribuída, receita por mil visualizações, margem e tendência quando suportadas;
+- separação explícita entre provisório e liquidado;
+- distinção entre contexto do negócio e desempenho atribuído;
+- aprendizado registrado e ação de retorno para Shortlist, Outreach ou próxima campanha;
+- estados de dado ausente, parcial, estimado, stale e atribuição insuficiente.
+
+GMV não é lucro. Nenhuma causalidade deve ser declarada sem metodologia e evidência suficientes.
+
+### Tela 6 — Unit Economics / Performance
+
+**Objetivo:** decidir escala com economia confiável.
+
+**Composição acordada:**
+
+- waterfall de vendas brutas, reembolsos, taxas, comissão, frete/fulfillment, custo do produto, amostra, fee fixo, mídia e imposto estimado;
+- Economic Coverage por GMV/pedidos/SKUs e Economic Confidence separado;
+- estados MEASURED_PROVISIONAL, MEASURED_SETTLED, USER_PROVIDED, ESTIMATED e UNKNOWN;
+- estados PROFIT_CONFIRMED, PROFIT_INCOMPLETE e PROFIT_NEGATIVE;
+- ação explícita REVIEW_ECONOMICS quando a cobertura for insuficiente;
+- conexão com atribuição, liquidação, aprendizado e próxima ação.
+
+A tela não pode apresentar GMV como lucro, estimativa como liquidado ou margem sem custo/proveniência.
+
+### Tela 7 — Intelligence / Research
+
+**Objetivo:** pesquisar e comparar produtos, creators, shops, vídeos, LIVE, ads, concorrentes e mercado.
+
+**Composição acordada:**
+
+- workspace de alta densidade com tabs/subvisões Product, Creator, Shop, Video, LIVE, Ads, Competitors e Market;
+- filtros, ranking, ordenação, paginação/virtualização, comparação, histórico e exportação;
+- seletor de mercado/plataforma e contexto preservado;
+- thumbnails quando a fonte disponibilizar, sem criar dados ou perfis não autorizados;
+- provenance, freshness, confidence, rights e cobertura do provider;
+- CTA de continuidade para Opportunity, Shortlist, Outreach ou Campaign.
+
+Intelligence não é uma parede de cards nem um dashboard genérico.
+
+### Tela 8 — Copilot contextual
+
+**Objetivo:** explicar uma decisão e ajudar a executar a próxima ação dentro de políticas.
+
+**Composição acordada:**
+
+- painel contextual ligado à entidade/tela atual;
+- explicação de fatores, fontes, confiança, limitações e impacto;
+- preview, audiência, limites, política, dry-run, aprovação, stop/undo e auditoria para automações;
+- nenhum número inventado, nenhuma ação sensível sem permissão e nenhuma escrita irreversível sem gate;
+- retorno para o mesmo contexto após a recomendação ou ação.
+
+### Regra de aceite visual das telas
+
+Cada tela só pode ser declarada concluída quando o desenho aprovado e a implementação funcional forem equivalentes em:
+
+- composição visual e hierarquia;
+- comportamento, dados, permissões e persistência;
+- loading, erro, vazio, parcial e limites;
+- tenant isolation e provenance;
+- testes unitários/contratuais, E2E e regressão visual;
+- browser smoke, evidência versionada e benchmark competitivo aplicável.
+
+Imagem bonita sem comportamento não é aceite. Comportamento correto com visual abaixo do design acordado também não é aceite.
+
+# 36. Changelog v1.5.11 e pendências vigentes
+
+- **v1.5.11:** incorporou os designs acordados das oito superfícies de tela, o shell visual comum e os critérios normativos de aceite visual/funcional na seção 35.8.
 
 A v1.5.5 preserva a baseline funcional da v1.5.4 e corrige a
 rastreabilidade da restrição de competir/replicar nos termos atuais do
