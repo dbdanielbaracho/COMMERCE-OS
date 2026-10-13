@@ -4251,3 +4251,90 @@ Toda mudança material de produto, arquitetura, dados, UX, benchmark, teste, sta
 - DOCX/PDF são artefatos derivados;
 - o commit e o resultado do GitHub devem ser verificados antes de declarar a atualização concluída;
 - se o GitHub estiver indisponível, o bloqueio deve ser informado explicitamente.
+
+---
+
+## Atualização de decisões e revisão de produto — 2026-10-13
+
+### Direção competitiva consolidada
+
+A referência do produto passa a combinar explicitamente quatro forças do mercado, sem copiar telas de forma literal:
+
+- **Cruva** como base de operação: clareza operacional, automações, pipeline e execução diária.
+- **Euka** como referência de amplitude: descoberta de creators, outreach, Copilot, campanhas e leitura de GMV.
+- **FastMoss** como referência de inteligência de mercado: rankings, produtos, creators, vídeos, LIVE, anúncios, concorrentes, histórico e API.
+- **Kalodata** como referência de pesquisa competitiva: produto, creator, loja, tendências e comparação.
+
+A decisão de produto é construir uma camada única de decisão e execução, conectando descoberta, validação econômica e ativação — não um dashboard genérico nem uma coleção de cards.
+
+### Workspace canônico
+
+A unidade principal da experiência é o **Opportunity Workspace**. Toda oportunidade deve apresentar, no mesmo contexto:
+
+1. score e confiança;
+2. evidências e explicação do “por que agora”;
+3. creators e conteúdos recomendados;
+4. economia estimada e riscos;
+5. próxima ação;
+6. Copilot contextual;
+7. atalhos para pesquisa, outreach e campanha.
+
+A arquitetura de navegação é organizada em três modos coerentes:
+
+- **Intelligence**: pesquisar, filtrar, ranquear, comparar e exportar;
+- **Operations**: organizar creators, contatos, outreach, amostras, campanhas, tarefas e follow-up;
+- **Decision**: avaliar oportunidade, unit economics, riscos, recomendação e próxima ação.
+
+### Áreas oficiais do produto
+
+As oito áreas principais são:
+
+1. Opportunities / SKU Opportunity
+2. Intelligence
+3. Creators / CRM
+4. Outreach
+5. Campaigns
+6. Performance / Unit Economics
+7. Copilot
+8. Market / Competitors
+
+O detalhamento de Intelligence inclui Product, Creator, Shop, Video, LIVE, Ads, Competitors e Market.
+
+### Estado de implementação registrado
+
+O histórico atual registra quatro superfícies centrais já exercitadas/validadas no produto: **SKU Opportunity, Creator Shortlist, Outreach e Unit Economics**. **Campaign / Activation** é a próxima frente de desenvolvimento. **Intelligence completo, Copilot e Market / Competitors** ainda exigem construção e validação.
+
+Esse estado não deve ser interpretado como aceite integral: referências visuais, screenshots ou uma tela renderizada não comprovam funcionalidade. O aceite exige fluxo executável, dados reais ou contrato de dados explícito, permissões, loading, erro, vazio, ações persistidas e testes.
+
+### Regra visual oficial
+
+A interface canônica é **light theme only**:
+
+- fundo branco ou cinza-claro;
+- texto navy/preto com contraste alto;
+- cards brancos com bordas suaves;
+- ações primárias azuis/roxas;
+- verde para positivo;
+- amarelo para atenção;
+- vermelho somente para erro/risco;
+- menus, header, espaçamento e tipografia consistentes;
+- tabelas, gráficos e filtros legíveis em alto contraste.
+
+A direção escura anteriormente explorada fica rejeitada como padrão oficial. A aparência final deve ser madura, densa e funcional como uma ferramenta de operação e inteligência, não um wireframe decorativo.
+
+### Critérios funcionais obrigatórios
+
+Filtros, botões, rankings, gráficos, exportações e ações devem possuir comportamento verificável. Cada superfície deve contemplar:
+
+- loading;
+- erro;
+- vazio;
+- dados e permissões;
+- ação principal e confirmação;
+- persistência ou resposta de backend;
+- isolamento de tenant quando aplicável;
+- regressão automatizada.
+
+### Governança documental
+
+O repositório GitHub é a fonte versionada de verdade. Mudanças relevantes de produto devem atualizar o Documento Mestre e a Memória no mesmo ciclo, preservando o histórico anterior. Creator Commerce OS permanece separado de Growth OS e MLIVRETRABALHO.
