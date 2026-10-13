@@ -1282,3 +1282,647 @@ Esse status é deliberadamente conservador. Imagem de referência ou tela render
 5. Confirmar comportamento de filtros, rankings, gráficos, exportações e ações antes de registrar aceite.
 
 As áreas Growth OS e MLIVRETRABALHO continuam fora do escopo deste projeto. A sincronização versionada no GitHub e a atualização conjunta do Documento Mestre e da Memória são regras permanentes.
+
+
+---
+
+# Consolidação das conversas do Creator Commerce OS — histórico acessível até 2026-10-13
+
+## Finalidade deste registro
+
+Este apêndice consolida as mensagens, decisões, correções, dúvidas, comparações, requisitos e estados recuperáveis das conversas relacionadas ao **Creator Commerce OS**, inclusive conversas ocorridas em outros chats. Ele preserva o conteúdo anterior deste arquivo e não substitui o Documento Mestre.
+
+Regras reafirmadas pelo usuário:
+
+- este documento pertence exclusivamente ao **Creator Commerce OS**;
+- Creator Commerce OS é independente de Growth OS e MLIVRETRABALHO;
+- nenhuma rotina de outro projeto deve ser interrompida ou desativada por causa desta atualização;
+- `MASTER_PRODUCT_SPEC.md` é a especificação normativa;
+- `MEMORIA_CREATOR_COMMERCE_OS.md` registra o histórico das conversas, decisões, tentativas e correções;
+- toda alteração material deve ser registrada no GitHub Web e ter o commit verificado;
+- Documento Mestre, Memória e os artefatos DOCX/PDF correspondentes devem permanecer sincronizados quando forem atualizados;
+- não registrar senhas, MFA, tokens, API secrets ou códigos de recuperação.
+
+Este registro reproduz com fidelidade o conteúdo histórico que pôde ser recuperado. Quando uma conversa antiga não está disponível literalmente, registra-se a decisão recuperada sem inventar falas.
+
+## Linha do tempo consolidada
+
+### 2 de setembro de 2026 — criação como produto independente
+
+O usuário definiu um novo produto de Creator Commerce totalmente independente do Growth OS, com marca, posicionamento, proposta, roadmap, arquitetura e banco próprios. A meta não era criar uma combinação superficial: as capacidades relevantes de **Kalodata, FastMoss, Cruva e Euka** deveriam existir com paridade real ou qualidade superior.
+
+Foi solicitado um documento completo que permitisse a construção do produto, cobrindo:
+
+- produto e jornadas;
+- arquitetura e dados;
+- IA e automações;
+- integrações;
+- segurança;
+- testes;
+- roadmap;
+- critérios de aceite.
+
+A primeira estrutura documental descreveu um monólito modular com workers e uma evolução tecnológica baseada em Next.js, React, TypeScript, PostgreSQL, Redis, object storage, Python para ML/evals, LLM/Agent Gateway, observabilidade e implantação em containers. ClickHouse apareceu como opção arquitetural, mas não como obrigação universal.
+
+Também foi definida a classificação das informações em **MEASURED, ESTIMATED e INFERRED**, para impedir que estimativas fossem apresentadas como fatos medidos.
+
+### 3 de setembro de 2026 — ciclo completo e auditorias
+
+O Documento Mestre evoluiu para registrar o ciclo:
+
+**DISCOVER → DECIDE → MATCH → CREATE → ACTIVATE → ENGAGE & SCALE → ATTRIBUTE → LEARN**
+
+As áreas iniciais foram Opportunities, Intelligence, Creators, Campaigns e Performance.
+
+O usuário pediu auditoria detalhada dos quatro concorrentes principais. A ordem operacional discutida foi:
+
+1. Euka;
+2. Cruva;
+3. FastMoss;
+4. Kalodata.
+
+A auditoria deveria percorrer, tela por tela:
+
+- menus;
+- filtros;
+- buscas;
+- AI Search;
+- Social Intelligence;
+- creators;
+- agents;
+- CRM;
+- samples;
+- campanhas;
+- contests;
+- retainers;
+- rights;
+- Meta Ads;
+- payouts;
+- attribution;
+- Copilot/MCP;
+- configurações;
+- limites;
+- UX.
+
+A matriz pretendida deveria distinguir paridade simples de **Parity+**, identificando onde o Creator Commerce OS seria inferior, equivalente ou superior.
+
+### 4 e 5 de setembro de 2026 — inteligência de mercado e matriz competitiva
+
+A auditoria pública do Kalodata registrou produtos, categorias, lojas, marcas, creators, vídeos, anúncios, lives, métricas e Kalopilot. Foi registrado que dados públicos podem ser amostrais e divergir dos dados reais. Áreas autenticadas não foram tratadas como comprovadas quando o acesso não estava disponível.
+
+O conjunto de concorrentes e benchmarks foi ampliado para incluir, conforme o assunto:
+
+- Kalodata;
+- FastMoss;
+- Cruva;
+- Euka;
+- Reacher;
+- Colaba;
+- EchoTik;
+- Shoplus;
+- TikWatch;
+- PiPiADS;
+- TikTok Shop Seller Center;
+- TikTok Shop Affiliate Center;
+- Doxa Viral.
+
+Foi solicitada uma matriz com estrelas para comparar a posição atual do projeto e dos concorrentes. A escala registrada foi:
+
+- ☆ — inexistente ou não comprovado;
+- ★ — planejado/inicial;
+- ★★ — parcial;
+- ★★★ — funcional/testado;
+- ★★★★ — maduro em produção;
+- ★★★★★ — referência.
+
+Essa matriz deve ser aplicada ao Creator Commerce OS com evidência verificável, sem importar avaliações de outro projeto.
+
+### 11 de setembro de 2026 — relação com Doxa Viral
+
+Foi registrado que o Creator Commerce OS é um produto separado do Doxa Viral. Doxa Viral pode servir como referência visual ou funcional a validar, mas não deve ser tratado como fonte automaticamente confirmada nem como o mesmo produto.
+
+### 2 e 3 de outubro de 2026 — síntese do produto e crítica do layout
+
+A proposta foi sintetizada como união da inteligência de Kalodata/FastMoss com a operação de Cruva/Euka:
+
+- Opportunity Engine;
+- Creator-Product Fit;
+- execução e workflow;
+- atribuição;
+- lucro;
+- aprendizado.
+
+O diferencial pretendido é fechar o ciclo completo:
+
+**descobrir → decidir → ativar → medir → aprender**
+
+O usuário criticou layouts que estavam distantes da densidade e da maturidade visual de FastMoss e Kalodata. Ficou proibido aceitar uma tela apenas porque estava renderizada ou visualmente organizada.
+
+Claude foi definido como revisor crítico, não como autoridade automática. Toda sugestão externa precisa ser confrontada com:
+
+- Documento Mestre;
+- viabilidade;
+- escopo;
+- concorrentes;
+- evidência;
+- critérios de aceite.
+
+Nesta fase, a prioridade indicada pelo usuário foi viabilizar o produto, sem transformar a discussão em defesa jurídica abstrata.
+
+### 4 de outubro de 2026 — governança oficial no GitHub
+
+O repositório canônico foi definido como:
+
+`dbdanielbaracho/COMMERCE-OS`
+
+Arquivos oficiais:
+
+- `MASTER_PRODUCT_SPEC.md` — especificação normativa;
+- `MEMORIA_CREATOR_COMMERCE_OS.md` — histórico consolidado;
+- README — aponta para a fonte documental e para a memória.
+
+O repositório era inicialmente documental; não deveria ser iniciado código sem decisão explícita. A regra permanente passou a ser:
+
+- conversa material atualiza a Memória;
+- mudança de produto atualiza o Documento Mestre;
+- histórico anterior é preservado;
+- GitHub deve ser atualizado e o commit verificado.
+
+O baseline v1.5.2 incorporou ajustes editoriais. A v1.5.3 formalizou, entre outros pontos:
+
+- SKU Opportunity;
+- motivo da oportunidade;
+- comissão e comparáveis;
+- estoque e custo;
+- canal;
+- sincronização;
+- detalhe;
+- Creator Shortlist;
+- ações em massa;
+- equivalência entre desenho e funcionalidade;
+- smoke test;
+- captura;
+- regressão visual;
+- identificação de dados DEMO;
+- protocolo competitivo obrigatório.
+
+O usuário reiterou:
+
+- tema branco, não escuro;
+- resultado igual ou melhor que concorrentes;
+- protótipo funcional;
+- mostrar o desenho antes de funcionalizar;
+- nenhuma melhoria pode fugir do Documento Mestre.
+
+### Marco 1 — fluxo operacional
+
+A sequência recuperada do Marco 1 foi:
+
+**SKU Opportunity → Creator Shortlist → Outreach/Activation → Campaign/Samples → Content/Result → Unit Economics + Coverage → Learning → Next Action**
+
+Também foi registrada a regra **contexto não é causalidade**.
+
+Connections/Coverage foi definido como obrigatório. Opportunity global não fazia parte do aceite inicial do Marco 1.
+
+#### SKU Opportunity
+
+Foi registrado como fechado em design e funcionalidade após os gates daquele ciclo. Os critérios incluíam:
+
+- margem;
+- estoque;
+- comissão comparada;
+- motivo da oportunidade;
+- coverage;
+- ação condicionada à disponibilidade de estoque;
+- evidência e provenance;
+- estados de interface;
+- equivalência desenho-funcional.
+
+#### Creator Shortlist
+
+Foi registrada como fechada após testes, cobrindo:
+
+- relação entre sinal e ação;
+- provenance;
+- heurísticas;
+- LIVE e vídeo;
+- Economics;
+- ordenação de creators bloqueados;
+- razões da recomendação;
+- próxima ação.
+
+Pendências visuais não bloqueantes permaneceram registradas quando aplicável.
+
+#### Outreach
+
+A versão Outreach v4 foi registrada como aprovada. O fluxo conectava:
+
+**SKU → motivo → comissão → margem → proposta**
+
+A comparação apontou paridade ou superioridade planejada em relação ao Affiliate Center, Reacher e Colaba, sempre condicionada à evidência real.
+
+Pendências históricas registradas nessa etapa incluíram:
+
+- menu único;
+- regra de comissão;
+- explicação do motivo de Pedro Lima;
+- remoção do texto “(7.11.1)”;
+- remoção de cota duplicada.
+
+#### Campaign / Activation / Samples
+
+A primeira proposta de Campaign foi rejeitada como pronta. O usuário exigiu que Campanha/Ativação apresentasse:
+
+- dados;
+- funil;
+- amostras;
+- gargalos;
+- próxima ação;
+- aprovação de conteúdo;
+- margem;
+- continuidade entre Outreach, Campanha e Unit Economics.
+
+As comparações principais dessa tela deveriam incluir Reacher, Cruva, Euka e Affiliate Center.
+
+#### Content + Result
+
+A versão v2 foi registrada para revisão visual/funcional, com:
+
+- continuidade de Camila;
+- LIVE e vídeo;
+- margem por conteúdo e creator;
+- conversão;
+- receita por mil visualizações;
+- tendência;
+- provisório versus liquidado;
+- separação entre contexto e causalidade;
+- aprendizado;
+- retorno para Shortlist.
+
+FastMoss e Kalodata foram reconhecidos como fortes em métricas de conteúdo, Reacher em eficiência/GMV e Seller Center em pedidos/comissões.
+
+#### Unit Economics
+
+Unit Economics deve conservar esse nome no menu e permanecer ligado a margem, custo, comissão, atribuição, liquidação e aprendizado. A tela não pode apresentar GMV como lucro nem estimativa como valor liquidado.
+
+### Menu e arquitetura de navegação
+
+Uma fase do Marco 1 congelou menu único com cinco entradas:
+
+- Opportunities;
+- Intelligence;
+- Creators;
+- Campaigns;
+- Performance.
+
+Com a ampliação do produto completo, o inventário geral passou a registrar oito áreas:
+
+1. Opportunities / SKU Opportunity;
+2. Intelligence;
+3. Creators / CRM;
+4. Outreach;
+5. Campaigns;
+6. Performance / Unit Economics;
+7. Copilot;
+8. Market / Competitors.
+
+Essas duas representações não são contraditórias: o menu de cinco entradas corresponde ao recorte consolidado do Marco 1; as oito áreas representam o escopo geral do produto e podem agrupar ou separar módulos conforme a arquitetura de navegação final.
+
+### Estado registrado nas conversas
+
+Em diferentes momentos foram registrados dois níveis de progresso:
+
+- **Marco 1:** aproximadamente 80–85%, com SKU, Shortlist, Outreach/Amostras/Campanha, Unit Economics, próxima ação e contexto≠causalidade implementados; Content v2 e aprendizado reutilizável ainda exigiam fechamento e gates.
+- **Produto completo do Documento Mestre:** aproximadamente 25–30% naquele momento, porque ainda faltavam dados/conectores, backend/APIs/banco, autenticação/RBAC/tenant isolation, auditoria, observabilidade, segurança, performance, CI/CD, Production Truth e módulos completos de intelligence, CRM, attribution, Copilot, programs e rights.
+
+Em outra contagem geral, quatro superfícies foram registradas como funcionais/validadas:
+
+- SKU Opportunity;
+- Creator Shortlist;
+- Outreach;
+- Unit Economics.
+
+Campaign permanecia em desenvolvimento e três áreas gerais ainda precisavam ser construídas/validadas: Intelligence completo, Copilot e Market/Competitors.
+
+Esses números são snapshots históricos. Não devem ser usados como declaração atual de conclusão sem revalidar código, dados, testes e gates.
+
+## Benchmark consolidado
+
+### Cruva
+
+Referência principal para:
+
+- UX operacional;
+- workflow;
+- CRM;
+- outreach;
+- estados;
+- próxima ação;
+- automações operacionais;
+- API/MCP;
+- paid amplification Meta/TikTok;
+- Halo, quando comprovado.
+
+### Euka
+
+Referência principal para amplitude ponta a ponta:
+
+- creator operations;
+- AI Search;
+- Social Intelligence;
+- creators e agents;
+- CRM;
+- samples;
+- campanhas;
+- contests;
+- retainers;
+- rights;
+- payouts;
+- attribution;
+- Copilot/MCP;
+- programas e automações.
+
+### FastMoss
+
+Referência principal para densidade e commerce intelligence:
+
+- tabelas;
+- filtros;
+- rankings;
+- contexto;
+- produtos;
+- creators;
+- shops;
+- vídeos;
+- LIVE;
+- anúncios;
+- histórico;
+- API/MCP/CLI, quando comprovados.
+
+### Kalodata
+
+Referência principal para:
+
+- pesquisa;
+- performance;
+- tendências;
+- produtos;
+- categorias;
+- lojas;
+- marcas;
+- creators;
+- vídeos;
+- anúncios;
+- lives;
+- market intelligence;
+- Kalopilot.
+
+### Seller Center e Affiliate Center
+
+Referências nativas para:
+
+- pedidos;
+- comissões;
+- operação de afiliados;
+- estados nativos da plataforma;
+- creator/product matching disponível;
+- limites reais do TikTok Shop.
+
+### Reacher e Colaba
+
+Referências complementares para outreach, CRM, eficiência, programas e operação de creators. As funcionalidades só contam como benchmark quando comprovadas por documentação, área autenticada autorizada ou evidência verificável.
+
+### Doxa Viral
+
+Referência visual/funcional possível, sempre marcada como “a validar”. Não é fonte de verdade automática.
+
+## Opportunity Workspace canônico
+
+O antigo Control Center genérico foi substituído por um **Opportunity Workspace decision-first**. A unidade de decisão deve reunir:
+
+- score;
+- confiança;
+- evidências;
+- motivo do “por que agora”;
+- creators recomendados;
+- conteúdos recomendados;
+- unit economics;
+- riscos;
+- próxima ação;
+- Copilot contextual.
+
+A direção é intelligence-first, sem dashboard SaaS genérico ou parede de cards.
+
+Elementos canônicos:
+
+- sidebar modular;
+- seletor de mercado e plataforma;
+- busca global;
+- filtros persistentes;
+- KPIs compactos;
+- gráficos;
+- rankings;
+- cards quando agregarem decisão;
+- tabela analítica;
+- comparação;
+- histórico;
+- exportação;
+- contexto persistente entre áreas.
+
+As subvisões de Intelligence incluem:
+
+- Product;
+- Creator;
+- Shop;
+- Video;
+- LIVE;
+- Ads;
+- Competitors;
+- Market.
+
+## Sistema visual obrigatório
+
+O usuário rejeitou explicitamente telas escuras por baixa legibilidade e inconsistência. O padrão congelado é:
+
+- light theme;
+- fundo branco ou cinza-claro;
+- texto navy/preto;
+- alto contraste;
+- cards brancos;
+- bordas suaves;
+- ação primária azul/roxa;
+- verde para positivo;
+- amarelo para atenção;
+- vermelho somente para erro e risco;
+- menus, header, espaçamentos e tipografia consistentes;
+- filtros, tabelas e gráficos legíveis.
+
+O produto deve parecer uma ferramenta madura de inteligência e operação, não um wireframe.
+
+## Regras funcionais e de UX
+
+Toda tela deve ter uma ação dominante clara. Recomendações precisam exibir:
+
+- fatores;
+- fonte;
+- frescor;
+- confiança;
+- limitações;
+- impacto;
+- próxima ação.
+
+Estados obrigatórios:
+
+- loading/skeleton;
+- vazio;
+- parcial;
+- permissão;
+- stale;
+- erro recuperável;
+- job assíncrono;
+- rate limit;
+- dados estimados.
+
+Filtros, rankings, busca, exportações, comparações, CRM, alertas, gráficos e botões não podem ser decorativos. Precisam de comportamento, dados, permissões, feedback, persistência e testes.
+
+Automação deve possuir:
+
+- preview;
+- audiência;
+- limites;
+- política;
+- dry-run;
+- aprovação;
+- stop/undo;
+- log e auditoria.
+
+## Arquitetura, dados e segurança
+
+Direções registradas:
+
+- monólito modular com workers como baseline;
+- Next.js/React/TypeScript;
+- PostgreSQL;
+- Redis;
+- object storage;
+- Python para ML/evals quando necessário;
+- LLM/Agent Gateway;
+- OpenTelemetry;
+- Railway/containers;
+- ClickHouse opcional, não obrigatório;
+- isolamento por tenant;
+- sem compartilhar perfis ou bancos entre projetos;
+- sem marketplace de creators/payouts como premissa automática;
+- sem fallback inventado de GMV;
+- Cost Basis Engine;
+- tratamento de impostos brasileiros, incluindo Simples, conforme contrato;
+- dados classificados como MEASURED, ESTIMATED ou INFERRED;
+- provenance e evidence_ref;
+- deny-by-default para ações sensíveis;
+- nenhuma credencial registrada na documentação.
+
+## Integrações e conectores discutidos
+
+Foram citados:
+
+- Shopify, incluindo `unitCost`;
+- Bling, incluindo preço de custo/preço de compra e webhooks;
+- Cruva para séries temporais e pedidos;
+- Euka para cold start;
+- TikTok Shop Seller/Affiliate Center;
+- parceiros brasileiros como Olist, AnyMarket, Plugg.To, Magis5, Weesu, Tray, Base, Silk, Precode, Cubbo e Estoca.
+
+A existência de um nome na memória não significa integração concluída. Cada integração exige contrato, autenticação, limites, webhooks/polling, ownership de dados, reconciliação, segurança, testes e fallback explícito.
+
+## Lacunas historicamente registradas
+
+- Social Intelligence;
+- Agents, triggers, retry e limites;
+- retainers;
+- contracts;
+- payouts;
+- metodologia de attribution/ROI;
+- distinção de dados Instagram versus TikTok Shop;
+- permissões write/rollback do Copilot/MCP;
+- Intelligence completo;
+- Copilot contextual;
+- Market/Competitors;
+- persistência e reutilização de aprendizado;
+- conexão ponta a ponta Conteúdo → Unit Economics → Learning;
+- backend/APIs/banco;
+- auth/RBAC/tenant isolation;
+- auditoria e observabilidade;
+- segurança e performance;
+- CI/CD e Production Truth;
+- programs, rights e community.
+
+Itens só podem sair desta lista mediante evidência atualizada.
+
+## Protocolo competitivo e de auditoria
+
+Cada tela precisa:
+
+1. identificar concorrentes relevantes;
+2. registrar evidência;
+3. classificar abaixo, paridade ou superioridade;
+4. explicar a diferença;
+5. validar desenho e funcionalidade;
+6. executar testes no navegador;
+7. fazer smoke test;
+8. capturar evidência visual;
+9. executar regressão visual;
+10. identificar claramente dados DEMO;
+11. provar estados, permissões e persistência.
+
+Evidências de concorrentes devem ser classificadas como:
+
+- PUBLIC-CONFIRMED;
+- AUTH-VERIFIED;
+- VENDOR-CLAIM;
+- UNKNOWN.
+
+Áreas autenticadas só podem ser auditadas no ambiente autorizado. Senhas e códigos nunca devem ser enviados ou persistidos na memória.
+
+## Critério de conclusão
+
+Não é permitido declarar conclusão porque:
+
+- existe uma imagem;
+- existe uma tela estática;
+- não há PR aberto;
+- um concorrente afirma possuir a função;
+- um teste isolado passou;
+- o dado aparece sem provenance;
+- o layout parece pronto.
+
+Aceite exige, conforme a área:
+
+- desenho aprovado;
+- comportamento funcional;
+- dados ou contrato real;
+- permissões;
+- tenant isolation;
+- loading, erro e vazio;
+- ação e persistência;
+- testes;
+- regressão visual;
+- CI;
+- Production Truth;
+- evidência versionada.
+
+## Decisões desta conversa de 13 de outubro de 2026
+
+O Documento Mestre e a Memória foram atualizados no repositório `COMMERCE-OS`, com os seguintes commits registrados antes deste apêndice:
+
+- Documento Mestre: `d2dc17887835b1c072fa32e8ed2ab606c2a05827`;
+- Memória: `0bd28ed277623d4acb07de763f601f8838d8e376`.
+
+O usuário corrigiu explicitamente qualquer ambiguidade: o documento é do **Commerce OS**, não do MLIVRETRABALHO.
+
+Em seguida determinou:
+
+- incluir nesta Memória tudo que foi digitado neste chat sobre Creator Commerce OS;
+- incluir também o que foi digitado em outros chats sobre Creator Commerce OS;
+- não interromper nenhuma rotina para realizar a consolidação.
+
+A regra operacional resultante é: projetos permanecem separados e podem continuar em paralelo; atualizar a documentação de um projeto não autoriza pausar, modificar ou desativar a rotina de outro.
